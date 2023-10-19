@@ -1,49 +1,38 @@
 #pragma once
 #ifdef WIREMODULE
-#include "knx.h"
-#include "knxprod.h"
-#include "hardware.h"
-#include "HardwareDevices.h"
-#include "Sensor.h"
-#include <OneWire.h>
+    #include "OpenKNX.h"
+    #include "Sensor.h"
+    #include "hardware.h"
+    #include "knx.h"
+    #include "knxprod.h"
+    #include <OneWire.h>
 
-class WireDevice
+class WireDevice : public OpenKNX::Channel
 {
   private:
-    static uint8_t sDeviceCount; // max. device index to process during runtime
-    static uint8_t sDeviceIndex; // iterator for global device processing
-    static WireDevice *sDevice[COUNT_1WIRE_CHANNEL]; // list of all used devices across all BM
-
-    // unknown device processing
-    // static uint8_t sUnknownDeviceFirst;
-    static uint8_t sUnknownDeviceIndex;
-    static uint8_t sUnknownDeviceLast;
-    static uint32_t sUnknownDeviceDelay;
-    static uint8_t sUnknownDeviceDelaySeconds;
-
-    static bool sForceSensorRead;
-    static uint32_t sKnxLoopCallbackDelay;
-
-    OneWire *mOneWire = NULL;
     uData mData;
-    uint8_t mDeviceIndex = 0; 
+    uint8_t mDeviceIndex = 0;
 
   public:
     WireDevice();
-    WireDevice(uint8_t iDeviceIndex, OneWireDS2482* iBusMaster[]);
+    WireDevice(uint8_t iDeviceIndex, OneWireDS2482 *iBusMaster[]);
     ~WireDevice();
 
-    // general processing is static
-    static void loop();
-    static void processKOCallback(GroupObject &iKo);
+    OneWire *mOneWire = NULL;
+
+    const std::string name() override;
+    void setup() override;
+    void loop() override;
+
+    // general processing
+    void processKOCallback(GroupObject &iKo);
     static bool measureOneWire(MeasureType iMeasureType, float &eValue);
-    static void processIButtonGroups();
-    static void processUnknownDevices();
-    static void processOneWire(bool iForce);
-    static void processReadRequests();
-    static bool processNewIdCallback(OneWire *iOneWireSensor);
-    static void knxLoopCallback(); // just to avoid knx reference in common
-    static void forceSensorRead();
+    void processIButtonGroups();
+    void processUnknownDevices();
+    void processOneWire(bool iForce);
+    void processReadRequests();
+    bool processNewIdCallback(OneWire *iOneWireSensor);
+    void forceSensorRead();
 
     uint8_t getIndex();
     uint32_t calcParamIndex(uint16_t iParamIndex);

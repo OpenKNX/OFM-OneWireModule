@@ -1,21 +1,21 @@
 #ifdef WIREMODULE
-#include "WireDevice.h"
-#include "knx.h"
-#include "KnxHelper.h"
-#include "OneWireDS2482.h"
+    #include "WireDevice.h"
+    #include "KnxHelper.h"
+    #include "OneWireDS2482.h"
+    #include "knx.h"
 
-uint8_t WireDevice::sDeviceCount = 0;
-uint8_t WireDevice::sDeviceIndex = 0;
-WireDevice *WireDevice::sDevice[COUNT_1WIRE_CHANNEL] = {0};
+// uint8_t WireDevice::sDeviceCount = 0;
+// uint8_t WireDevice::sDeviceIndex = 0;
+// WireDevice *WireDevice::sDevice[COUNT_1WIRE_CHANNEL] = {0};
 
-// uint8_t WireDevice::sUnknownDeviceFirst = 0;
-uint8_t WireDevice::sUnknownDeviceIndex = 0;
-uint8_t WireDevice::sUnknownDeviceLast = 0;
-uint32_t WireDevice::sUnknownDeviceDelay = 0;
-uint8_t WireDevice::sUnknownDeviceDelaySeconds = 60;
+// // uint8_t WireDevice::sUnknownDeviceFirst = 0;
+// uint8_t WireDevice::sUnknownDeviceIndex = 0;
+// uint8_t WireDevice::sUnknownDeviceLast = 0;
+// uint32_t WireDevice::sUnknownDeviceDelay = 0;
+// uint8_t WireDevice::sUnknownDeviceDelaySeconds = 60;
 
-bool WireDevice::sForceSensorRead = false;
-uint32_t WireDevice::sKnxLoopCallbackDelay = 0;
+// bool WireDevice::sForceSensorRead = false;
+// uint32_t WireDevice::sKnxLoopCallbackDelay = 0;
 
 WireDevice::WireDevice()
 {
@@ -25,13 +25,13 @@ WireDevice::WireDevice()
 WireDevice::WireDevice(uint8_t iDeviceIndex, OneWireDS2482* iBusMaster[])
 {
     mDeviceIndex = iDeviceIndex; // device index in application
-    sDevice[sDeviceCount++] = this;
 
     bool lIsNew = false;
     // we have to create an instance of this sensor on 1-wire-level, through a factory based on sensor-id
     mOneWire = OneWire::factory(knx.paramData(calcParamIndex(WIRE_sDeviceId)), &lIsNew);
     setDeviceParameter();
-    if (lIsNew) {
+    if (lIsNew)
+    {
         uint8_t lSelectedBusmaster = (knx.paramByte(calcParamIndex(WIRE_sBusMasterSelect1)) & WIRE_sBusMasterSelect1Mask) >> WIRE_sBusMasterSelect1Shift;
         OneWireDS2482* lBusMaster = iBusMaster[lSelectedBusmaster - 1];
         lBusMaster->addSensor(mOneWire);
@@ -43,263 +43,215 @@ WireDevice::~WireDevice()
 {
 }
 
-// static
-void WireDevice::processReadRequests()
+const std::string WireDevice::name()
 {
-    // this method is called after startup delay and executes read requests, which should just happen once after startup
-    static bool sCalledProcessReadRequests = false;
-    if (!sCalledProcessReadRequests)
-    {
-        // we go through all IO devices defined as outputs and check for initial read requests
-        for (uint8_t lDeviceId = 0; lDeviceId < sDeviceCount; lDeviceId++)
-        {
-            WireDevice *lDevice = sDevice[lDeviceId];
-            if (lDevice->processReadRequest()) {
-                knx.getGroupObject(lDevice->getIndex() + WIRE_KoOffset).requestObjectRead();
-                printDebug("ReadRequest send for KO%d\n", lDevice->getIndex() + WIRE_KoOffset);
-            }
-        }
-        sCalledProcessReadRequests = true;
-    }
+    return "OneWireDevice";
 }
 
 // static
-void WireDevice::processKOCallback(GroupObject &iKo)
-{
-    // check for 1-Wire-KO
-    if (iKo.asap() >= WIRE_KoOffset && iKo.asap() < ((knx.paramByte(WIRE_BusMasterCount) & WIRE_BusMasterCountMask) >> WIRE_BusMasterCountShift) * 30 + WIRE_KoOffset)
-    {
-        uint8_t lDeviceIndex = iKo.asap() - WIRE_KoOffset;
-        // has to be an input KO (for an 1W output device)
-        WireDevice *lDevice = sDevice[lDeviceIndex];
-        // we have to check this (in case someone writes on a KO of a sensor device)
-        if (lDevice->isIO())
-        {
-            // find correct DPT for KO
-            if (lDevice->getModelFunction() == ModelFunction_IoByte)
-                lDevice->setValue(iKo.value(getDPT(VAL_DPT_5)));
-            else
-                lDevice->setValue(iKo.value(getDPT(VAL_DPT_1)));
-        }
-    }
-}
+// void WireDevice::processReadRequests()
+// {
+//     // this method is called after startup delay and executes read requests, which should just happen once after startup
+//     static bool sCalledProcessReadRequests = false;
+//     if (!sCalledProcessReadRequests)
+//     {
+//         // we go through all IO devices defined as outputs and check for initial read requests
+//         for (uint8_t lDeviceId = 0; lDeviceId < sDeviceCount; lDeviceId++)
+//         {
+//             WireDevice *lDevice = sDevice[lDeviceId];
+//             if (lDevice->processReadRequest()) {
+//                 knx.getGroupObject(lDevice->getIndex() + WIRE_KoOffset).requestObjectRead();
+//                 printDebug("ReadRequest send for KO%d\n", lDevice->getIndex() + WIRE_KoOffset);
+//             }
+//         }
+//         sCalledProcessReadRequests = true;
+//     }
+// }
 
 // static
-void WireDevice::processIButtonGroups()
-{
-    // group processing would be a loop over max 90 devices
-    // times 8 Groups and the according logical operations
-    // this would block too long!
-    // Here we implement an asynchronous algorithm
-    // as described in doc/iButton-Group-Handling.txt
-    // so we iterate per device just through all 8 groups
-    // final group result takes at max 90 iterations
-    // currently we have about 3000 iterations per second, so it is still fast enough
-    static uint8_t sIndex = 0;
-    static bool sIButtonExist = true;
-    static uint8_t sToProcess = 0xFF;
-    static uint8_t sGroupType = knx.paramByte(WIRE_Group1); // this is constant for the whole program runtime
-    WireDevice *lDevice;
+// void WireDevice::processIButtonGroups()
+// {
+//     // group processing would be a loop over max 90 devices
+//     // times 8 Groups and the according logical operations
+//     // this would block too long!
+//     // Here we implement an asynchronous algorithm
+//     // as described in doc/iButton-Group-Handling.txt
+//     // so we iterate per device just through all 8 groups
+//     // final group result takes at max 90 iterations
+//     // currently we have about 3000 iterations per second, so it is still fast enough
+//     static uint8_t sIndex = 0;
+//     static bool sIButtonExist = true;
+//     static uint8_t sToProcess = 0xFF;
+//     static uint8_t sGroupType = knx.paramByte(WIRE_Group1); // this is constant for the whole program runtime
+//     WireDevice *lDevice;
 
-    // we iterate only if there are iButtons
-    // if (sIButtonExist) {
-    sIButtonExist = false;
-    // create start condition
-    if (sIndex == 0)
-    {
-        sToProcess = 0xFF;
-    }
-    // search for the next iButton
-    do
-    {
-        lDevice = sDevice[sIndex++];
-    } while (sIndex < sDeviceCount && !lDevice->isIButton());
-    // process this iButton
-    if (sIndex <= sDeviceCount && lDevice->isIButton())
-    {
-        sIButtonExist = true;
-        bool lValue = lDevice->getValue();
-        uint8_t lButtonGroups = knx.paramByte((sIndex - 1) * WIRE_ParamBlockSize + WIRE_ParamBlockOffset + WIRE_sGroup1);
-        uint8_t lButtonGroupsToProcess = lButtonGroups & sToProcess;
-        uint8_t lGroupBit = 0x80;
-        for (uint8_t lGroupIndex = 0; lGroupIndex < 7 && lButtonGroupsToProcess; lGroupIndex++)
-        {
-            if (lButtonGroupsToProcess & lGroupBit)
-            {
-                //group has to be processed
-                bool lGroupType = sGroupType & lGroupBit;
-                if (lGroupType != lValue)
-                {
-                    // this is the case, where
-                    // - group type is AND and value is 0 or
-                    // - group type is OR and value is 1
-                    // we set the group KO to value...
-                    GroupObject &lKo = knx.getGroupObject(WIRE_KoGroup1 + lGroupIndex);
-                    if ((bool)lKo.value(getDPT(VAL_DPT_1)) != lValue)
-                    {
-                        printDebug("KO%d sendet Wert: %d\n", WIRE_KoGroup1 + lGroupIndex, lValue);
-                        lKo.value(lValue, getDPT(VAL_DPT_1));
-                    }
-                    // and mark this group as processed
-                    sToProcess &= ~lGroupBit;
-                }
-            }
-            lGroupBit >>= 1;
-            knxLoopCallback();
-        }
-    }
-    if (sIndex >= sDeviceCount && sIButtonExist)
-    {
-        // we iterated through all iButtons, let's process remaining groups
-        uint8_t lGroupBit = 0x80;
-        for (uint8_t lGroupIndex = 0; lGroupIndex < 7; lGroupIndex++)
-        {
-            if (sToProcess & lGroupBit)
-            {
-                // group was not processed, we set KO to group type
-                GroupObject &lKo = knx.getGroupObject(WIRE_KoGroup1 + lGroupIndex);
-                bool lValue = (sGroupType & lGroupBit);
-                if ((bool)lKo.value(getDPT(VAL_DPT_1)) != lValue)
-                {
-                    printDebug("KO%d sendet Wert: %d\n", WIRE_KoGroup1 + lGroupIndex, lValue);
-                    lKo.value(lValue, getDPT(VAL_DPT_1));
-                }
-            }
-            lGroupBit >>= 1;
-            knxLoopCallback();
-        }
-    }
-    if (sIndex >= sDeviceCount)
-        sIndex = 0;
-}
-
-// static
-void WireDevice::processUnknownDevices()
-{
-    bool lForce = sUnknownDeviceDelay == 0;
-
-    if (lForce || delayCheck(sUnknownDeviceDelay, sUnknownDeviceDelaySeconds * 1000))
-    {
-        if (sUnknownDeviceIndex < sDeviceCount)
-            sUnknownDeviceIndex = sDeviceCount;
-        if (sUnknownDeviceIndex < sUnknownDeviceLast)
-        {
-            OneWire *lSensor = sDevice[sUnknownDeviceIndex++]->mOneWire;
-            if (lSensor->Mode() == OneWire::New)
-            {
-                // output is 1 new ID in 2 Seconds at max
-                printDebug("KO%d sendet Wert: ", WIRE_KoNewId);
-                char lBuffer[15];
-                lBuffer[14] = 0;
-                sprintf(lBuffer, "%02X%02X%02X%02X%02X%02X%02X", lSensor->Id()[0], lSensor->Id()[1], lSensor->Id()[2], lSensor->Id()[3], lSensor->Id()[4], lSensor->Id()[5], lSensor->Id()[6]);
-                printDebug("%s\n", lBuffer);
-                knx.getGroupObject(WIRE_KoNewId).value(lBuffer, getDPT(VAL_DPT_16));
-                sUnknownDeviceDelaySeconds = 2; // check in 2 Seconds for next new ID
-            }
-        }
-        if (sUnknownDeviceIndex >= sUnknownDeviceLast)
-        {
-            sUnknownDeviceIndex = 0;
-            sUnknownDeviceDelaySeconds = 60; // next output of all IDs in a minute
-        }
-        sUnknownDeviceDelay = millis();
-        if (sUnknownDeviceDelay == 0)
-            sUnknownDeviceDelay = 1;
-    }
-}
+//     // we iterate only if there are iButtons
+//     // if (sIButtonExist) {
+//     sIButtonExist = false;
+//     // create start condition
+//     if (sIndex == 0)
+//     {
+//         sToProcess = 0xFF;
+//     }
+//     // search for the next iButton
+//     do
+//     {
+//         lDevice = sDevice[sIndex++];
+//     } while (sIndex < sDeviceCount && !lDevice->isIButton());
+//     // process this iButton
+//     if (sIndex <= sDeviceCount && lDevice->isIButton())
+//     {
+//         sIButtonExist = true;
+//         bool lValue = lDevice->getValue();
+//         uint8_t lButtonGroups = knx.paramByte((sIndex - 1) * WIRE_ParamBlockSize + WIRE_ParamBlockOffset + WIRE_sGroup1);
+//         uint8_t lButtonGroupsToProcess = lButtonGroups & sToProcess;
+//         uint8_t lGroupBit = 0x80;
+//         for (uint8_t lGroupIndex = 0; lGroupIndex < 7 && lButtonGroupsToProcess; lGroupIndex++)
+//         {
+//             if (lButtonGroupsToProcess & lGroupBit)
+//             {
+//                 //group has to be processed
+//                 bool lGroupType = sGroupType & lGroupBit;
+//                 if (lGroupType != lValue)
+//                 {
+//                     // this is the case, where
+//                     // - group type is AND and value is 0 or
+//                     // - group type is OR and value is 1
+//                     // we set the group KO to value...
+//                     GroupObject &lKo = knx.getGroupObject(WIRE_KoGroup1 + lGroupIndex);
+//                     if ((bool)lKo.value(getDPT(VAL_DPT_1)) != lValue)
+//                     {
+//                         printDebug("KO%d sendet Wert: %d\n", WIRE_KoGroup1 + lGroupIndex, lValue);
+//                         lKo.value(lValue, getDPT(VAL_DPT_1));
+//                     }
+//                     // and mark this group as processed
+//                     sToProcess &= ~lGroupBit;
+//                 }
+//             }
+//             lGroupBit >>= 1;
+//             knxLoopCallback();
+//         }
+//     }
+//     if (sIndex >= sDeviceCount && sIButtonExist)
+//     {
+//         // we iterated through all iButtons, let's process remaining groups
+//         uint8_t lGroupBit = 0x80;
+//         for (uint8_t lGroupIndex = 0; lGroupIndex < 7; lGroupIndex++)
+//         {
+//             if (sToProcess & lGroupBit)
+//             {
+//                 // group was not processed, we set KO to group type
+//                 GroupObject &lKo = knx.getGroupObject(WIRE_KoGroup1 + lGroupIndex);
+//                 bool lValue = (sGroupType & lGroupBit);
+//                 if ((bool)lKo.value(getDPT(VAL_DPT_1)) != lValue)
+//                 {
+//                     printDebug("KO%d sendet Wert: %d\n", WIRE_KoGroup1 + lGroupIndex, lValue);
+//                     lKo.value(lValue, getDPT(VAL_DPT_1));
+//                 }
+//             }
+//             lGroupBit >>= 1;
+//             knxLoopCallback();
+//         }
+//     }
+//     if (sIndex >= sDeviceCount)
+//         sIndex = 0;
+// }
 
 // static
-void WireDevice::processOneWire(bool iForce)
-{
-    // are there any OW sensors
-    if (sDeviceCount > 0)
-    {
-        if (iForce)
-        {
-            for (uint8_t i = 0; i < sDeviceCount; i++)
-                sDevice[i]->clearSendDelay();
-        }
-        // we iterate through all OW-Sensors
-        sDevice[sDeviceIndex]->processOneWire();
-        if (++sDeviceIndex >= sDeviceCount)
-            sDeviceIndex = 0;
-    }
-}
+// void WireDevice::processUnknownDevices()
+// {
+//     bool lForce = sUnknownDeviceDelay == 0;
 
-// jeder neue Sensor, der erstmals bei der 1W-Suche erkannt wird,
-// wird über diesen Callback der Applikation mitgeteilt.
-// Hier wird gecheckt, ob er schon in der Liste der neuen Sensoren ist.
-// Wenn nicht, wird er dieser Liste zugefügt. Diese Liste
-// wird dann jede Minute ausgegeben.
+//     if (lForce || delayCheck(sUnknownDeviceDelay, sUnknownDeviceDelaySeconds * 1000))
+//     {
+//         if (sUnknownDeviceIndex < sDeviceCount)
+//             sUnknownDeviceIndex = sDeviceCount;
+//         if (sUnknownDeviceIndex < sUnknownDeviceLast)
+//         {
+//             OneWire *lSensor = sDevice[sUnknownDeviceIndex++]->mOneWire;
+//             if (lSensor->Mode() == OneWire::New)
+//             {
+//                 // output is 1 new ID in 2 Seconds at max
+//                 printDebug("KO%d sendet Wert: ", WIRE_KoNewId);
+//                 char lBuffer[15];
+//                 lBuffer[14] = 0;
+//                 sprintf(lBuffer, "%02X%02X%02X%02X%02X%02X%02X", lSensor->Id()[0], lSensor->Id()[1], lSensor->Id()[2], lSensor->Id()[3], lSensor->Id()[4], lSensor->Id()[5], lSensor->Id()[6]);
+//                 printDebug("%s\n", lBuffer);
+//                 knx.getGroupObject(WIRE_KoNewId).value(lBuffer, getDPT(VAL_DPT_16));
+//                 sUnknownDeviceDelaySeconds = 2; // check in 2 Seconds for next new ID
+//             }
+//         }
+//         if (sUnknownDeviceIndex >= sUnknownDeviceLast)
+//         {
+//             sUnknownDeviceIndex = 0;
+//             sUnknownDeviceDelaySeconds = 60; // next output of all IDs in a minute
+//         }
+//         sUnknownDeviceDelay = millis();
+//         if (sUnknownDeviceDelay == 0)
+//             sUnknownDeviceDelay = 1;
+//     }
+// }
+
 // static
-bool WireDevice::processNewIdCallback(OneWire *iOneWire)
-{
-    bool lResult = false;
-    if (sUnknownDeviceLast < sDeviceCount)
-        sUnknownDeviceLast = sDeviceCount;
-    for (uint8_t lIndex = sDeviceCount; lIndex < sUnknownDeviceLast; lIndex++)
-    {
-        OneWire *lSensor = sDevice[lIndex]->mOneWire;
-        if (equalId(iOneWire->Id(), lSensor->Id()))
-        {
-            lResult = true;
-            break;
-        }
-    }
-    if (!lResult && sUnknownDeviceLast < COUNT_1WIRE_CHANNEL)
-    {
-        // new sensor found, we add it to unknown device list
-        sDevice[sUnknownDeviceLast] = new WireDevice();
-        sDevice[sUnknownDeviceLast++]->mOneWire = iOneWire;
-        // trigger send new sensor info
-        sUnknownDeviceDelay = millis() - 58000; // start output in 2 seconds
-    }
-    return lResult;
-}
+// void WireDevice::processOneWire(bool iForce)
+// {
+//     // are there any OW sensors
+//     if (sDeviceCount > 0)
+//     {
+//         if (iForce)
+//         {
+//             for (uint8_t i = 0; i < sDeviceCount; i++)
+//                 sDevice[i]->clearSendDelay();
+//         }
+//         // we iterate through all OW-Sensors
+//         sDevice[sDeviceIndex]->processOneWire();
+//         if (++sDeviceIndex >= sDeviceCount)
+//             sDeviceIndex = 0;
+//     }
+// }
 
 // static - this is not perfect, but it works
-bool WireDevice::measureOneWire(MeasureType iMeasureType, float &eValue)
+bool WireDevice::measureOneWire(MeasureType iMeasureType, float& eValue)
 {
     eValue = sDevice[sDeviceIndex]->getValue();
     return true;
 }
 
-// static
+void WireDevice::setup()
+{
+}
+
 void WireDevice::loop()
 {
-    knxLoopCallback(); // improve knx responsiveness
-
     // if (!gIsSetup)
     //     return;
 
-    processOneWire(sForceSensorRead);
-    knxLoopCallback();
+    processOneWire(false); // sForceSensorRead);
     processUnknownDevices();
-    knxLoopCallback();
     processIButtonGroups();
     // falls Du auch ein KO zum anfordern der Werte anbieten willst, muss in der Routine, die das KO auswertet
     // nur die folgende Variable auf true gesetzt werden, dann werden die Sensorwerte gesendet.
-    sForceSensorRead = false;
+    // sForceSensorRead = false;
 
     // gOneWireBM.loop();
 }
 
-// static
-void WireDevice::forceSensorRead()
-{
-    sForceSensorRead = true;
-}
+// // static
+// void WireDevice::forceSensorRead()
+// {
+//     sForceSensorRead = true;
+// }
 
 // static
-void WireDevice::knxLoopCallback()
-{
-    // this is a generic dispatcher which ensures, that knx.loop() is called as often as 
-    // necessary, but not more often than every 1 ms.
-    if (delayCheck(sKnxLoopCallbackDelay, 5)) {
-        knx.loop();
-        sKnxLoopCallbackDelay = millis();
-    }
-}
+// void WireDevice::knxLoopCallback()
+// {
+//     // this is a generic dispatcher which ensures, that knx.loop() is called as often as
+//     // necessary, but not more often than every 1 ms.
+//     if (delayCheck(sKnxLoopCallbackDelay, 5)) {
+//         knx.loop();
+//         sKnxLoopCallbackDelay = millis();
+//     }
+// }
 
 uint8_t WireDevice::getIndex()
 {
@@ -311,7 +263,8 @@ uint32_t WireDevice::calcParamIndex(uint16_t iParamIndex)
     return mDeviceIndex * WIRE_ParamBlockSize + WIRE_ParamBlockOffset + iParamIndex;
 }
 
-uint8_t WireDevice::getModelFunction() {
+uint8_t WireDevice::getModelFunction()
+{
     return knx.paramByte(calcParamIndex(WIRE_sModelFunction));
 }
 
@@ -334,19 +287,25 @@ uint8_t WireDevice::getValue()
     return lResult;
 }
 
-void WireDevice::clearSendDelay() {
+void WireDevice::clearSendDelay()
+{
     mData.sensor.sendDelay = 0;
 }
 
-bool WireDevice::isIO() {
-    if (mOneWire == NULL) {
+bool WireDevice::isIO()
+{
+    if (mOneWire == NULL)
+    {
         return false;
-    } else {
+    }
+    else
+    {
         return (mOneWire->Family() == MODEL_DS2413 || mOneWire->Family() == MODEL_DS2408);
     }
 }
 
-bool WireDevice::isIButton() {
+bool WireDevice::isIButton()
+{
     if (mOneWire == NULL)
     {
         return false;
@@ -376,12 +335,13 @@ void WireDevice::setDeviceParameter()
             mData.sensor.lastSentValue = NO_NUM; // NAN was not working here
             // for IO, we disable ReadRequests from its KO as long as no valid initial state is known
             knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).commFlag(Uninitialized);
-        default: 
+        default:
             break;
     }
 }
 
-void WireDevice::processOneWire() {
+void WireDevice::processOneWire()
+{
 
     if (mOneWire != NULL)
     {
@@ -409,7 +369,8 @@ void WireDevice::processOneWire() {
                 {
                     if (lLastSent != lNewState || lIsInitial)
                     {
-                        if (!lIsInitial || lSendInitial) {
+                        if (!lIsInitial || lSendInitial)
+                        {
                             knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).value(lNewState, getDPT(VAL_DPT_1));
                             printDebug("KO%d sendet Wert: %d\n", mDeviceIndex + WIRE_KoOffset, lNewState);
                         }
@@ -444,12 +405,15 @@ void WireDevice::processOneWire() {
 
 // read request on startup is currently not supported, because the KO (having an L-Flag) answers himself
 // the processing itself works, but there is currently no known way to prevent replays on such a read
-bool WireDevice::processReadRequest() {
+bool WireDevice::processReadRequest()
+{
     bool lResult = false;
-    if (isIO()) {
+    if (isIO())
+    {
         uint8_t lIoMask = knx.paramByte(calcParamIndex(WIRE_sIoBitmask0));
         bool lSendReadRequest = (knx.paramByte(calcParamIndex(WIRE_sIOReadRequest)) & WIRE_sIOReadRequestMask) >> WIRE_sIOReadRequestShift;
-        if (mOneWire->Family() == MODEL_DS2413) {
+        if (mOneWire->Family() == MODEL_DS2413)
+        {
             lIoMask |= 0xFC;
         }
         lResult = lSendReadRequest && (lIoMask < 0xFF);
@@ -463,17 +427,19 @@ bool WireDevice::processReadRequest() {
 // }
 
 // generic sensor processing
-void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16_t iKoNumber) {
+void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16_t iKoNumber)
+{
     bool lForce = mData.sensor.sendDelay == 0;
     bool lSend = lForce;
     float lValueFactor = 1.0;
     // value factor depends on model function
     uint8_t lModelFunction = getModelFunction();
-    if (lModelFunction >= ModelFunction_RawVDD && lModelFunction <= ModelFunction_RawVSens) {
+    if (lModelFunction >= ModelFunction_RawVDD && lModelFunction <= ModelFunction_RawVSens)
+    {
         lValueFactor = 1000.0;
     }
     // process send cycle
-    uint32_t lCycle =  getDelayPattern(iParamIndex + WIRE_sSensorDelayBase);
+    uint32_t lCycle = getDelayPattern(iParamIndex + WIRE_sSensorDelayBase);
 
     // we waited enough, let's send the value
     if (lCycle && delayCheck(mData.sensor.sendDelay, lCycle))
@@ -512,10 +478,13 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
                     lSend = true;
             }
             // we always store the new value in KO, even it it is not sent (to satisfy potential read request)
-            if (isNum(lValue)) { 
+            if (isNum(lValue))
+            {
                 mData.sensor.lastValue = lValue;
                 knx.getGroupObject(iKoNumber).valueNoSend(lValue, getDPT(VAL_DPT_9));
-            } else {
+            }
+            else
+            {
                 lSend = false;
             }
         }
