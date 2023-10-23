@@ -14,7 +14,6 @@ class WireGateway : public OpenKNX::Module
     static WireDevice *sUnknownDevice[COUNT_1WIRE_CHANNEL]; // list of all used devices across all BM
 
     // static uint8_t sUnknownDeviceFirst;
-    static uint8_t sUnknownDeviceIndex;
     static uint8_t sUnknownDeviceLast;
     static uint32_t sUnknownDeviceDelay;
     static uint8_t sUnknownDeviceDelaySeconds;
@@ -27,6 +26,7 @@ class WireGateway : public OpenKNX::Module
     bool mForceSensorRead = true;
 
     static bool processNewIdCallback(OneWire *iOneWire);
+    static bool measureOneWire(MeasureType iMeasureType, float &eValue);
 
     // void setupCustomFlash();
     void setupChannels();

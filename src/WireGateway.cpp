@@ -7,6 +7,18 @@
     #include "Sensor.h"
     #include <OneWireDS2482.h>
 
+uint8_t WireGateway::sUnknownDeviceCount = 0;
+uint8_t WireGateway::sUnknownDeviceIndex = 0;
+WireDevice *WireGateway::sUnknownDevice[COUNT_1WIRE_CHANNEL] = {0};
+
+// uint8_t WireGateway::sUnknownDeviceFirst = 0;
+uint8_t WireGateway::sUnknownDeviceLast = 0;
+uint32_t WireGateway::sUnknownDeviceDelay = 0;
+uint8_t WireGateway::sUnknownDeviceDelaySeconds = 60;
+
+// bool WireGateway::sForceSensorRead = false;
+// uint32_t WireGateway::sKnxLoopCallbackDelay = 0;
+
 WireGateway::WireGateway() {}
 
 const std::string WireGateway::name()
@@ -75,7 +87,7 @@ void WireGateway::loop(bool configured)
 
     // at this point startup-delay is done
     // we process heartbeat
-    ProcessReadRequests();
+    // ProcessReadRequests();
     // counter for processed channels in one loop
     uint8_t channelProcessed = 0;
 
@@ -161,6 +173,13 @@ bool WireGateway::processNewIdCallback(OneWire *iOneWire)
         sUnknownDeviceDelay = millis() - 58000; // start output in 2 seconds
     }
     return lResult;
+}
+
+// static - this is not perfect, but it works
+bool WireGateway::measureOneWire(MeasureType iMeasureType, float &eValue)
+{
+    // eValue = mDevice[sDeviceIndex]->getValue();
+    return true;
 }
 
 #endif

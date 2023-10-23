@@ -2,7 +2,7 @@
     #include "WireDevice.h"
     #include "KnxHelper.h"
     #include "OneWireDS2482.h"
-    #include "knx.h"
+    #include "OpenKNX.h"
 
 // uint8_t WireDevice::sDeviceCount = 0;
 // uint8_t WireDevice::sDeviceIndex = 0;
@@ -210,13 +210,6 @@ const std::string WireDevice::name()
 //     }
 // }
 
-// static - this is not perfect, but it works
-bool WireDevice::measureOneWire(MeasureType iMeasureType, float& eValue)
-{
-    eValue = sDevice[sDeviceIndex]->getValue();
-    return true;
-}
-
 void WireDevice::setup()
 {
 }
@@ -226,9 +219,9 @@ void WireDevice::loop()
     // if (!gIsSetup)
     //     return;
 
-    processOneWire(false); // sForceSensorRead);
-    processUnknownDevices();
-    processIButtonGroups();
+    // processOneWire(false); // sForceSensorRead);
+    // processUnknownDevices();
+    // processIButtonGroups();
     // falls Du auch ein KO zum anfordern der Werte anbieten willst, muss in der Routine, die das KO auswertet
     // nur die folgende Variable auf true gesetzt werden, dann werden die Sensorwerte gesendet.
     // sForceSensorRead = false;
@@ -372,7 +365,7 @@ void WireDevice::processOneWire()
                         if (!lIsInitial || lSendInitial)
                         {
                             knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).value(lNewState, getDPT(VAL_DPT_1));
-                            printDebug("KO%d sendet Wert: %d\n", mDeviceIndex + WIRE_KoOffset, lNewState);
+                            logDebugP("KO%d sendet Wert: %d\n", mDeviceIndex + WIRE_KoOffset, lNewState);
                         }
                         mData.sensor.lastSentValue = lNewState;
                     }
@@ -391,7 +384,7 @@ void WireDevice::processOneWire()
                         if (!lIsInitial || lSendInitial)
                         {
                             knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).value(lValue, (getModelFunction() == ModelFunction_IoByte) ? getDPT(VAL_DPT_5) : getDPT(VAL_DPT_1));
-                            printDebug("KO%d sendet Wert: %0X\n", mDeviceIndex + WIRE_KoOffset, lValue);
+                            logDebugP("KO%d sendet Wert: %0X\n", mDeviceIndex + WIRE_KoOffset, lValue);
                         }
                         mData.actor.lastInputValue = lValue;
                     }
@@ -496,7 +489,7 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
     }
     if (lSend)
     {
-        printDebug("KO%d sendet Wert: %f\n", iKoNumber, lValue);
+        logDebugP("KO%d sendet Wert: %f\n", iKoNumber, lValue);
         knx.getGroupObject(iKoNumber).objectWritten();
         mData.sensor.lastSentValue = (float)knx.getGroupObject(iKoNumber).value(getDPT(VAL_DPT_9));
         mData.sensor.sendDelay = millis();

@@ -26,7 +26,6 @@ class WireDevice : public OpenKNX::Channel
 
     // general processing
     void processKOCallback(GroupObject &iKo);
-    static bool measureOneWire(MeasureType iMeasureType, float &eValue);
     void processIButtonGroups();
     void processUnknownDevices();
     void processOneWire(bool iForce);

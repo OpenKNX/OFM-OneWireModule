@@ -3,7 +3,7 @@
 // Change the following 3 lines and adopt to your module names
 #define ModuleVersion_ModuleName "WireModule"
 #define ModuleVersion_knxprod_h WIRE_ModuleVersion
-#define ModuleVersion_version_h MODULE_WireModule_ETS
+#define ModuleVersion_version_h MODULE_OneWireModule_ETS
 
 // ATTENTION: This file is evaluated during build, by OpenKNXproducer and some build scripts.
 // No changes needed behind this point
