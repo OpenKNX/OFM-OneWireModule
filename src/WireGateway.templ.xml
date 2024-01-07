@@ -90,7 +90,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%061" Name="s%C%IoInvertBitmask7" Offset="2" BitOffset="0" ParameterType="%AID%_PT-CheckBox" Text="" Value="0" />
               </Union>
               <!-- DeviceName -->
-              <Parameter Id="%AID%_P-%T%%CCC%042" Name="s%C%Name" ParameterType="%AID%_PT-Text40Byte" Text="Beschreibung des Grätes" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%042" Name="s%C%Name" ParameterType="%AID%_PT-Text40Byte" Text="Beschreibung des Gerätes" Value="" />
             </Parameters>
             <ParameterRefs>
               <ParameterRef Id="%AID%_UP-%T%%CCC%010_R-%T%%CCC%01001" RefId="%AID%_UP-%T%%CCC%010" />
@@ -179,14 +179,14 @@
                 <when test=">=%C%">
                   <ParameterBlock Id="%AID%_PB-%C%1" Name="Device%C%Page" Text="Gerät %C%: {{0:unbenannt}}" TextParameterRefId="%AID%_P-%T%%CCC%042_R-%T%%CCC%04201">
                     <ParameterSeparator Id="%AID%_PS-11" Text="Kanaldefinition" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_P-%T%%CCC%042_R-%T%%CCC%04201" />
+                    <ParameterRefRef RefId="%AID%_P-%T%%CCC%042_R-%T%%CCC%04201" HelpContext="%DOC%" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                     <ParameterRefRef RefId="%AID%_UP-%T%%CCC%010_R-%T%%CCC%01001" />
                     <ParameterSeparator Id="%AID%_PS-11" Text="Geräte-Id %C%" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%011_R-%T%%CCC%01101" />
+                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%011_R-%T%%CCC%01101" HelpContext="%DOC%" />
                     <choose ParamRefId="%AID%_UP-%T%%CCC%011_R-%T%%CCC%01101">
                       <when test="!=0">
-                        <ParameterBlock Id="%AID%_PB-2" Name="Id%C%" Text="Id" Inline="true" Layout="Grid">
+                        <ParameterBlock Id="%AID%_PB-2" Name="Id%C%" Text="Id" Inline="true" Layout="Grid" HelpContext="WIRE-Id" >
                           <Rows>
                             <Row Id="%AID%_PB-2_R-1" Name="Row1" />
                           </Rows>
@@ -212,28 +212,28 @@
                           </Columns>
                           <ParameterRefRef RefId="%AID%_P-%T%%CCC%024_R-%T%%CCC%02401" Cell="1,1" />
                           <!-- <ParameterSeparator Id="%AID%_PS-nnn" Text="." Cell="1,3"/> -->
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%012_R-%T%%CCC%01201" Cell="1,2" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%013_R-%T%%CCC%01301" Cell="1,3" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%014_R-%T%%CCC%01401" Cell="1,5" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%015_R-%T%%CCC%01501" Cell="1,6" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%016_R-%T%%CCC%01601" Cell="1,8" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%017_R-%T%%CCC%01701" Cell="1,9" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%018_R-%T%%CCC%01801" Cell="1,11" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%019_R-%T%%CCC%01901" Cell="1,12" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%020_R-%T%%CCC%02001" Cell="1,14" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%021_R-%T%%CCC%02101" Cell="1,15" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%022_R-%T%%CCC%02201" Cell="1,17" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%023_R-%T%%CCC%02301" Cell="1,18" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%012_R-%T%%CCC%01201" Cell="1,2"  HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%013_R-%T%%CCC%01301" Cell="1,3"  HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%014_R-%T%%CCC%01401" Cell="1,5"  HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%015_R-%T%%CCC%01501" Cell="1,6"  HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%016_R-%T%%CCC%01601" Cell="1,8"  HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%017_R-%T%%CCC%01701" Cell="1,9"  HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%018_R-%T%%CCC%01801" Cell="1,11" HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%019_R-%T%%CCC%01901" Cell="1,12" HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%020_R-%T%%CCC%02001" Cell="1,14" HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%021_R-%T%%CCC%02101" Cell="1,15" HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%022_R-%T%%CCC%02201" Cell="1,17" HelpContext="WIRE-Id" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%023_R-%T%%CCC%02301" Cell="1,18" HelpContext="WIRE-Id" />
                         </ParameterBlock>
                         <choose ParamRefId="%AID%_UP-%T%000001_R-%T%00000101">
                           <when test="1">
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%039_R-%T%%CCC%03901" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%039_R-%T%%CCC%03901" HelpContext="%DOC%" />
                           </when>
                           <when test="2">
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%040_R-%T%%CCC%04001" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%040_R-%T%%CCC%04001" HelpContext="%DOC%" />
                           </when>
                           <when test="3">
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%041_R-%T%%CCC%04101" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%041_R-%T%%CCC%04101" HelpContext="%DOC%" />
                           </when>
                         </choose>
                       </when>
@@ -243,9 +243,9 @@
                         <Assign TargetParamRefRef="%AID%_P-%T%%CCC%024_R-%T%%CCC%02401" Value="10" />
                         <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00102" />
                         <ParameterRefRef RefId="%AID%_UP-%T%%CCC%030_R-%T%%CCC%03001" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02501" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02501" HelpContext="%DOC%" />
                         <!-- Cyclic send Delay pattern -->
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid">
+                        <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid" HelpContext="WIRE-Zyklisch-senden">
                           <Rows>
                             <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                           </Rows>
@@ -254,23 +254,23 @@
                             <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
                             <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="25%" />
                           </Columns>
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="Zyklisch senden &#10;(0 = nicht senden)" Cell="1,1" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" />
+                          <ParameterSeparator Id="%AID%_PS-nnn" Text="WIRE-Zyklisch-senden &#10;(0 = nicht senden)" Cell="1,1" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" HelpContext="WIRE-Zyklisch-senden" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" HelpContext="WIRE-Zyklisch-senden" />
                         </ParameterBlock>
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02701" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02701" HelpContext="WIRE-Bei-absoluter-Abweichung-senden" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" HelpContext="WIRE-Bei-Abweichung-vom-vorherigen-Wert-senden" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" HelpContext="WIRE-Sensorwert-glaetten" />
                       </when>
                       <when test="40">
                         <ParameterSeparator Id="%AID%_PS-1" Text="" UIHint="HorizontalRuler" />
                         <ParameterSeparator Id="%AID%_PS-11" Text="Temperatur" UIHint="Headline" />
                         <Assign TargetParamRefRef="%AID%_P-%T%%CCC%024_R-%T%%CCC%02401" Value="28" />
                         <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00102" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%065_R-%T%%CCC%06501" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02501" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%065_R-%T%%CCC%06501" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02501" HelpContext="%DOC%" />
                         <!-- Cyclic send Delay pattern -->
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid">
+                        <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid" HelpContext="WIRE-Zyklisch-senden">
                           <Rows>
                             <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                           </Rows>
@@ -279,25 +279,25 @@
                             <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
                             <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="25%" />
                           </Columns>
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="Zyklisch senden &#10;(0 = nicht senden)" Cell="1,1" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" />
+                          <ParameterSeparator Id="%AID%_PS-nnn" Text="WIRE-Zyklisch-senden &#10;(0 = nicht senden)" Cell="1,1" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" HelpContext="WIRE-Zyklisch-senden" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" HelpContext="WIRE-Zyklisch-senden" />
                         </ParameterBlock>
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02701" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02701" HelpContext="WIRE-Bei-absoluter-Abweichung-senden" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" HelpContext="WIRE-Bei-Abweichung-vom-vorherigen-Wert-senden" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" HelpContext="WIRE-Sensorwert-glaetten" />
                       </when>
                       <when test="38">
                         <Assign TargetParamRefRef="%AID%_P-%T%%CCC%024_R-%T%%CCC%02401" Value="26" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%045_R-%T%%CCC%04501" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%045_R-%T%%CCC%04501" HelpContext="WIRE-Modellfunktion-Analog" />
                         <ParameterSeparator Id="%AID%_PS-1" Text="" UIHint="HorizontalRuler" />
                         <choose ParamRefId="%AID%_UP-%T%%CCC%045_R-%T%%CCC%04501">
                           <when test="10 15">
                             <ParameterSeparator Id="%AID%_PS-11" Text="Temperatur" UIHint="Headline" />
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00102" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02501" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02501" HelpContext="%DOC%" />
                             <!-- Cyclic send Delay pattern -->
-                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid">
+                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid" HelpContext="WIRE-Zyklisch-senden">
                               <Rows>
                                 <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                               </Rows>
@@ -306,20 +306,20 @@
                                 <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
                                 <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="25%" />
                               </Columns>
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Zyklisch senden &#10;(0 = nicht senden)" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" />
+                              <ParameterSeparator Id="%AID%_PS-nnn" Text="WIRE-Zyklisch-senden &#10;(0 = nicht senden)" Cell="1,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" HelpContext="WIRE-Zyklisch-senden" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" HelpContext="WIRE-Zyklisch-senden" />
                             </ParameterBlock>
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02701" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02701" HelpContext="WIRE-Bei-absoluter-Abweichung-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" HelpContext="WIRE-Bei-Abweichung-vom-vorherigen-Wert-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" HelpContext="WIRE-Sensorwert-glaetten" />
                           </when>
                           <when test="11 12 13">
                             <ParameterSeparator Id="%AID%_PS-11" Text="Spannung" UIHint="Headline" />
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00108" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02505" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02505" HelpContext="%DOC%" />
                             <!-- Cyclic send Delay pattern -->
-                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid">
+                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid" HelpContext="WIRE-Zyklisch-senden">
                               <Rows>
                                 <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                               </Rows>
@@ -328,20 +328,20 @@
                                 <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
                                 <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="25%" />
                               </Columns>
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Zyklisch senden &#10;(0 = nicht senden)" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" />
+                              <ParameterSeparator Id="%AID%_PS-nnn" Text="WIRE-Zyklisch-senden &#10;(0 = nicht senden)" Cell="1,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" HelpContext="WIRE-Zyklisch-senden" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" HelpContext="WIRE-Zyklisch-senden" />
                             </ParameterBlock>
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02705" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02705" HelpContext="WIRE-Bei-absoluter-Abweichung-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" HelpContext="WIRE-Bei-Abweichung-vom-vorherigen-Wert-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" HelpContext="WIRE-Sensorwert-glaetten" />
                           </when>
                           <when test="16">
                             <ParameterSeparator Id="%AID%_PS-11" Text="Luftfeuchte" UIHint="Headline" />
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00104" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02502" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02502" HelpContext="%DOC%" />
                             <!-- Cyclic send Delay pattern -->
-                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid">
+                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid" HelpContext="WIRE-Zyklisch-senden">
                               <Rows>
                                 <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                               </Rows>
@@ -350,20 +350,20 @@
                                 <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
                                 <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="25%" />
                               </Columns>
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Zyklisch senden &#10;(0 = nicht senden)" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" />
+                              <ParameterSeparator Id="%AID%_PS-nnn" Text="WIRE-Zyklisch-senden &#10;(0 = nicht senden)" Cell="1,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" HelpContext="WIRE-Zyklisch-senden" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" HelpContext="WIRE-Zyklisch-senden" />
                             </ParameterBlock>
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02702" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02702" HelpContext="WIRE-Bei-absoluter-Abweichung-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" HelpContext="WIRE-Bei-Abweichung-vom-vorherigen-Wert-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" HelpContext="WIRE-Sensorwert-glaetten" />
                           </when>
                           <when test="17">
                             <ParameterSeparator Id="%AID%_PS-11" Text="Helligkeit" UIHint="Headline" />
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00103" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02503" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02503" HelpContext="%DOC%" />
                             <!-- Cyclic send Delay pattern -->
-                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid">
+                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid" HelpContext="WIRE-Zyklisch-senden">
                               <Rows>
                                 <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                               </Rows>
@@ -372,20 +372,20 @@
                                 <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
                                 <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="25%" />
                               </Columns>
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Zyklisch senden &#10;(0 = nicht senden)" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" />
+                              <ParameterSeparator Id="%AID%_PS-nnn" Text="WIRE-Zyklisch-senden &#10;(0 = nicht senden)" Cell="1,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" HelpContext="WIRE-Zyklisch-senden" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" HelpContext="WIRE-Zyklisch-senden" />
                             </ParameterBlock>
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02703" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02703" HelpContext="WIRE-Bei-absoluter-Abweichung-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" HelpContext="WIRE-Bei-Abweichung-vom-vorherigen-Wert-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" HelpContext="WIRE-Sensorwert-glaetten" />
                           </when>
                           <when test=">=50">
                             <ParameterSeparator Id="%AID%_PS-11" Text="Benutzterdefinierter Sensorwert" UIHint="Headline" />
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00105" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02504" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02504" HelpContext="%DOC%" />
                             <!-- Cyclic send Delay pattern -->
-                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid">
+                            <ParameterBlock Id="%AID%_PB-nnn" Name="s%C%OCycleDelay" Inline="true" Layout="Grid" HelpContext="WIRE-Zyklisch-senden">
                               <Rows>
                                 <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                               </Rows>
@@ -394,13 +394,13 @@
                                 <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
                                 <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="25%" />
                               </Columns>
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Zyklisch senden &#10;(0 = nicht senden)" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" />
+                              <ParameterSeparator Id="%AID%_PS-nnn" Text="WIRE-Zyklisch-senden &#10;(0 = nicht senden)" Cell="1,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%026_R-%T%%CCC%02601" Cell="1,2" HelpContext="WIRE-Zyklisch-senden" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%066_R-%T%%CCC%06601" Cell="1,3" HelpContext="WIRE-Zyklisch-senden" />
                             </ParameterBlock>
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02704" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%027_R-%T%%CCC%02704" HelpContext="WIRE-Bei-absoluter-Abweichung-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%028_R-%T%%CCC%02801" HelpContext="WIRE-Bei-Abweichung-vom-vorherigen-Wert-senden" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%029_R-%T%%CCC%02901" HelpContext="WIRE-Sensorwert-glaetten" />
                           </when>
                         </choose>
                       </when>
@@ -410,16 +410,16 @@
                         <Assign TargetParamRefRef="%AID%_P-%T%%CCC%024_R-%T%%CCC%02401" Value="01" />
                         <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00101" />
                         <ParameterRefRef RefId="%AID%_UP-%T%%CCC%030_R-%T%%CCC%03001" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%062_R-%T%%CCC%06201" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%062_R-%T%%CCC%06201" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-2" Text="Dieser iButton nimmt an folgenden Gruppen teil:" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%031_R-%T%%CCC%03101" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%032_R-%T%%CCC%03201" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%033_R-%T%%CCC%03301" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%034_R-%T%%CCC%03401" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%035_R-%T%%CCC%03501" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%036_R-%T%%CCC%03601" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%037_R-%T%%CCC%03701" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%038_R-%T%%CCC%03801" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%031_R-%T%%CCC%03101" HelpContext="WIRE-Gruppe" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%032_R-%T%%CCC%03201" HelpContext="WIRE-Gruppe" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%033_R-%T%%CCC%03301" HelpContext="WIRE-Gruppe" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%034_R-%T%%CCC%03401" HelpContext="WIRE-Gruppe" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%035_R-%T%%CCC%03501" HelpContext="WIRE-Gruppe" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%036_R-%T%%CCC%03601" HelpContext="WIRE-Gruppe" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%037_R-%T%%CCC%03701" HelpContext="WIRE-Gruppe" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%038_R-%T%%CCC%03801" HelpContext="WIRE-Gruppe" />
                         <!-- turn on according group-KO if any iButton is part of the group -->
                         <choose ParamRefId="%AID%_UP-%T%%CCC%031_R-%T%%CCC%03101">
                           <when test="1">
@@ -466,9 +466,9 @@
                         <ParameterSeparator Id="%AID%_PS-1" Text="" UIHint="HorizontalRuler" />
                         <ParameterSeparator Id="%AID%_PS-11" Text="Ein- und Ausgang" UIHint="Headline" />
                         <Assign TargetParamRefRef="%AID%_P-%T%%CCC%024_R-%T%%CCC%02401" Value="3A" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%063_R-%T%%CCC%06301" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%064_R-%T%%CCC%06401" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%044_R-%T%%CCC%04401" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%063_R-%T%%CCC%06301" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%064_R-%T%%CCC%06401" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%044_R-%T%%CCC%04401" HelpContext="WIRE-Modellfunktion-IO" />
                         <choose ParamRefId="%AID%_UP-%T%%CCC%044_R-%T%%CCC%04401">
                           <when test="1">
                             <ParameterBlock Id="%AID%_PB-6" Name="IoBit0%C%2" Text="IO" Inline="true" Layout="Table">
@@ -479,8 +479,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-6_C-1" Name="Col1" Text="Bit 0" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%054_R-%T%%CCC%05401" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%054_R-%T%%CCC%05401" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601">
                               <when test="0">
@@ -500,8 +500,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-7_C-1" Name="Col1" Text="Bit 1" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%055_R-%T%%CCC%05501" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%055_R-%T%%CCC%05501" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701">
                               <when test="0">
@@ -523,10 +523,10 @@
                                 <Column Id="%AID%_PB-5_C-1" Name="Col1" Text="Bit 1" Width="25%" />
                                 <Column Id="%AID%_PB-5_C-2" Name="Col2" Text="Bit 0" Width="25%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601" Cell="1,2" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%055_R-%T%%CCC%05501" Cell="2,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%054_R-%T%%CCC%05401" Cell="2,2" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601" Cell="1,2" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%055_R-%T%%CCC%05501" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%054_R-%T%%CCC%05401" Cell="2,2" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                           </when>
                         </choose>
@@ -539,9 +539,9 @@
                         <ParameterSeparator Id="%AID%_PS-1" Text="" UIHint="HorizontalRuler" />
                         <ParameterSeparator Id="%AID%_PS-11" Text="Ein- und Ausgang" UIHint="Headline" />
                         <Assign TargetParamRefRef="%AID%_P-%T%%CCC%024_R-%T%%CCC%02401" Value="29" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%063_R-%T%%CCC%06301" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%064_R-%T%%CCC%06401" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%043_R-%T%%CCC%04301" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%063_R-%T%%CCC%06301" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%064_R-%T%%CCC%06401" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%043_R-%T%%CCC%04301" HelpContext="WIRE-Modellfunktion-IO" />
                         <choose ParamRefId="%AID%_UP-%T%%CCC%043_R-%T%%CCC%04301">
                           <when test="1">
                             <ParameterBlock Id="%AID%_PB-8" Name="IoBit0%C%" Text="IO" Inline="true" Layout="Table">
@@ -552,8 +552,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-8_C-1" Name="Col1" Text="Bit 0" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%054_R-%T%%CCC%05401" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%054_R-%T%%CCC%05401" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601">
                               <when test="0">
@@ -573,8 +573,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-9_C-1" Name="Col1" Text="Bit 1" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%055_R-%T%%CCC%05501" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%055_R-%T%%CCC%05501" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701">
                               <when test="0">
@@ -594,8 +594,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-8_C-1" Name="Col1" Text="Bit 2" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%048_R-%T%%CCC%04801" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%056_R-%T%%CCC%05601" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%048_R-%T%%CCC%04801" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%056_R-%T%%CCC%05601" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%048_R-%T%%CCC%04801">
                               <when test="0">
@@ -615,8 +615,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-11_C-1" Name="Col1" Text="Bit 3" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%049_R-%T%%CCC%04901" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%057_R-%T%%CCC%05701" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%049_R-%T%%CCC%04901" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%057_R-%T%%CCC%05701" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%049_R-%T%%CCC%04901">
                               <when test="0">
@@ -636,8 +636,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-12_C-1" Name="Col1" Text="Bit 4" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%050_R-%T%%CCC%05001" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%058_R-%T%%CCC%05801" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%050_R-%T%%CCC%05001" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%058_R-%T%%CCC%05801" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%050_R-%T%%CCC%05001">
                               <when test="0">
@@ -657,8 +657,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-13_C-1" Name="Col1" Text="Bit 5" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%059_R-%T%%CCC%05901" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%059_R-%T%%CCC%05901" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101">
                               <when test="0">
@@ -678,8 +678,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-14_C-1" Name="Col1" Text="Bit 6" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%052_R-%T%%CCC%05201" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%060_R-%T%%CCC%06001" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%052_R-%T%%CCC%05201" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%060_R-%T%%CCC%06001" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%052_R-%T%%CCC%05201">
                               <when test="0">
@@ -699,8 +699,8 @@
                               <Columns>
                                 <Column Id="%AID%_PB-15_C-1" Name="Col1" Text="Bit 7" Width="41%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%061_R-%T%%CCC%06101" Cell="2,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%061_R-%T%%CCC%06101" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                             <choose ParamRefId="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301">
                               <when test="0">
@@ -728,22 +728,22 @@
                                 <Column Id="%AID%_PB-4_C-7" Name="Col7" Text="Bit 1" Width="13%" />
                                 <Column Id="%AID%_PB-4_C-8" Name="Col8" Text="Bit 0" Width="13%" />
                               </Columns>
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301" Cell="1,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%052_R-%T%%CCC%05201" Cell="1,2" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101" Cell="1,3" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%050_R-%T%%CCC%05001" Cell="1,4" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%049_R-%T%%CCC%04901" Cell="1,5" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%048_R-%T%%CCC%04801" Cell="1,6" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701" Cell="1,7" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601" Cell="1,8" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%061_R-%T%%CCC%06101" Cell="2,1" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%060_R-%T%%CCC%06001" Cell="2,2" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%059_R-%T%%CCC%05901" Cell="2,3" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%058_R-%T%%CCC%05801" Cell="2,4" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%057_R-%T%%CCC%05701" Cell="2,5" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%056_R-%T%%CCC%05601" Cell="2,6" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%055_R-%T%%CCC%05501" Cell="2,7" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%054_R-%T%%CCC%05401" Cell="2,8" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301" Cell="1,1" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%052_R-%T%%CCC%05201" Cell="1,2" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101" Cell="1,3" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%050_R-%T%%CCC%05001" Cell="1,4" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%049_R-%T%%CCC%04901" Cell="1,5" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%048_R-%T%%CCC%04801" Cell="1,6" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%047_R-%T%%CCC%04701" Cell="1,7" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%046_R-%T%%CCC%04601" Cell="1,8" HelpContext="WIRE-Bit-Ein-Ausgabe" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%061_R-%T%%CCC%06101" Cell="2,1" HelpContext="WIRE-Bit-Invert" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%060_R-%T%%CCC%06001" Cell="2,2" HelpContext="WIRE-Bit-Invert" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%059_R-%T%%CCC%05901" Cell="2,3" HelpContext="WIRE-Bit-Invert" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%058_R-%T%%CCC%05801" Cell="2,4" HelpContext="WIRE-Bit-Invert" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%057_R-%T%%CCC%05701" Cell="2,5" HelpContext="WIRE-Bit-Invert" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%056_R-%T%%CCC%05601" Cell="2,6" HelpContext="WIRE-Bit-Invert" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%055_R-%T%%CCC%05501" Cell="2,7" HelpContext="WIRE-Bit-Invert" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%054_R-%T%%CCC%05401" Cell="2,8" HelpContext="WIRE-Bit-Invert" />
                             </ParameterBlock>
                           </when>
                         </choose>

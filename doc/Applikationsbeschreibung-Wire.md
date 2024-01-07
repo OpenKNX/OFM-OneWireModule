@@ -113,10 +113,12 @@ Jeder 1-Wire-Busmaster erfordert bestimmte Einstellungen, die in diesem Dialog e
 
 ### Kanäle und Busmaster
 
+<!-- DOC -->
 #### **Anzahl 1Wire-Geräte**
 
 Die Zahl gibt an, wie viele 1-Wire-Geräte insgesamt von der Applikation verwaltet werden können. Es gilt immer die Regel, dass es maximal 30 pro Busmaster sind.
 
+<!-- DOC -->
 #### **Installierte Busmaster**
 
 Das WireGateway kann hardwareseitig mit bis zu 3 Busmaster bestückt werden. Jeder Busmaster kann bis zu 30 1-Wire-Kanäle verwalten.
@@ -127,6 +129,7 @@ Dieses Feld ist nicht in der Applikation zum Sensormodul sichtbar. Beim Sensormo
 
 ### Gerätesuche 
 
+<!-- DOC -->
 #### **Device-Suche**
 
 Um die ID von neuen 1-Wire-Geräten herauszufinden, kann man diese mit dem 1-Wire-Anschluss verbinden. Daraufhin wird über das KO20 "IDs unbekannter Geräte" die ID dieses Gerätes ausgegeben. Dazu muss die Einstellung "neue Geräte-Id auf den Bus senden" ausgewählt sein.
@@ -146,6 +149,7 @@ Die Suche von neuen Geräten auf dem 1-Wire-Bus kostet (relativ zu einer Geräte
 
 Daher gilt ganz klar die Empfehlung, dass die Suche nur für den Anschluss neuer Geräte aktiviert werden sollte.
 
+<!-- DOC -->
 #### **Fehlerobjekt(e) anzeigen**
 
 Ist diese Option mit 'Ja' ausgewählt, wird pro installiertem Busmaster ein 32-Bit-KO eingeblendet, bei dem für jedes 1-Wire-Gerät, das einen Fehler meldet oder nicht abgefragt werden kann, das entsprechende Bit auf 1 gesetzt wird.
@@ -166,14 +170,18 @@ Diese Applikation erlaubt die Definition von bis zu 8 iButton-Gruppen, in denen 
 
 ![iButton-Gruppen](pics/ibutton-groups.png)
 
+<!-- DOC HelpContext="Gruppenname" -->
 Jede Gruppe kann einen Namen erhalten, der frei wählbar ist. Dieser Name wird auch als Name für das entsprechende KO der Gruppe verwendet.
+<!-- DOCEND -->
 
-Ferner kann jede Gruppe auch einen Typ haben:
+<!-- DOC HelpContext="Gruppentyp" -->
+Jede Gruppe kann einen Typ haben:
 
 * ODER-Gruppe: Sobald ein iButton dieser Gruppe erkannt wird, sendet die Gruppe ein AN-Signal auf ihrem zugehörigen KO. Nur wenn alle iButton dieser Gruppe nicht erkannt werden, sendet diese Gruppe ein AUS.
 * UND-Gruppe: Erst wenn alle iButton dieser Gruppe erkannt werden, sendet die Gruppe ein AN-Signal. Sobald auch nur ein iButton der Gruppe fehlt, wird ein AUS-Signal gesendet.
 
 Welche iButton an welcher Gruppe beteiligt sind, wird dann bei den jeweiligen iButton-Geräten festgelegt.
+<!-- DOCEND -->
 
 Beispiel: iButton repräsentieren die Anwesenheit von Personen zu Hause (z.B. über ein elektronisches Schlüsselbrett). Es gibt folgende iButton:
 
@@ -203,16 +211,19 @@ Jedes 1-Wire-Gerät wird auf die gleiche Weise definiert, deswegen werden hier e
 
 ### Kanaldefinition
 
+<!-- DOC -->
 #### **Beschreibung des Gerätes**
 
 Hier kann ein frei wählbarer Name für das Gerät gewählt werden. Der Name wird sowohl links in der Tab-Übersicht verwendet wie auch als Name des zugehörigen KO. Wie schon in der Einleitung beschrieben, repräsentieren Geräte eher die KNX-Sicht: Ein Gerät repräsentiert das KO, über das es kommuniziert.
 
 ### Geräte-Id *n*
 
+<!-- DOC -->
 #### **Familienkode**
 
 In dieser Auswahlliste wird der Familiencode des 1-Wire-Gerätes ausgewählt. Der Code entspricht den ersten beiden Stellen der Geräte-ID.
 
+<!-- DOC Skip="1" -->
 ![Auswahl Familiencodes](pics/families.png)
 
 Folgende Familiencodes sind verfügbar:
@@ -226,10 +237,12 @@ Folgende Familiencodes sind verfügbar:
 
 Der Unterschied zwischen den Familien 10 und 28 liegt darin, dass der DS18S20 nur in der Genauigkeit von 0.5 °C messen kann, der DS18B20 in einer Genauigkeit von 0.125 °C messen kann.
 
-Sobald ein Familienkode ausgewählt wurde, kann die ID des 1-Wire-Gerätes eingegeben werden. Die ersten beiden Stellen der ID sind der Familiencode, die restlichen 12 Stellen können als Hexadezimalziffern eingegeben werden. Dazu erschent pro Stelle eine Auswahlliste mit den Ziffern 0-9 und A-F.
+<!-- DOC HelpContext="Id" -->
+Sobald ein Familienkode ausgewählt wurde, kann die ID des 1-Wire-Gerätes eingegeben werden. Die ersten beiden Stellen der ID sind der Familiencode, die restlichen 12 Stellen können als Hexadezimalziffern eingegeben werden. Dazu erscheint pro Stelle eine Auswahlliste mit den Ziffern 0-9 und A-F.
 
 **Tipp zur Eingabe**: Sobald man die erste Stelle über die Auswahlliste eingegeben hat, kann man mit der Taste "Tab" zur nächsten Stelle springen und die passende Ziffer (0-9, A-F) über die Tastatur auswählen. Dadurch ist die Eingabe wesentlich schneller als mit der Maus über Auswahllisten.
 
+<!-- DOC -->
 #### **Angeschlossen an**
 
 In dieser Auswahlliste muss angegeben werden, an welchem Busmaster dieses Gerät angeschlossen worden ist. Ist nur ein Busmaster verfügbar, steht dort der nicht änderbare Wert "Busmaster 1".
@@ -246,13 +259,17 @@ iButtons (das 1-Wire-Gerät DS1990) erlauben eine einfache Möglichkeit, eine Si
 
 Wird die Familie 01 ausgewählt, erscheint ein passendes 1-Bit-KO mit dem für dieses Gerät vergebenen Namen. Wird der iButton mit seiner ID am 1-Wire-Bus erkannt, sendet das zugehörige KO eine 1. Sobald der iButton nicht mehr am Bus erkannt wird, sendet das KO eine 0.
 
-#### **Nach einem Neustart Zustand auf den Bus senden (auch für alle beteiligten Gruppen)?**
+<!-- DOC -->
+#### **Nach Neustart Zustand auf den Bus senden (auch für alle beteiligten Gruppen)?**
 
 Wird hier ein Ja angegeben, wird nach einem Neustart der WireGateways für diesen iButton eine 1 gesendet, sofern er am Bus erkannt wird.
+<!-- DOCEND -->
 
- Die Architektur des 1-Wire-Busses macht es erforderlich, dass kontinuierlich der Bus nach dem Vorhandensein eines iButton abgefragt wird. Das Modul fragt somit andauernd (ca. 4 mal pro Sekunde) ab, oder der iButton noch da ist. Kurzfristige Kurzschlüsse (z.B. durch das hinzufügen eines weiteres iButton), Scanfehler oder Störungen auf dem Bus können dazu führen, dass ein iButton bei einer Abfrage da ist, bei der darauffolgenden nicht und dann wieder da ist, obwohl der iButton nicht vom Bus getrennt wurde. In solchen Fällen will man natürlich nicht, dass auf dem KNX-Bus eine 1, gefolgt von einer 0, gefolgt von einer 1 gesendet wird. Um das zu umgehen, müssen 3 aufeinanderfolgende Abfragen des iButtons eine Nichtexistenz ergeben, bevor eine 0 auf den KNX-Bus gesendet wird. Dies hat zur Folge, dass es nach dem Anschluss eines iButton an den 1-Wire-Bus ca. 0.2 bis 0.3 Sekunden dauert, bis eine 1 auf den KNX-Bus gesendet wird. Beim Entfernen vom iButton dauert es aber ca. 0.6 bis 0.8 Sekunden, bis eine 0 gesendet wird.
+Die Architektur des 1-Wire-Busses macht es erforderlich, dass kontinuierlich der Bus nach dem Vorhandensein eines iButton abgefragt wird. Das Modul fragt somit andauernd (ca. 4 mal pro Sekunde) ab, oder der iButton noch da ist. Kurzfristige Kurzschlüsse (z.B. durch das hinzufügen eines weiteres iButton), Scanfehler oder Störungen auf dem Bus können dazu führen, dass ein iButton bei einer Abfrage da ist, bei der darauffolgenden nicht und dann wieder da ist, obwohl der iButton nicht vom Bus getrennt wurde. In solchen Fällen will man natürlich nicht, dass auf dem KNX-Bus eine 1, gefolgt von einer 0, gefolgt von einer 1 gesendet wird. Um das zu umgehen, müssen 3 aufeinanderfolgende Abfragen des iButtons eine Nichtexistenz ergeben, bevor eine 0 auf den KNX-Bus gesendet wird. Dies hat zur Folge, dass es nach dem Anschluss eines iButton an den 1-Wire-Bus ca. 0.2 bis 0.3 Sekunden dauert, bis eine 1 auf den KNX-Bus gesendet wird. Beim Entfernen vom iButton dauert es aber ca. 0.6 bis 0.8 Sekunden, bis eine 0 gesendet wird.
 
+<!-- DOC HelpContext="Gruppe" -->
 Wie im Kapitel "iButton Gruppierung" beschrieben, können iButton auch an Gruppen teilnehmen.
+<!-- DOCEND -->
 
 ![Gruppenzuordnung](pics/ibutton-group.png)
 
@@ -273,20 +290,27 @@ Ferner erscheinen ein paar weitere Eingabefelder, mit denen man das Verhalten al
 
 ![Temperaturparameter](pics/temperature.png)
 
+<!-- DOC -->
 #### **Sensorgenauigkeit**
 
-Erscheint nur, wenn Familie 28 ausgewählt wurde. Dann kann man eine der möglichen Sensorgenauigkeiten auswählen.
+<!-- DOC Skip="1" -->
+Erscheint nur, wenn Familie 28 ausgewählt wurde. 
 
+Hier kann man eine der möglichen Sensorgenauigkeiten auswählen.
+
+<!-- DOC -->
 #### **Sensorwert anpassen**
 
 Mit dieser Einstellung kann der Sensor kalibriert werden. Der eingegebene Wert wird zum gemessenen Wert addiert. Man kann den Sensorwert um -10 absenken und bis zu +10 erhöhen. Die Werte werden in Zehntel angegeben, so dass die Eingabe von -100 bis +100 in ganzen Zahlen zu erfolgen hat.
 
+<!-- DOC HelpContext="Zyklisch senden" -->
 #### **Zyklisch senden (0 = nicht senden)**
 
 Der Sensorwert kann in bestimmten Zeitintervallen auf den Bus gesendet werden. Hier wird das Zeitintervall angegeben.
 
 Wird eine 0 angegeben, wird der Sensorwert nicht zyklisch gesendet.
 
+<!-- DOC HelpContext="Bei absoluter Abweichung senden" -->
 #### **Bei absoluter Abweichung senden (0 = nicht senden)**
 
 Der Sensorwert kann auch gesendet werden, wenn der aktuell gemessene Wert um einen festgelegten Wert von dem zuletzt gesendeten Wert nach oben oder unten abweicht.
@@ -295,6 +319,7 @@ Hier wird die Abweichung in 0.1-Schritten angegeben. Soll also bei einer Abweich
 
 Wird eine 0 angegeben, wird bei einer absoluten Abweichung nicht gesendet.
 
+<!-- DOC HelpContext="Bei Abweichung vom vorherigen Wert senden" -->
 #### **Bei Abweichung vom vorherigen Wert senden (0 = nicht senden)**
 
 Der Sensorwert kann auch gesendet werden, wenn der aktuell gemessene Wert um einen bestimmten Prozentsatz von dem zuletzt gesendeten Wert nach oben oder unten abweicht.
@@ -303,6 +328,7 @@ Hier wird die Abweichung in % angegeben. Bei einem zuletzt gesendeten Wert von 2
 
 Wird eine 0 angegeben, wird bei einer relativen Abweichung nicht gesendet.
 
+<!-- DOC HelpContext="Sensorwert glätten" -->
 #### **Sensorwert glätten: P =**
 
 Falls der Sensor zu empfindlich ist und man starke Schwankungen im Temperaturmesswert hat, kann man eine Glättungsfunktion nutzen, um starke Messwertschwankungen abzumildern. Die hier verwendete Funktion ist vergleichbar mit einer Durchschnittsberechnung über eine gewisse Anzahl vergangener Messwerte, funktioniert aber im Detail anders.
@@ -330,12 +356,14 @@ Der Smart Battery Monitor DS2438 ist eigentlich für Batteriemanagement gedacht.
 
 Wird die Familie 26 ausgewählt, erscheint ein passendes KO DPT9 mit dem für dieses Gerät vergebenen Namen.
 
+<!-- DOC HelpContext="Modellfunktion-Analog" -->
 #### **Modellfunktion**
 
 Für ein Gateway zum KNX ist es schwer, ein solch generisches Gerät zur Verfügung zu stellen, da man üblicherweise komplizierte Formeln braucht, um den eingehenden Analogwert in einen entsprechenden digitalen Wert umzuwandeln. Dies ist um so komplizierter, als dass der gemessene Analogwert immer von der Spannung abhängt, die gerade am DS2438 anliegt und von der Wärme des Chips selbst.
 
 Man kann den DS2438 auf verschiedene Arten verwenden. Über die Auswahlliste Modellfunktion können diese Verwendungsarten festgelegt werden.
 
+<!-- DOC Skip="1" -->
 ![Modellfunktionen](pics/model-function.png)
 
 Zum einen kann man alle gemessenen Werte des Sensors auf den KNX-Bus senden und in einer KNX-Logik den passenden finalen Sensorwert berechnen. Dazu legt man für einen DS2438 bis zu 4 Geräte an (alle mit der selben ID), jedes Gerät bekommt aber eine andere Modellfunktion und sendet somit verschiedene Werte auf den KNX-Bus:
@@ -350,6 +378,7 @@ Des weiteren kann man einige wenige, bereits fertige 1-Wire-Geräte, die den DS2
 * Temperatur (NTC) - ein einfacher NTC ist am Baustein angeschlossen und dessen Wert wird als Temperatur interpretiert.
 * Luftfeuchte - ein HIDxxxx wird zur Luftfeuchtemessung verwendet. Die implementierte Formel erlaubt es, die Luftfeuchte vom Multisensor der Firma WireGate korrekt auszuwerten.
 * Helligkeit - Der Lichtsensor der Firma WireGate wird hier ausgewertet.
+<!-- DOCEND -->
 
 Die dritte - und flexibelste - Möglichkeit ist, die Konvertierungsformel selbst zu implementieren. Zu jeder Modellfunktion "Benutzerdefiniert *n*" gibt es in der Datei
 
@@ -392,28 +421,48 @@ Wird die Familie 29 oder 3A ausgewählt, erscheint ein passendes KO mit dem für
 
 Ferner erscheinen ein paar weitere Eingabefelder, mit denen man das Verhalten der einzelnen Input- und Output-Leitungen parametrisieren kann.
 
+<!-- DOC -->
+#### **Eingänge: Nach Neustart Zustand auf den Bus senden**
+
+Ein 'Ja' führt dazu, dass nach einem Neustart die 1-Wire-Eingänge gelesen werden und deren Wert auf den KNX-Bus gesendet wird.
+
+<!-- DOC -->
+#### **Ausgänge: Nach Neustart Wert vom Bus lesen und Ausgang passend setzen**
+
+Ein 'Ja' führt dazu, dass nach einem Neustart der aktuelle KO-Wert vom KNX-Bus gelesen wird und die passenden 1-Wire-Ausgänge entsprechend dieses Wertes gesetzt werden.
+
+<!-- DOC HelpContext="Modellfunktion-IO" -->
 #### **Modellfunktion**
 
 Man kann die I/O-Signale auf verschiedene Arten verwenden. Über die Auswahlliste Modellfunktion können diese Verwendungsarten festgelegt werden.
 
+<!-- DOC Skip="1" -->
 ![Modellfunktionen](pics/io-function.png)
 
-Wird die Modellfunktion "Byte" verwendet, wird ein 1-Byte-KO DPT 5.005 angezeigt. Es werden alle 8 Bit des 1-Wire-Gerätes in entsprechende Bits des KNX-KO umgesetzt.
+Wird die Modellfunktion "Byte" verwendet, wird ein 1-Byte-KO DPT 5.005 angezeigt. Es werden alle Bits des 1-Wire-Gerätes in entsprechende Bits des KNX-KO umgesetzt.
 
-Des weiteren erscheint eine Tabelle, mit deren Hilfe man angeben kann, welche dieser Bits als Input und welche als Output fungieren. Jedes einzelne Bit kann auch noch zusätzlich invertiert werden.
+Die Modellfunktion "Bit *n*" erlaubt die Behandlung von einzelnen Bits eines I/O-Gerätes. Es wird ein 1-Bit-KO DPT 1.001 angezeigt. Es wird das entsprechende Bit des 1-Wire-Gerätes über das KNX-KO gesendet.
+<!-- DOCEND -->
+
+Des weiteren erscheint eine Tabelle, mit deren Hilfe man angeben kann, welche dieser Bits als Input und welche als Output fungieren. 
+
+<!-- DOC HelpContext="Bit-Invert" -->
+Jedes einzelne Bit kann auch noch zusätzlich invertiert werden.
+<!-- DOCEND -->
 
 ![Byte-Input-Output](pics/byte-io.png)
 
+<!-- DOC HelpContext="Bit-Ein-Ausgabe" -->
 Die definition der Ein- und Ausgabe wird vom KNX-Bus aus betrachtet:
 
 * Ausgabe bedeutet, Werte vom KNX-Bus, die im KO landen, werden vom 1-Wire-Gerät an seinen Ausgängen ausgegeben. Somit ist das KO ein Eingang.
 * Eingabe bedeutet, dass ein Signal an einem Anschluss vom 1-Wire-Gerät auf den KNX-Bus geschrieben wird. Somit ist das KO ein Ausgang.
 
 Es ist wichtig zu beachten, dass man bitweise Ein- und Ausgänge einstellt, aber immer nur ein Byte auf den KNX-Bus verschickt wird, sobald sich ein Eingangswert ändert. Wenn also eine 7 auf den Bus gesendet wird, werden die Ausgänge 0, 1 und 2 gesetzt. Wird dann der Eingang 5 geändert, wird nicht der Wert 32 auf den Bus gesendet, sondern 39 (32 + 7). Es werden immer alle gesetzten Bits auf den Bus übertragen, egal ob diese Bits über den KNX-Bus oder über die externen Eingänge gesetzt wurden.
+<!-- DOCEND -->
 
 Dieses Beispiel zeigt, dass die Behandlung von Bitwerten als Bytes auf der KNX-Seite schwierig ist. Es eignet sich aber sehr gut, um mehrere Ausgänge gleichzeitig zu setzen.
 
-Die Modellfunktion "Bit *n*" erlaubt die Behandlung von einzelnen Bits eines I/O-Gerätes. Es wird ein 1-Bit-KO DPT 1.001 angezeigt. Es wird das entsprechende Bit des 1-Wire-Gerätes über das KNX-KO gesendet.
 
 ![Bit-Input-Output](pics/bit-io.png)
 

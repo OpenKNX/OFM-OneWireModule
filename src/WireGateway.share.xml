@@ -386,59 +386,59 @@
             <ChannelIndependentBlock>
               <ParameterBlock Id="%AID%_PB-nnn" Name="General" Text="Allgemeine Parameter">
                 <!-- Maximum number of Busmaster (used as Parameter for WireGateway and Sensormodul) -->
-                <ParameterRefRef RefId="%AID%_P-%T%000029_R-%T%00002901" />
+                <ParameterRefRef RefId="%AID%_P-%T%000029_R-%T%00002901" HelpContext="%DOC%" />
                 <!-- the following parameter is read only and necessary (number of logik channels used in knxdprod) -->
-                <ParameterRefRef RefId="%AID%_P-1_R-11" />
+                <ParameterRefRef RefId="%AID%_P-%T%000001_R-%T%00000101" HelpContext="%DOC%" />
                 <!-- startup delay -->
-                <ParameterRefRef RefId="%AID%_P-2_R-21" />
+                <ParameterRefRef RefId="%AID%_P-%T%000002_R-%T%00000201" HelpContext="%DOC%" />
                 <!-- heartbeat delay -->
-                <ParameterRefRef RefId="%AID%_P-3_R-31" />
+                <ParameterRefRef RefId="%AID%_P-%T%000003_R-%T%00000301" HelpContext="%DOC%" />
                 <!-- Read Time and Date on startup -->
-                <ParameterRefRef RefId="%AID%_UP-4_R-41" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000004_R-%T%00000401" HelpContext="%DOC%" />
                 <!-- buzzer available (invisible, false) -->
-                <ParameterRefRef RefId="%AID%_UP-5_R-52" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000005_R-%T%00000502" HelpContext="%DOC%" />
                 <!-- rgb led available (invisible, false) -->
-                <ParameterRefRef RefId="%AID%_UP-6_R-62" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000006_R-%T%00000602" HelpContext="%DOC%" />
                 <!-- eeprom available (invisible, true) -->
-                <ParameterRefRef RefId="%AID%_UP-7_R-72" />
-                <choose ParamRefId="%AID%_UP-7_R-72">
+                <ParameterRefRef RefId="%AID%_UP-%T%000007_R-%T%00000702" HelpContext="%DOC%" />
+                <choose ParamRefId="%AID%_UP-%T%000007_R-%T%00000702">
                   <when test="0">
                     <ParameterSeparator Id="%AID%_PS-11" Text="Ohne EEPROM kann das Logikmodul Werte der Eingänge nicht speichern und nach einem Neustart wieder zur Verfügung stellen. Diese Funktion wird in der Applikation nicht angeboten." UIHint="Information" />
                   </when>
                 </choose>
                 <!-- ncn5130 available (invisible, true) -->
-                <ParameterRefRef RefId="%AID%_UP-8_R-82" />
-                <choose ParamRefId="%AID%_UP-8_R-82">
+                <ParameterRefRef RefId="%AID%_UP-%T%000008_R-%T%00000802" HelpContext="%DOC%" />
+                <choose ParamRefId="%AID%_UP-%T%000008_R-%T%00000802">
                   <when test="0">
                     <ParameterSeparator Id="%AID%_PS-12" Text="Ohne Abschaltmöglichkeit der Zusatzhardware (RGB-LED, Buzzer) kann das Logikmodul Werte der Eingänge nicht speichern und nach einem Neustart wieder zur Verfügung stellen. Diese Funktion wird in der Applikation nicht angeboten." UIHint="Information" />
                   </when>
                 </choose>
-                <ComObjectRefRef RefId="%AID%_O-2_R-21" />
-                <ComObjectRefRef RefId="%AID%_O-3_R-31" />
-                <choose ParamRefId="%AID%_P-3_R-31">
+                <ComObjectRefRef RefId="%AID%_O-%T%000002_R-%T%00000201" />
+                <ComObjectRefRef RefId="%AID%_O-%T%000003_R-%T%00000301" />
+                <choose ParamRefId="%AID%_P-%T%000003_R-%T%00000301">
                   <when test="!=0">
                     <!-- show heartbeat only if it is parametrized -->
-                    <ComObjectRefRef RefId="%AID%_O-1_R-11" />
+                    <ComObjectRefRef RefId="%AID%_O-%T%000001_R-%T%00000101" />
                   </when>
                 </choose>
                 <!-- move locally set values to global parameters -->
                 <!-- this is used for decoupling specific applications from global behaviour -->
-                <Assign TargetParamRefRef="%AID%_UP-5_R-51" SourceParamRefRef="%AID%_UP-5_R-52"/>
-                <Assign TargetParamRefRef="%AID%_UP-6_R-61" SourceParamRefRef="%AID%_UP-6_R-62"/>
-                <Assign TargetParamRefRef="%AID%_UP-7_R-71" SourceParamRefRef="%AID%_UP-7_R-72"/>
+                <Assign TargetParamRefRef="%AID%_UP-%T%000005_R-%T%00000501" SourceParamRefRef="%AID%_UP-%T%000005_R-%T%00000502"/>
+                <Assign TargetParamRefRef="%AID%_UP-%T%000006_R-%T%00000601" SourceParamRefRef="%AID%_UP-%T%000006_R-%T%00000602"/>
+                <Assign TargetParamRefRef="%AID%_UP-%T%000007_R-%T%00000701" SourceParamRefRef="%AID%_UP-%T%000007_R-%T%00000702"/>
               </ParameterBlock>
             </ChannelIndependentBlock>
             <Channel Id="%AID%_CH-6" Name="BM" Number="6" Text="1-Wire-Bus" >
               <ParameterBlock Id="%AID%_PB-1" Name="BM" Text="Busmaster-Einstellungen">
                 <!-- Calculated number of 1-Wire-Devices supported -->
                 <ParameterSeparator Id="%AID%_PS-11" Text="Kanäle und Busmaster" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_P-%T%000028_R-%T%00002801" />
+                <ParameterRefRef RefId="%AID%_P-%T%000028_R-%T%00002801" HelpContext="%DOC%" />
                 <choose ParamRefId="%AID%_P-%T%000029_R-%T%00002901">
                   <when test="1">
                     <Assign TargetParamRefRef="%AID%_UP-%T%000001_R-%T%00000101" Value="1" />
                   </when>
                   <when test="3">
-                    <ParameterRefRef RefId="%AID%_UP-%T%000001_R-%T%00000101" />
+                    <ParameterRefRef RefId="%AID%_UP-%T%000001_R-%T%00000101" HelpContext="%DOC%" />
                     <ParameterSeparator Id="%AID%_PS-13" Text="" UIHint="HorizontalRuler" />
                   </when>
                 </choose>
@@ -457,7 +457,7 @@
                   </when>
                 </choose>
                 <ParameterSeparator Id="%AID%_PS-11" Text="Gerätesuche" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000002_R-%T%00000201" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000002_R-%T%00000201" HelpContext="%DOC%" />
                 <ComObjectRefRef RefId="%AID%_O-%T%000020_R-%T%00002001" />
                 <choose ParamRefId="%AID%_UP-%T%000002_R-%T%00000201">
                   <when test="1">
@@ -466,7 +466,7 @@
                 </choose>
                 <ParameterSeparator Id="%AID%_PS-14" Text="" UIHint="HorizontalRuler" />
                 <ParameterSeparator Id="%AID%_PS-11" Text="Fehlermeldungen" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000000_R-%T%00000001" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000000_R-%T%00000001" HelpContext="%DOC%" />
                 <choose ParamRefId="%AID%_UP-%T%000000_R-%T%00000001">
                   <when test="1">
                     <!-- show error object only if it is parametrized -->
@@ -498,27 +498,36 @@
                 <ParameterSeparator Id="%AID%_PS-30" Text="Es gibt folgende Gruppentypen:" />
                 <ParameterSeparator Id="%AID%_PS-31" Text="ODER-Gruppe: Sobald ein iButton dieser Gruppe erkannt wird, sendet diese Gruppe ein EIN-Signal. Nur wenn alle iButton dieser Gruppe entfernt sind, sendet diese Gruppe ein AUS-Signal." />
                 <ParameterSeparator Id="%AID%_PS-32" Text="UND-Gruppe: Nur wenn alle iButton dieser Gruppe erkannt werden, sendet diese Gruppe ein EIN-Signal. Sobald nur ein iButton dieser Gruppe entfernt ist, sendet diese Gruppe ein AUS-Signal." />
-                <ParameterRefRef RefId="%AID%_P-%T%000010_R-%T%00001001" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000020_R-%T%00002001" />
-                <ParameterRefRef RefId="%AID%_P-%T%000011_R-%T%00001101" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000021_R-%T%00002101" />
-                <ParameterRefRef RefId="%AID%_P-%T%000012_R-%T%00001201" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000022_R-%T%00002201" />
-                <ParameterRefRef RefId="%AID%_P-%T%000013_R-%T%00001301" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000023_R-%T%00002301" />
-                <ParameterRefRef RefId="%AID%_P-%T%000014_R-%T%00001401" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000024_R-%T%00002401" />
-                <ParameterRefRef RefId="%AID%_P-%T%000015_R-%T%00001501" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000025_R-%T%00002501" />
-                <ParameterRefRef RefId="%AID%_P-%T%000016_R-%T%00001601" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000026_R-%T%00002601" />
-                <ParameterRefRef RefId="%AID%_P-%T%000017_R-%T%00001701" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000027_R-%T%00002701" />
+                <ParameterRefRef RefId="%AID%_P-%T%000010_R-%T%00001001" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000020_R-%T%00002001" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%T%000011_R-%T%00001101" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000021_R-%T%00002101" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%T%000012_R-%T%00001201" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000022_R-%T%00002201" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%T%000013_R-%T%00001301" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000023_R-%T%00002301" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%T%000014_R-%T%00001401" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000024_R-%T%00002401" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%T%000015_R-%T%00001501" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000025_R-%T%00002501" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%T%000016_R-%T%00001601" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000026_R-%T%00002601" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%T%000017_R-%T%00001701" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000027_R-%T%00002701" HelpContext="WIRE-Gruppentyp" />
               </ParameterBlock>
+              <op:include href="WireGateway.templ.xml" xpath="//ApplicationProgram/Dynamic/ChannelIndependentBlock/*" type="template" prefix="WIRE" IsInner="true" />
             </Channel>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
+      <Baggages>
+        <Baggage TargetPath="" Name="Help_de.zip" Id="%FILE-HELP-de%">
+          <FileInfo TimeInfo="%DATETIME%" />
+        </Baggage>
+        <Baggage TargetPath="" Name="Icons.zip" Id="%FILE-ICONS%">
+          <FileInfo TimeInfo="%DATETIME%" />
+        </Baggage>
+      </Baggages>
     </Manufacturer>
   </ManufacturerData>
 </KNX>
