@@ -16,6 +16,8 @@ uint8_t WireGateway::sUnknownDeviceLast = 0;
 uint32_t WireGateway::sUnknownDeviceDelay = 0;
 uint8_t WireGateway::sUnknownDeviceDelaySeconds = 60;
 
+WireGateway openknxWireGateway;
+
 // bool WireGateway::sForceSensorRead = false;
 // uint32_t WireGateway::sKnxLoopCallbackDelay = 0;
 

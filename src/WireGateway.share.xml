@@ -383,53 +383,12 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
-            <ChannelIndependentBlock>
-              <ParameterBlock Id="%AID%_PB-nnn" Name="General" Text="Allgemeine Parameter">
+            <Channel Name="MainChannel" Text="1-Wire" Number="%TT%" Id="%AID%_CH-%TT%" Icon="blur" HelpContext="Empty">
+              <ParameterBlock Name="Init" Id="%AID%_PB-nnn" Inline="true">
                 <!-- Maximum number of Busmaster (used as Parameter for WireGateway and Sensormodul) -->
-                <ParameterRefRef RefId="%AID%_P-%T%000029_R-%T%00002901" HelpContext="%DOC%" />
-                <!-- the following parameter is read only and necessary (number of logik channels used in knxdprod) -->
-                <ParameterRefRef RefId="%AID%_P-%T%000001_R-%T%00000101" HelpContext="%DOC%" />
-                <!-- startup delay -->
-                <ParameterRefRef RefId="%AID%_P-%T%000002_R-%T%00000201" HelpContext="%DOC%" />
-                <!-- heartbeat delay -->
-                <ParameterRefRef RefId="%AID%_P-%T%000003_R-%T%00000301" HelpContext="%DOC%" />
-                <!-- Read Time and Date on startup -->
-                <ParameterRefRef RefId="%AID%_UP-%T%000004_R-%T%00000401" HelpContext="%DOC%" />
-                <!-- buzzer available (invisible, false) -->
-                <ParameterRefRef RefId="%AID%_UP-%T%000005_R-%T%00000502" HelpContext="%DOC%" />
-                <!-- rgb led available (invisible, false) -->
-                <ParameterRefRef RefId="%AID%_UP-%T%000006_R-%T%00000602" HelpContext="%DOC%" />
-                <!-- eeprom available (invisible, true) -->
-                <ParameterRefRef RefId="%AID%_UP-%T%000007_R-%T%00000702" HelpContext="%DOC%" />
-                <choose ParamRefId="%AID%_UP-%T%000007_R-%T%00000702">
-                  <when test="0">
-                    <ParameterSeparator Id="%AID%_PS-11" Text="Ohne EEPROM kann das Logikmodul Werte der Eingänge nicht speichern und nach einem Neustart wieder zur Verfügung stellen. Diese Funktion wird in der Applikation nicht angeboten." UIHint="Information" />
-                  </when>
-                </choose>
-                <!-- ncn5130 available (invisible, true) -->
-                <ParameterRefRef RefId="%AID%_UP-%T%000008_R-%T%00000802" HelpContext="%DOC%" />
-                <choose ParamRefId="%AID%_UP-%T%000008_R-%T%00000802">
-                  <when test="0">
-                    <ParameterSeparator Id="%AID%_PS-12" Text="Ohne Abschaltmöglichkeit der Zusatzhardware (RGB-LED, Buzzer) kann das Logikmodul Werte der Eingänge nicht speichern und nach einem Neustart wieder zur Verfügung stellen. Diese Funktion wird in der Applikation nicht angeboten." UIHint="Information" />
-                  </when>
-                </choose>
-                <ComObjectRefRef RefId="%AID%_O-%T%000002_R-%T%00000201" />
-                <ComObjectRefRef RefId="%AID%_O-%T%000003_R-%T%00000301" />
-                <choose ParamRefId="%AID%_P-%T%000003_R-%T%00000301">
-                  <when test="!=0">
-                    <!-- show heartbeat only if it is parametrized -->
-                    <ComObjectRefRef RefId="%AID%_O-%T%000001_R-%T%00000101" />
-                  </when>
-                </choose>
-                <!-- move locally set values to global parameters -->
-                <!-- this is used for decoupling specific applications from global behaviour -->
-                <Assign TargetParamRefRef="%AID%_UP-%T%000005_R-%T%00000501" SourceParamRefRef="%AID%_UP-%T%000005_R-%T%00000502"/>
-                <Assign TargetParamRefRef="%AID%_UP-%T%000006_R-%T%00000601" SourceParamRefRef="%AID%_UP-%T%000006_R-%T%00000602"/>
-                <Assign TargetParamRefRef="%AID%_UP-%T%000007_R-%T%00000701" SourceParamRefRef="%AID%_UP-%T%000007_R-%T%00000702"/>
+                <ParameterRefRef RefId="%AID%_P-%T%000029_R-%T%00002901" HelpContext="WIRE-Installierte-Busmaster" />
               </ParameterBlock>
-            </ChannelIndependentBlock>
-            <Channel Id="%AID%_CH-6" Name="BM" Number="6" Text="1-Wire-Bus" >
-              <ParameterBlock Id="%AID%_PB-1" Name="BM" Text="Busmaster-Einstellungen">
+              <ParameterBlock Id="%AID%_PB-1" Name="BM" Text="Busmaster-Einstellungen" Icon="cog-outline" HelpContext="Empty">
                 <!-- Calculated number of 1-Wire-Devices supported -->
                 <ParameterSeparator Id="%AID%_PS-11" Text="Kanäle und Busmaster" UIHint="Headline" />
                 <ParameterRefRef RefId="%AID%_P-%T%000028_R-%T%00002801" HelpContext="%DOC%" />

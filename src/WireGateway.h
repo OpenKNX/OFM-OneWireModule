@@ -41,4 +41,6 @@ class WireGateway : public OpenKNX::Module
     // bool processCommand(const std::string cmd, bool diagnoseKo);
     // void showHelp() override;
 };
+
+extern WireGateway openknxWireGateway;
 #endif
