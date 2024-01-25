@@ -1,4 +1,4 @@
-﻿### **Modellfunktion**
+﻿### Modellfunktion
 
 Man kann die I/O-Signale auf verschiedene Arten verwenden. Über die Auswahlliste Modellfunktion können diese Verwendungsarten festgelegt werden.
 

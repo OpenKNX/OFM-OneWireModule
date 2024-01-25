@@ -1,4 +1,4 @@
-﻿### **Installierte Busmaster**
+﻿### Installierte Busmaster
 
 Das WireGateway kann hardwareseitig mit bis zu 3 Busmaster bestückt werden. Jeder Busmaster kann bis zu 30 1-Wire-Kanäle verwalten.
 

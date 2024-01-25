@@ -1,4 +1,4 @@
-﻿### **Fehlerobjekt(e) anzeigen**
+﻿### Fehlerobjekt(e) anzeigen
 
 Ist diese Option mit 'Ja' ausgewählt, wird pro installiertem Busmaster ein 32-Bit-KO eingeblendet, bei dem für jedes 1-Wire-Gerät, das einen Fehler meldet oder nicht abgefragt werden kann, das entsprechende Bit auf 1 gesetzt wird.
 

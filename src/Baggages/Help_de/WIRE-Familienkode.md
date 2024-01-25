@@ -1,4 +1,4 @@
-﻿### **Familienkode**
+﻿### Familienkode
 
 In dieser Auswahlliste wird der Familiencode des 1-Wire-Gerätes ausgewählt. Der Code entspricht den ersten beiden Stellen der Geräte-ID.
 

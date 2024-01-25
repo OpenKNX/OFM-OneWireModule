@@ -1,4 +1,4 @@
-﻿### **Bei absoluter Abweichung senden (0 = nicht senden)**
+﻿### Bei absoluter Abweichung senden (0 = nicht senden)
 
 Der Sensorwert kann auch gesendet werden, wenn der aktuell gemessene Wert um einen festgelegten Wert von dem zuletzt gesendeten Wert nach oben oder unten abweicht.
 

@@ -1,4 +1,4 @@
-﻿### **Gruppentyp**
+﻿### Gruppentyp
 
 Jede Gruppe kann einen Typ haben:
 

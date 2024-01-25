@@ -1,4 +1,4 @@
-﻿### **Id**
+﻿### Id
 
 Sobald ein Familienkode ausgewählt wurde, kann die ID des 1-Wire-Gerätes eingegeben werden. Die ersten beiden Stellen der ID sind der Familiencode, die restlichen 12 Stellen können als Hexadezimalziffern eingegeben werden. Dazu erscheint pro Stelle eine Auswahlliste mit den Ziffern 0-9 und A-F.
 

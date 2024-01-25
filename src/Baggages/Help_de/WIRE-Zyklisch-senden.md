@@ -1,4 +1,4 @@
-﻿### **Zyklisch senden (0 = nicht senden)**
+﻿### Zyklisch senden (0 = nicht senden)
 
 Der Sensorwert kann in bestimmten Zeitintervallen auf den Bus gesendet werden. Hier wird das Zeitintervall angegeben.
 

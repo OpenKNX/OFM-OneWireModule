@@ -1,4 +1,4 @@
-﻿### **Modellfunktion**
+﻿### Modellfunktion
 
 Für ein Gateway zum KNX ist es schwer, ein solch generisches Gerät zur Verfügung zu stellen, da man üblicherweise komplizierte Formeln braucht, um den eingehenden Analogwert in einen entsprechenden digitalen Wert umzuwandeln. Dies ist um so komplizierter, als dass der gemessene Analogwert immer von der Spannung abhängt, die gerade am DS2438 anliegt und von der Wärme des Chips selbst.
 

@@ -1,4 +1,4 @@
-﻿### **Bit-Ein-Ausgabe**
+﻿### Bit-Ein-Ausgabe
 
 Die definition der Ein- und Ausgabe wird vom KNX-Bus aus betrachtet:
 
