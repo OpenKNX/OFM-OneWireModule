@@ -283,166 +283,166 @@
             <Parameters>
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000000" Name="WireError" Offset="0" BitOffset="0" ParameterType="%AID%_PT-OnOffYesNo" Text="Fehlerobjekt(e) anzeigen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000001" Name="BusMasterCount" Offset="0" BitOffset="1" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000002" Name="IdSearch" Offset="0" BitOffset="3" ParameterType="%AID%_PT-IdSearch" Text="Device-Suche" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000003" Name="IButton1" Offset="0" BitOffset="4" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 1 auswerten?" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000004" Name="IButton2" Offset="0" BitOffset="5" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 2 auswerten?" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000005" Name="IButton3" Offset="0" BitOffset="6" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 3 auswerten?" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00000" Name="WireError" Offset="0" BitOffset="0" ParameterType="%AID%_PT-OnOffYesNo" Text="Fehlerobjekt(e) anzeigen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00001" Name="BusMasterCount" Offset="0" BitOffset="1" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00002" Name="IdSearch" Offset="0" BitOffset="3" ParameterType="%AID%_PT-IdSearch" Text="Device-Suche" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00003" Name="IButton1" Offset="0" BitOffset="4" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 1 auswerten?" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00004" Name="IButton2" Offset="0" BitOffset="5" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 2 auswerten?" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00005" Name="IButton3" Offset="0" BitOffset="6" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 3 auswerten?" Value="1" />
               </Union>
-              <Parameter Id="%AID%_P-%T%000010" Name="GroupText1" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 1: Name" Value="" />
-              <Parameter Id="%AID%_P-%T%000011" Name="GroupText2" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 2: Name" Value="" />
-              <Parameter Id="%AID%_P-%T%000012" Name="GroupText3" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 3: Name" Value="" />
-              <Parameter Id="%AID%_P-%T%000013" Name="GroupText4" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 4: Name" Value="" />
-              <Parameter Id="%AID%_P-%T%000014" Name="GroupText5" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 5: Name" Value="" />
-              <Parameter Id="%AID%_P-%T%000015" Name="GroupText6" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 6: Name" Value="" />
-              <Parameter Id="%AID%_P-%T%000016" Name="GroupText7" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 7: Name" Value="" />
-              <Parameter Id="%AID%_P-%T%000017" Name="GroupText8" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 8: Name" Value="" />
+              <Parameter Id="%AID%_P-%TT%00010" Name="GroupText1" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 1: Name" Value="" />
+              <Parameter Id="%AID%_P-%TT%00011" Name="GroupText2" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 2: Name" Value="" />
+              <Parameter Id="%AID%_P-%TT%00012" Name="GroupText3" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 3: Name" Value="" />
+              <Parameter Id="%AID%_P-%TT%00013" Name="GroupText4" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 4: Name" Value="" />
+              <Parameter Id="%AID%_P-%TT%00014" Name="GroupText5" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 5: Name" Value="" />
+              <Parameter Id="%AID%_P-%TT%00015" Name="GroupText6" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 6: Name" Value="" />
+              <Parameter Id="%AID%_P-%TT%00016" Name="GroupText7" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 7: Name" Value="" />
+              <Parameter Id="%AID%_P-%TT%00017" Name="GroupText8" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 8: Name" Value="" />
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="1" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000020" Name="Group1" Offset="0" BitOffset="0" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000021" Name="Group2" Offset="0" BitOffset="1" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000022" Name="Group3" Offset="0" BitOffset="2" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000023" Name="Group4" Offset="0" BitOffset="3" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000024" Name="Group5" Offset="0" BitOffset="4" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000025" Name="Group6" Offset="0" BitOffset="5" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000026" Name="Group7" Offset="0" BitOffset="6" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000027" Name="Group8" Offset="0" BitOffset="7" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00020" Name="Group1" Offset="0" BitOffset="0" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00021" Name="Group2" Offset="0" BitOffset="1" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00022" Name="Group3" Offset="0" BitOffset="2" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00023" Name="Group4" Offset="0" BitOffset="3" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00024" Name="Group5" Offset="0" BitOffset="4" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00025" Name="Group6" Offset="0" BitOffset="5" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00026" Name="Group7" Offset="0" BitOffset="6" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00027" Name="Group8" Offset="0" BitOffset="7" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
               </Union>
-              <Parameter Id="%AID%_P-%T%000028" Name="DeviceCount" ParameterType="%AID%_PT-ValueDpt5" Text="Anzahl 1Wire-Geräte" Value="0" Access="Read" />
-              <Parameter Id="%AID%_P-%T%000029" Name="BusmasterMax" ParameterType="%AID%_PT-ValueDpt5" Text="Maximale Anzahl Busmaster" Value="3" Access="None" />
+              <Parameter Id="%AID%_P-%TT%00028" Name="DeviceCount" ParameterType="%AID%_PT-ValueDpt5" Text="Anzahl 1Wire-Geräte" Value="0" Access="Read" />
+              <Parameter Id="%AID%_P-%TT%00029" Name="BusmasterMax" ParameterType="%AID%_PT-ValueDpt5" Text="Maximale Anzahl Busmaster" Value="3" Access="None" />
               <Union SizeInBit="24">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="2" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000030" Name="Busmaster1RSTL" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterRSTL" Text="tRSTL (in Mikrosekunden)" Value="6" />
-                <Parameter Id="%AID%_UP-%T%000031" Name="Busmaster1MSP"  Offset="0" BitOffset="4" ParameterType="%AID%_PT-BusMasterParameterMSP"  Text="tMSP (in Mikrosekunden)"  Value="6" />
-                <Parameter Id="%AID%_UP-%T%000032" Name="Busmaster1W0L"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterW0L"  Text="tW0L (in Mikrosekunden)"  Value="6" />
-                <Parameter Id="%AID%_UP-%T%000033" Name="Busmaster1REC0" Offset="1" BitOffset="4" ParameterType="%AID%_PT-BusMasterParameterREC0" Text="tREC0 (in Mikrosekunden)" Value="6" />
-                <Parameter Id="%AID%_UP-%T%000034" Name="Busmaster1WPU"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterWPU"  Text="RWPU (in Ohm)"  Value="6" />
+                <Parameter Id="%AID%_UP-%TT%00030" Name="Busmaster1RSTL" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterRSTL" Text="tRSTL (in Mikrosekunden)" Value="6" />
+                <Parameter Id="%AID%_UP-%TT%00031" Name="Busmaster1MSP"  Offset="0" BitOffset="4" ParameterType="%AID%_PT-BusMasterParameterMSP"  Text="tMSP (in Mikrosekunden)"  Value="6" />
+                <Parameter Id="%AID%_UP-%TT%00032" Name="Busmaster1W0L"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterW0L"  Text="tW0L (in Mikrosekunden)"  Value="6" />
+                <Parameter Id="%AID%_UP-%TT%00033" Name="Busmaster1REC0" Offset="1" BitOffset="4" ParameterType="%AID%_PT-BusMasterParameterREC0" Text="tREC0 (in Mikrosekunden)" Value="6" />
+                <Parameter Id="%AID%_UP-%TT%00034" Name="Busmaster1WPU"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterWPU"  Text="RWPU (in Ohm)"  Value="6" />
               </Union>
             </Parameters>
             <ParameterRefs>
               <!-- General -->
-              <ParameterRef Id="%AID%_UP-%T%000000_R-%T%00000001" RefId="%AID%_UP-%T%000000" />
-              <ParameterRef Id="%AID%_UP-%T%000001_R-%T%00000101" RefId="%AID%_UP-%T%000001" />
-              <ParameterRef Id="%AID%_UP-%T%000001_R-%T%00000102" RefId="%AID%_UP-%T%000001" Access="None" />
-              <ParameterRef Id="%AID%_UP-%T%000002_R-%T%00000201" RefId="%AID%_UP-%T%000002" />
-              <ParameterRef Id="%AID%_UP-%T%000003_R-%T%00000301" RefId="%AID%_UP-%T%000003" />
-              <ParameterRef Id="%AID%_UP-%T%000004_R-%T%00000401" RefId="%AID%_UP-%T%000004" />
-              <ParameterRef Id="%AID%_UP-%T%000005_R-%T%00000501" RefId="%AID%_UP-%T%000005" />
-              <ParameterRef Id="%AID%_P-%T%000010_R-%T%00001001" RefId="%AID%_P-%T%000010" />
-              <ParameterRef Id="%AID%_P-%T%000011_R-%T%00001101" RefId="%AID%_P-%T%000011" />
-              <ParameterRef Id="%AID%_P-%T%000012_R-%T%00001201" RefId="%AID%_P-%T%000012" />
-              <ParameterRef Id="%AID%_P-%T%000013_R-%T%00001301" RefId="%AID%_P-%T%000013" />
-              <ParameterRef Id="%AID%_P-%T%000014_R-%T%00001401" RefId="%AID%_P-%T%000014" />
-              <ParameterRef Id="%AID%_P-%T%000015_R-%T%00001501" RefId="%AID%_P-%T%000015" />
-              <ParameterRef Id="%AID%_P-%T%000016_R-%T%00001601" RefId="%AID%_P-%T%000016" />
-              <ParameterRef Id="%AID%_P-%T%000017_R-%T%00001701" RefId="%AID%_P-%T%000017" />
-              <ParameterRef Id="%AID%_UP-%T%000020_R-%T%00002001" RefId="%AID%_UP-%T%000020" />
-              <ParameterRef Id="%AID%_UP-%T%000021_R-%T%00002101" RefId="%AID%_UP-%T%000021" />
-              <ParameterRef Id="%AID%_UP-%T%000022_R-%T%00002201" RefId="%AID%_UP-%T%000022" />
-              <ParameterRef Id="%AID%_UP-%T%000023_R-%T%00002301" RefId="%AID%_UP-%T%000023" />
-              <ParameterRef Id="%AID%_UP-%T%000024_R-%T%00002401" RefId="%AID%_UP-%T%000024" />
-              <ParameterRef Id="%AID%_UP-%T%000025_R-%T%00002501" RefId="%AID%_UP-%T%000025" />
-              <ParameterRef Id="%AID%_UP-%T%000026_R-%T%00002601" RefId="%AID%_UP-%T%000026" />
-              <ParameterRef Id="%AID%_UP-%T%000027_R-%T%00002701" RefId="%AID%_UP-%T%000027" />
-              <ParameterRef Id="%AID%_P-%T%000028_R-%T%00002801" RefId="%AID%_P-%T%000028" />
-              <ParameterRef Id="%AID%_P-%T%000029_R-%T%00002901" RefId="%AID%_P-%T%000029" />
-              <ParameterRef Id="%AID%_UP-%T%000030_R-%T%00003001" RefId="%AID%_UP-%T%000030" />
-              <ParameterRef Id="%AID%_UP-%T%000031_R-%T%00003101" RefId="%AID%_UP-%T%000031" />
-              <ParameterRef Id="%AID%_UP-%T%000032_R-%T%00003201" RefId="%AID%_UP-%T%000032" />
-              <ParameterRef Id="%AID%_UP-%T%000033_R-%T%00003301" RefId="%AID%_UP-%T%000033" />
-              <ParameterRef Id="%AID%_UP-%T%000034_R-%T%00003401" RefId="%AID%_UP-%T%000034" />
+              <ParameterRef Id="%AID%_UP-%TT%00000_R-%TT%0000001" RefId="%AID%_UP-%TT%00000" />
+              <ParameterRef Id="%AID%_UP-%TT%00001_R-%TT%0000101" RefId="%AID%_UP-%TT%00001" />
+              <ParameterRef Id="%AID%_UP-%TT%00001_R-%TT%0000102" RefId="%AID%_UP-%TT%00001" Access="None" />
+              <ParameterRef Id="%AID%_UP-%TT%00002_R-%TT%0000201" RefId="%AID%_UP-%TT%00002" />
+              <ParameterRef Id="%AID%_UP-%TT%00003_R-%TT%0000301" RefId="%AID%_UP-%TT%00003" />
+              <ParameterRef Id="%AID%_UP-%TT%00004_R-%TT%0000401" RefId="%AID%_UP-%TT%00004" />
+              <ParameterRef Id="%AID%_UP-%TT%00005_R-%TT%0000501" RefId="%AID%_UP-%TT%00005" />
+              <ParameterRef Id="%AID%_P-%TT%00010_R-%TT%0001001" RefId="%AID%_P-%TT%00010" />
+              <ParameterRef Id="%AID%_P-%TT%00011_R-%TT%0001101" RefId="%AID%_P-%TT%00011" />
+              <ParameterRef Id="%AID%_P-%TT%00012_R-%TT%0001201" RefId="%AID%_P-%TT%00012" />
+              <ParameterRef Id="%AID%_P-%TT%00013_R-%TT%0001301" RefId="%AID%_P-%TT%00013" />
+              <ParameterRef Id="%AID%_P-%TT%00014_R-%TT%0001401" RefId="%AID%_P-%TT%00014" />
+              <ParameterRef Id="%AID%_P-%TT%00015_R-%TT%0001501" RefId="%AID%_P-%TT%00015" />
+              <ParameterRef Id="%AID%_P-%TT%00016_R-%TT%0001601" RefId="%AID%_P-%TT%00016" />
+              <ParameterRef Id="%AID%_P-%TT%00017_R-%TT%0001701" RefId="%AID%_P-%TT%00017" />
+              <ParameterRef Id="%AID%_UP-%TT%00020_R-%TT%0002001" RefId="%AID%_UP-%TT%00020" />
+              <ParameterRef Id="%AID%_UP-%TT%00021_R-%TT%0002101" RefId="%AID%_UP-%TT%00021" />
+              <ParameterRef Id="%AID%_UP-%TT%00022_R-%TT%0002201" RefId="%AID%_UP-%TT%00022" />
+              <ParameterRef Id="%AID%_UP-%TT%00023_R-%TT%0002301" RefId="%AID%_UP-%TT%00023" />
+              <ParameterRef Id="%AID%_UP-%TT%00024_R-%TT%0002401" RefId="%AID%_UP-%TT%00024" />
+              <ParameterRef Id="%AID%_UP-%TT%00025_R-%TT%0002501" RefId="%AID%_UP-%TT%00025" />
+              <ParameterRef Id="%AID%_UP-%TT%00026_R-%TT%0002601" RefId="%AID%_UP-%TT%00026" />
+              <ParameterRef Id="%AID%_UP-%TT%00027_R-%TT%0002701" RefId="%AID%_UP-%TT%00027" />
+              <ParameterRef Id="%AID%_P-%TT%00028_R-%TT%0002801" RefId="%AID%_P-%TT%00028" />
+              <ParameterRef Id="%AID%_P-%TT%00029_R-%TT%0002901" RefId="%AID%_P-%TT%00029" />
+              <ParameterRef Id="%AID%_UP-%TT%00030_R-%TT%0003001" RefId="%AID%_UP-%TT%00030" />
+              <ParameterRef Id="%AID%_UP-%TT%00031_R-%TT%0003101" RefId="%AID%_UP-%TT%00031" />
+              <ParameterRef Id="%AID%_UP-%TT%00032_R-%TT%0003201" RefId="%AID%_UP-%TT%00032" />
+              <ParameterRef Id="%AID%_UP-%TT%00033_R-%TT%0003301" RefId="%AID%_UP-%TT%00033" />
+              <ParameterRef Id="%AID%_UP-%TT%00034_R-%TT%0003401" RefId="%AID%_UP-%TT%00034" />
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%T%000020" Name="NewId" Text="IDs unbekannter Geräte" Number="20" FunctionText="Geräte-Id" ObjectSize="14 Bytes" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-16-1" />
-              <ComObject Id="%AID%_O-%T%000021" Name="ErrorBusmaster1" Text="Gerätefehler Busmaster 1" Number="21" FunctionText="Bitleiste" ObjectSize="4 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-12-1" />
-              <ComObject Id="%AID%_O-%T%000022" Name="ErrorBusmaster2" Text="Gerätefehler Busmaster 2" Number="22" FunctionText="Bitleiste" ObjectSize="4 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-12-1" />
-              <ComObject Id="%AID%_O-%T%000023" Name="ErrorBusmaster3" Text="Gerätefehler Busmaster 3" Number="23" FunctionText="Bitleiste" ObjectSize="4 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-12-1" />
-              <ComObject Id="%AID%_O-%T%000024" Name="Group1" Text="Gruppe 1" Number="24" FunctionText="Gruppe 1, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%000025" Name="Group2" Text="Gruppe 2" Number="25" FunctionText="Gruppe 2, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%000026" Name="Group3" Text="Gruppe 3" Number="26" FunctionText="Gruppe 3, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%000027" Name="Group4" Text="Gruppe 4" Number="27" FunctionText="Gruppe 4, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%000028" Name="Group5" Text="Gruppe 5" Number="28" FunctionText="Gruppe 5, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%000029" Name="Group6" Text="Gruppe 6" Number="29" FunctionText="Gruppe 6, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%000030" Name="Group7" Text="Gruppe 7" Number="30" FunctionText="Gruppe 7, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%000031" Name="Group8" Text="Gruppe 8" Number="31" FunctionText="Gruppe 8, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00020" Name="NewId" Text="IDs unbekannter Geräte" Number="20" FunctionText="Geräte-Id" ObjectSize="14 Bytes" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-16-1" />
+              <ComObject Id="%AID%_O-%TT%00021" Name="ErrorBusmaster1" Text="Gerätefehler Busmaster 1" Number="21" FunctionText="Bitleiste" ObjectSize="4 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-12-1" />
+              <ComObject Id="%AID%_O-%TT%00022" Name="ErrorBusmaster2" Text="Gerätefehler Busmaster 2" Number="22" FunctionText="Bitleiste" ObjectSize="4 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-12-1" />
+              <ComObject Id="%AID%_O-%TT%00023" Name="ErrorBusmaster3" Text="Gerätefehler Busmaster 3" Number="23" FunctionText="Bitleiste" ObjectSize="4 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-12-1" />
+              <ComObject Id="%AID%_O-%TT%00024" Name="Group1" Text="Gruppe 1" Number="24" FunctionText="Gruppe 1, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00025" Name="Group2" Text="Gruppe 2" Number="25" FunctionText="Gruppe 2, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00026" Name="Group3" Text="Gruppe 3" Number="26" FunctionText="Gruppe 3, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00027" Name="Group4" Text="Gruppe 4" Number="27" FunctionText="Gruppe 4, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00028" Name="Group5" Text="Gruppe 5" Number="28" FunctionText="Gruppe 5, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00029" Name="Group6" Text="Gruppe 6" Number="29" FunctionText="Gruppe 6, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00030" Name="Group7" Text="Gruppe 7" Number="30" FunctionText="Gruppe 7, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00031" Name="Group8" Text="Gruppe 8" Number="31" FunctionText="Gruppe 8, Ausgang" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
             </ComObjectTable>
             <ComObjectRefs>
-              <ComObjectRef Id="%AID%_O-%T%000020_R-%T%00002001" RefId="%AID%_O-%T%000020" />
-              <ComObjectRef Id="%AID%_O-%T%000021_R-%T%00002101" RefId="%AID%_O-%T%000021" />
-              <ComObjectRef Id="%AID%_O-%T%000022_R-%T%00002201" RefId="%AID%_O-%T%000022" />
-              <ComObjectRef Id="%AID%_O-%T%000023_R-%T%00002301" RefId="%AID%_O-%T%000023" />
-              <ComObjectRef Id="%AID%_O-%T%000024_R-%T%00002401" RefId="%AID%_O-%T%000024" Text="{{0:Gruppe 1}}" TextParameterRefId="%AID%_P-%T%000010_R-%T%00001001" />
-              <ComObjectRef Id="%AID%_O-%T%000025_R-%T%00002501" RefId="%AID%_O-%T%000025" Text="{{0:Gruppe 2}}" TextParameterRefId="%AID%_P-%T%000011_R-%T%00001101" />
-              <ComObjectRef Id="%AID%_O-%T%000026_R-%T%00002601" RefId="%AID%_O-%T%000026" Text="{{0:Gruppe 3}}" TextParameterRefId="%AID%_P-%T%000012_R-%T%00001201" />
-              <ComObjectRef Id="%AID%_O-%T%000027_R-%T%00002701" RefId="%AID%_O-%T%000027" Text="{{0:Gruppe 4}}" TextParameterRefId="%AID%_P-%T%000013_R-%T%00001301" />
-              <ComObjectRef Id="%AID%_O-%T%000028_R-%T%00002801" RefId="%AID%_O-%T%000028" Text="{{0:Gruppe 5}}" TextParameterRefId="%AID%_P-%T%000014_R-%T%00001401" />
-              <ComObjectRef Id="%AID%_O-%T%000029_R-%T%00002901" RefId="%AID%_O-%T%000029" Text="{{0:Gruppe 6}}" TextParameterRefId="%AID%_P-%T%000015_R-%T%00001501" />
-              <ComObjectRef Id="%AID%_O-%T%000030_R-%T%00003001" RefId="%AID%_O-%T%000030" Text="{{0:Gruppe 7}}" TextParameterRefId="%AID%_P-%T%000016_R-%T%00001601" />
-              <ComObjectRef Id="%AID%_O-%T%000031_R-%T%00003101" RefId="%AID%_O-%T%000031" Text="{{0:Gruppe 8}}" TextParameterRefId="%AID%_P-%T%000017_R-%T%00001701" />
+              <ComObjectRef Id="%AID%_O-%TT%00020_R-%TT%0002001" RefId="%AID%_O-%TT%00020" />
+              <ComObjectRef Id="%AID%_O-%TT%00021_R-%TT%0002101" RefId="%AID%_O-%TT%00021" />
+              <ComObjectRef Id="%AID%_O-%TT%00022_R-%TT%0002201" RefId="%AID%_O-%TT%00022" />
+              <ComObjectRef Id="%AID%_O-%TT%00023_R-%TT%0002301" RefId="%AID%_O-%TT%00023" />
+              <ComObjectRef Id="%AID%_O-%TT%00024_R-%TT%0002401" RefId="%AID%_O-%TT%00024" Text="{{0:Gruppe 1}}" TextParameterRefId="%AID%_P-%TT%00010_R-%TT%0001001" />
+              <ComObjectRef Id="%AID%_O-%TT%00025_R-%TT%0002501" RefId="%AID%_O-%TT%00025" Text="{{0:Gruppe 2}}" TextParameterRefId="%AID%_P-%TT%00011_R-%TT%0001101" />
+              <ComObjectRef Id="%AID%_O-%TT%00026_R-%TT%0002601" RefId="%AID%_O-%TT%00026" Text="{{0:Gruppe 3}}" TextParameterRefId="%AID%_P-%TT%00012_R-%TT%0001201" />
+              <ComObjectRef Id="%AID%_O-%TT%00027_R-%TT%0002701" RefId="%AID%_O-%TT%00027" Text="{{0:Gruppe 4}}" TextParameterRefId="%AID%_P-%TT%00013_R-%TT%0001301" />
+              <ComObjectRef Id="%AID%_O-%TT%00028_R-%TT%0002801" RefId="%AID%_O-%TT%00028" Text="{{0:Gruppe 5}}" TextParameterRefId="%AID%_P-%TT%00014_R-%TT%0001401" />
+              <ComObjectRef Id="%AID%_O-%TT%00029_R-%TT%0002901" RefId="%AID%_O-%TT%00029" Text="{{0:Gruppe 6}}" TextParameterRefId="%AID%_P-%TT%00015_R-%TT%0001501" />
+              <ComObjectRef Id="%AID%_O-%TT%00030_R-%TT%0003001" RefId="%AID%_O-%TT%00030" Text="{{0:Gruppe 7}}" TextParameterRefId="%AID%_P-%TT%00016_R-%TT%0001601" />
+              <ComObjectRef Id="%AID%_O-%TT%00031_R-%TT%0003101" RefId="%AID%_O-%TT%00031" Text="{{0:Gruppe 8}}" TextParameterRefId="%AID%_P-%TT%00017_R-%TT%0001701" />
             </ComObjectRefs>
           </Static>
           <Dynamic>
             <Channel Name="MainChannel" Text="1-Wire" Number="%TT%" Id="%AID%_CH-%TT%" Icon="blur" HelpContext="Empty">
               <ParameterBlock Name="Init" Id="%AID%_PB-nnn" Inline="true">
                 <!-- Maximum number of Busmaster (used as Parameter for WireGateway and Sensormodul) -->
-                <ParameterRefRef RefId="%AID%_P-%T%000029_R-%T%00002901" HelpContext="WIRE-Installierte-Busmaster" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00029_R-%TT%0002901" HelpContext="WIRE-Installierte-Busmaster" />
               </ParameterBlock>
               <ParameterBlock Id="%AID%_PB-1" Name="BM" Text="Busmaster-Einstellungen" Icon="cog-outline" HelpContext="Empty">
                 <!-- Calculated number of 1-Wire-Devices supported -->
                 <ParameterSeparator Id="%AID%_PS-11" Text="Kanäle und Busmaster" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_P-%T%000028_R-%T%00002801" HelpContext="%DOC%" />
-                <choose ParamRefId="%AID%_P-%T%000029_R-%T%00002901">
+                <ParameterRefRef RefId="%AID%_P-%TT%00028_R-%TT%0002801" HelpContext="%DOC%" />
+                <choose ParamRefId="%AID%_P-%TT%00029_R-%TT%0002901">
                   <when test="1">
-                    <Assign TargetParamRefRef="%AID%_UP-%T%000001_R-%T%00000101" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_UP-%TT%00001_R-%TT%0000101" Value="1" />
                   </when>
                   <when test="3">
-                    <ParameterRefRef RefId="%AID%_UP-%T%000001_R-%T%00000101" HelpContext="%DOC%" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00001_R-%TT%0000101" HelpContext="%DOC%" />
                     <ParameterSeparator Id="%AID%_PS-13" Text="" UIHint="HorizontalRuler" />
                   </when>
                 </choose>
-                <choose ParamRefId="%AID%_UP-%T%000001_R-%T%00000101">
+                <choose ParamRefId="%AID%_UP-%TT%00001_R-%TT%0000101">
                   <when test="1">
                     <!-- one Busmaster supports 30 Devices -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000028_R-%T%00002801" Value="30" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00028_R-%TT%0002801" Value="30" />
                   </when>
                   <when test="2">
                     <!-- two Busmaster support 60 Devices -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000028_R-%T%00002801" Value="60" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00028_R-%TT%0002801" Value="60" />
                   </when>
                   <when test="3">
                     <!-- three Busmaster support 90 Devices -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000028_R-%T%00002801" Value="90" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00028_R-%TT%0002801" Value="90" />
                   </when>
                 </choose>
                 <ParameterSeparator Id="%AID%_PS-11" Text="Gerätesuche" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000002_R-%T%00000201" HelpContext="%DOC%" />
-                <ComObjectRefRef RefId="%AID%_O-%T%000020_R-%T%00002001" />
-                <choose ParamRefId="%AID%_UP-%T%000002_R-%T%00000201">
+                <ParameterRefRef RefId="%AID%_UP-%TT%00002_R-%TT%0000201" HelpContext="%DOC%" />
+                <ComObjectRefRef RefId="%AID%_O-%TT%00020_R-%TT%0002001" />
+                <choose ParamRefId="%AID%_UP-%TT%00002_R-%TT%0000201">
                   <when test="1">
                     <ParameterSeparator Id="%AID%_PS-16" Text="Im Produktivbetrieb sollte die Gerätesuche immer aus sein, da sie bei hoher KNX-Buslast dazu führen kann, dass Telegramme verloren gehen. Dieser Paremter sollte nur an sein, wenn man neue 1-Wire-Geräte anschließen will." UIHint="Information" />
                   </when>
                 </choose>
                 <ParameterSeparator Id="%AID%_PS-14" Text="" UIHint="HorizontalRuler" />
                 <ParameterSeparator Id="%AID%_PS-11" Text="Fehlermeldungen" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000000_R-%T%00000001" HelpContext="%DOC%" />
-                <choose ParamRefId="%AID%_UP-%T%000000_R-%T%00000001">
+                <ParameterRefRef RefId="%AID%_UP-%TT%00000_R-%TT%0000001" HelpContext="%DOC%" />
+                <choose ParamRefId="%AID%_UP-%TT%00000_R-%TT%0000001">
                   <when test="1">
                     <!-- show error object only if it is parametrized -->
-                    <ComObjectRefRef RefId="%AID%_O-%T%000021_R-%T%00002101" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00021_R-%TT%0002101" />
                     <ParameterSeparator Id="%AID%_PS-1" Text="Das Fehlerobjekt KO-21 ist eine Bitleiste, bei der ein Bit auf 1 gesetzt wird, wenn das entsprechende Gerät einen Fehler aufweist:" />
                     <ParameterSeparator Id="%AID%_PS-2" Text="  Bit 0: Fehler vom Busmaster selbst" />
                     <ParameterSeparator Id="%AID%_PS-3" Text="  Bit 1-30: Fehler von Gerät 1 bis 30" />
-                    <choose ParamRefId="%AID%_UP-%T%000001_R-%T%00000101">
+                    <choose ParamRefId="%AID%_UP-%TT%00001_R-%TT%0000101">
                       <when test="2 3">
-                        <ComObjectRefRef RefId="%AID%_O-%T%000022_R-%T%00002201" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00022_R-%TT%0002201" />
                         <ParameterSeparator Id="%AID%_PS-4" Text="Das gilt für das Fehlerobjekt KO-22 anlaog. " />
                         <ParameterSeparator Id="%AID%_PS-5" Text="  Bit 0: Fehler vom Busmaster 2 selbst" />
                         <ParameterSeparator Id="%AID%_PS-6" Text="  Bit 1-30: Fehler von Gerät 31 bis 60" />
                       </when>
                       <when test="3">
-                        <ComObjectRefRef RefId="%AID%_O-%T%000022_R-%T%00002201" />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000023_R-%T%00002301" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00022_R-%TT%0002201" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00023_R-%TT%0002301" />
                         <ParameterSeparator Id="%AID%_PS-15" Text="Und auch für das Fehlerobjekt KO-23." />
                         <ParameterSeparator Id="%AID%_PS-7" Text="  Bit 0: Fehler vom Busmaster 3 selbst" />
                         <ParameterSeparator Id="%AID%_PS-8" Text="  Bit 1-30: Fehler von Gerät 61 bis 90" />
@@ -457,22 +457,22 @@
                 <ParameterSeparator Id="%AID%_PS-30" Text="Es gibt folgende Gruppentypen:" />
                 <ParameterSeparator Id="%AID%_PS-31" Text="ODER-Gruppe: Sobald ein iButton dieser Gruppe erkannt wird, sendet diese Gruppe ein EIN-Signal. Nur wenn alle iButton dieser Gruppe entfernt sind, sendet diese Gruppe ein AUS-Signal." />
                 <ParameterSeparator Id="%AID%_PS-32" Text="UND-Gruppe: Nur wenn alle iButton dieser Gruppe erkannt werden, sendet diese Gruppe ein EIN-Signal. Sobald nur ein iButton dieser Gruppe entfernt ist, sendet diese Gruppe ein AUS-Signal." />
-                <ParameterRefRef RefId="%AID%_P-%T%000010_R-%T%00001001" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000020_R-%T%00002001" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%T%000011_R-%T%00001101" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000021_R-%T%00002101" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%T%000012_R-%T%00001201" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000022_R-%T%00002201" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%T%000013_R-%T%00001301" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000023_R-%T%00002301" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%T%000014_R-%T%00001401" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000024_R-%T%00002401" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%T%000015_R-%T%00001501" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000025_R-%T%00002501" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%T%000016_R-%T%00001601" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000026_R-%T%00002601" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%T%000017_R-%T%00001701" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000027_R-%T%00002701" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00010_R-%TT%0001001" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00020_R-%TT%0002001" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00011_R-%TT%0001101" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00021_R-%TT%0002101" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00012_R-%TT%0001201" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00022_R-%TT%0002201" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00013_R-%TT%0001301" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00023_R-%TT%0002301" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00014_R-%TT%0001401" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00024_R-%TT%0002401" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00015_R-%TT%0001501" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00025_R-%TT%0002501" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00016_R-%TT%0001601" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00026_R-%TT%0002601" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00017_R-%TT%0001701" HelpContext="WIRE-Gruppenname" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00027_R-%TT%0002701" HelpContext="WIRE-Gruppentyp" />
               </ParameterBlock>
               <op:include href="WireGateway.templ.xml" xpath="//ApplicationProgram/Dynamic/ChannelIndependentBlock/*" type="template" prefix="WIRE" IsInner="true" />
             </Channel>
