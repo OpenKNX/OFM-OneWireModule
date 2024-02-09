@@ -386,18 +386,18 @@
             <Channel Name="MainChannel" Text="1-Wire" Number="%TT%" Id="%AID%_CH-%TT%" Icon="blur" HelpContext="Empty">
               <ParameterBlock Name="Init" Id="%AID%_PB-nnn" Inline="true">
                 <!-- Maximum number of Busmaster (used as Parameter for WireGateway and Sensormodul) -->
-                <ParameterRefRef RefId="%AID%_P-%TT%00029_R-%TT%0002901" HelpContext="WIRE-Installierte-Busmaster" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00029_R-%TT%0002901" HelpContext="WIRE-Installierte-Busmaster" IndentLevel="1" />
               </ParameterBlock>
-              <ParameterBlock Id="%AID%_PB-1" Name="BM" Text="Busmaster-Einstellungen" Icon="cog-outline" HelpContext="Empty">
+              <ParameterBlock Id="%AID%_PB-1" Name="BM" Text="Basiseinstellungen" Icon="cog-outline" HelpContext="Empty">
                 <!-- Calculated number of 1-Wire-Devices supported -->
                 <ParameterSeparator Id="%AID%_PS-11" Text="Kanäle und Busmaster" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00028_R-%TT%0002801" HelpContext="%DOC%" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00028_R-%TT%0002801" HelpContext="%DOC%" IndentLevel="1" />
                 <choose ParamRefId="%AID%_P-%TT%00029_R-%TT%0002901">
                   <when test="1">
                     <Assign TargetParamRefRef="%AID%_UP-%TT%00001_R-%TT%0000101" Value="1" />
                   </when>
                   <when test="3">
-                    <ParameterRefRef RefId="%AID%_UP-%TT%00001_R-%TT%0000101" HelpContext="%DOC%" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00001_R-%TT%0000101" HelpContext="%DOC%" IndentLevel="1" />
                     <ParameterSeparator Id="%AID%_PS-13" Text="" UIHint="HorizontalRuler" />
                   </when>
                 </choose>
@@ -416,7 +416,7 @@
                   </when>
                 </choose>
                 <ParameterSeparator Id="%AID%_PS-11" Text="Gerätesuche" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00002_R-%TT%0000201" HelpContext="%DOC%" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00002_R-%TT%0000201" HelpContext="%DOC%" IndentLevel="1" />
                 <ComObjectRefRef RefId="%AID%_O-%TT%00020_R-%TT%0002001" />
                 <choose ParamRefId="%AID%_UP-%TT%00002_R-%TT%0000201">
                   <when test="1">
@@ -425,7 +425,7 @@
                 </choose>
                 <ParameterSeparator Id="%AID%_PS-14" Text="" UIHint="HorizontalRuler" />
                 <ParameterSeparator Id="%AID%_PS-11" Text="Fehlermeldungen" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00000_R-%TT%0000001" HelpContext="%DOC%" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00000_R-%TT%0000001" HelpContext="%DOC%" IndentLevel="1" />
                 <choose ParamRefId="%AID%_UP-%TT%00000_R-%TT%0000001">
                   <when test="1">
                     <!-- show error object only if it is parametrized -->
@@ -451,28 +451,28 @@
                   </when>
                 </choose>
               </ParameterBlock>
-              <ParameterBlock Id="%AID%_PB-2" Name="IButtonGroups" Text="iButton Gruppierung">
+              <ParameterBlock Id="%AID%_PB-2" Name="IButtonGroups" Text="iButton Gruppierung" Icon="radiobox-marked">
                 <ParameterSeparator Id="%AID%_PS-25" Text="iButton-Gruppen" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-26" Text="iButtons können in Gruppen organisiert werden, die es erlauben, für mehrere iButtons ein Telegramm zu bekommen." />
                 <ParameterSeparator Id="%AID%_PS-30" Text="Es gibt folgende Gruppentypen:" />
                 <ParameterSeparator Id="%AID%_PS-31" Text="ODER-Gruppe: Sobald ein iButton dieser Gruppe erkannt wird, sendet diese Gruppe ein EIN-Signal. Nur wenn alle iButton dieser Gruppe entfernt sind, sendet diese Gruppe ein AUS-Signal." />
                 <ParameterSeparator Id="%AID%_PS-32" Text="UND-Gruppe: Nur wenn alle iButton dieser Gruppe erkannt werden, sendet diese Gruppe ein EIN-Signal. Sobald nur ein iButton dieser Gruppe entfernt ist, sendet diese Gruppe ein AUS-Signal." />
-                <ParameterRefRef RefId="%AID%_P-%TT%00010_R-%TT%0001001" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00020_R-%TT%0002001" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00011_R-%TT%0001101" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00021_R-%TT%0002101" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00012_R-%TT%0001201" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00022_R-%TT%0002201" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00013_R-%TT%0001301" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00023_R-%TT%0002301" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00014_R-%TT%0001401" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00024_R-%TT%0002401" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00015_R-%TT%0001501" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00025_R-%TT%0002501" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00016_R-%TT%0001601" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00026_R-%TT%0002601" HelpContext="WIRE-Gruppentyp" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00017_R-%TT%0001701" HelpContext="WIRE-Gruppenname" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00027_R-%TT%0002701" HelpContext="WIRE-Gruppentyp" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00010_R-%TT%0001001" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00020_R-%TT%0002001" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00011_R-%TT%0001101" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00021_R-%TT%0002101" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00012_R-%TT%0001201" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00022_R-%TT%0002201" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00013_R-%TT%0001301" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00023_R-%TT%0002301" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00014_R-%TT%0001401" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00024_R-%TT%0002401" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00015_R-%TT%0001501" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00025_R-%TT%0002501" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00016_R-%TT%0001601" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00026_R-%TT%0002601" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00017_R-%TT%0001701" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00027_R-%TT%0002701" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
               </ParameterBlock>
               <op:include href="WireGateway.templ.xml" xpath="//ApplicationProgram/Dynamic/ChannelIndependentBlock/*" type="template" prefix="WIRE" IsInner="true" />
             </Channel>
