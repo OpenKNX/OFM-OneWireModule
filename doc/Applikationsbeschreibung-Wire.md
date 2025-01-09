@@ -1,16 +1,6 @@
 # **Applikationsbeschreibung OneWire**
 
-Die Applikation OneWire ist im File WireGateway-v3.x.knxprod enthalten und erlaubt die Parametrisierung des WireGateways mittels der ETS.
-
-Sie ist in die Bereiche
-
-* Allgemeine Parameter
-* 1-Wire
-* Logikkanäle
-
-gegliedert.
-
-Der letzte Punkt ist in der Applikationsbeschreibung [LogicModule](https://github.com/OpenKNX/OAM-LogicModule/blob/main/doc/Applikationsbeschreibung-Logik.md) beschrieben.
+Diese Applikation erlaubt die Parametrisierung des One-Wire-Moduls mittels ETS.
 
 ## **Änderungshistorie**
 
@@ -37,9 +27,16 @@ Der letzte Punkt ist in der Applikationsbeschreibung [LogicModule](https://githu
 
 ## **Einleitung**
 
-Diese Applikation erlaubt es, 1-Wire-Geräte, die über den 1-Wire-Bus mit dem WireGateway verbunden sind, passend zu parametrisieren und deren Werte auf den KNX-Bus zu senden. Falls die 1-Wire-Geräte Ausgaben erlauben, ist es auch möglich, KNX-Telegramminhalte an den Ausgängen der 1-Wire-Geräte verfügbar zu machen.
+<!-- DOC HelpContext="Dokumentation" -->
 
-Auch wenn diese Anleitung für das WireGateway ist, wird die gleiche Applikation auch für das Sensormodul verwendet und kann hierfür herangezogen werden. An den wenigen Stellen, an den sich die Einstellungen im Sensormodul unterscheiden, wird speziell darauf hingewiesen.
+<!-- DOCCONTENT
+Eine vollständige Applikationsbeschreibung ist unter folgendem Link verfügbar: https://github.com/OpenKNX/OFM-OneWireModule/blob/v1/doc/Applikationsbeschreibung-Wire.md
+DOCCONTENT -->
+
+
+Diese Applikation erlaubt es, 1-Wire-Geräte, die über den 1-Wire-Bus mit der vorliegenden Hardware verbunden sind, passend zu parametrisieren und deren Werte auf den KNX-Bus zu senden. Falls die 1-Wire-Geräte Ausgaben erlauben, ist es auch möglich, KNX-Telegramminhalte an den Ausgängen der 1-Wire-Geräte verfügbar zu machen.
+
+Auch wenn diese Anleitung für das WireGateway ist, wird die gleiche Applikation auch für das Sensormodul verwendet und kann hierfür herangezogen werden. 
 
 Der 1-Wire-Bus ist so entworfen, dass alle angeschlossenen Geräte immer wieder abgefragt werden müssen, ob sie neue Werte haben (polling). Da diese Abfragen einige Zeit benötigen, ist der 1-Wire-Bus nicht dazu geeignet, kurzfristige Ereignisse (Zählimpulse, kurze Tastendrücke) zu erfassen oder unmittelbar auf so ein Ereignis zu reagieren. Aus diesem Grunde bietet die KNX-Applikation auch nur Funktionalitäten an, die sich für Sensorabfragen bzw. Fensterkontakte eignen, also alles keine zeitkritischen Ereignisse.
 
@@ -74,49 +71,26 @@ Das Verfahren ist relativ einfach: Man schließt ein neues 1-Wire-Gerät an den 
     29 - 8-Kanal-IO (DS2408)
     3A - 2-Kanal-IO (DS2413)
 
-Es werden keine Geräte mit parasitärem Anschluss unterstützt, somit müssen immer alle 3 Anschlüsse 0, Date und VDD angeschlossen werden. Die Ausnahme hier ist der iButton, der prinzipiell nur 2 Anschlüsse aufweist.
-
-## **Allgemeine Parameter**
-
-![Allgemeine Parameter](pics/AllgemeineParameter.png)
-Hier werden Einstellungen getroffen, die die generelle Arbeitsweise des WireGateway bestimmen.
-
-### **Zeit bis das Gerät nach einem Neustart aktiv wird**
-
-Nach einem Neustart des Geräts, sei es durch Busspannungsausfall, Reset über den Bus oder auch durch ein Drücken der Reset-Taste, kann man hier festlegen, wie viele Sekunden vergehen sollen, bis das Gerät seine Funktion aufnimmt.
-
-Da das Gerät prinzipiell (sofern parametriert) auch Lesetelegramme auf den Bus senden kann, kann mit dieser Einstellung verhindert werden, dass bei einem Busneustart von vielen Geräten viele Lesetelegramme auf einmal gesendet werden und so der Bus überlastet wird.
-
-### **In Betrieb senden alle**
-
-Das Gerät kann einen Status "Ich bin noch in Betrieb" über das KO 1 senden. Hier wird das Sendeintervall in Sekunden eingestellt.
-
-### **Uhrzeit und Datum nach einem Neustart vom Bus lesen**
-
-Dieses Gerät kann Uhrzeit und Datum vom Bus empfangen. Nach einem Neustart können Uhrzeit und Datum auch aktiv über Lesetelegramme abgefragt werden. Mit diesem Parameter wird bestimmt, ob Uhrzeit und Datum nach einem Neustart aktiv gelesen werden.
-
-Wenn dieser Parameter gesetzt ist, wird die Uhrzeit und das Datum alle 20-30 Sekunden über ein Lesetelegramm vom Bus gelesen, bis eine entsprechende Antwort kommt. Falls keine Uhr im KNX-System vorhanden ist oder die Uhr nicht auf Leseanfragen antworten kann, sollte dieser Parameter auf "Nein" gesetzt werden.
-
-Die im Modul enthaltenen Zeitschaltuhren beginnen erst zu funktionieren, wenn eine gültige Uhrzeit und ein gültiges Datum empfangen wurde. Wenn dieser Parameter auf "Nein" gesetzt wird, kann es sehr lange dauern, bis Zeitschaltuhren nach einem Neustart ihre Funktion aufnehmen.
-
-## Experteneinstellungen
-
-Details zu Experteneinstellungen sind in der Applikationsbeschreibung [LogicModule](https://github.com/OpenKNX/OAM-LogicModule/blob/main/doc/Applikationsbeschreibung-Logik.md) beschrieben.
+Es werden keine Geräte mit parasitärem Anschluss unterstützt, somit müssen immer alle 3 Anschlüsse 0V, Data und VDD angeschlossen werden. Die Ausnahme hier ist der iButton, der prinzipiell nur 2 Anschlüsse aufweist.
 
 ## **1-Wire**
 
-### **Busmaster-Einstellungen**
+Unter diesem Tab sind alle Einstellungen für 1-Wire zusammengefasst. Jeder der folgenden Tabs wird in einem eigenen Kapitel beschrieben.
 
-Jeder 1-Wire-Busmaster erfordert bestimmte Einstellungen, die in diesem Dialog eingetragen werden.
+### **Allgemein**
 
-![Busmaster-Einstellungen](pics/busmaster.png)
+Hier werden Einstellungen vorgenommen, die für alle 1-Wire-Geräte gelten.
 
-### Kanäle und Busmaster
+#### Version
+
+Die Seite beginnt mit der Versionsangabe des 1-Wire-Moduls. Diese Version ist wichtig bei Problemmeldungen und um zu erkennen, ob es Updates für dieses Modul gibt.
 
 <!-- DOC -->
-#### **Anzahl 1Wire-Geräte**
+#### **Verfügbare Kanäle**
 
-Die Zahl gibt an, wie viele 1-Wire-Geräte insgesamt von der Applikation verwaltet werden können. Es gilt immer die Regel, dass es maximal 30 pro Busmaster sind.
+Um die Applikation übersichtlicher zu gestalten, kann hier ausgewählt werden, wie viele Kanäle in der Applikation verfügbar und editierbar sind. Die Maximalanzahl der Kanäle hängt von der Anzahl der installierten Busmaster ab. 
+
+Die ETS ist auch schneller in der Anzeige, wenn sie weniger (leere) Kanäle darstellen muss. Insofern macht es Sinn, nur so viele Kanäle anzuzeigen, wie man wirklich braucht.
 
 <!-- DOC -->
 #### **Installierte Busmaster**
@@ -125,12 +99,26 @@ Das WireGateway kann hardwareseitig mit bis zu 3 Busmaster bestückt werden. Jed
 
 Hier gibt man an, wie viele Busmaster bestückt sind.
 
-Dieses Feld ist nicht in der Applikation zum Sensormodul sichtbar. Beim Sensormodul ist maximal ein 1-Wire-Busmaster bestückt und somit sind maximal 30 Geräte möglich.
+Beim Sensormodul nur ein Busmaster möglich und diese Zahl muss somit auf 1 gesetzt bleiben.
 
-### Gerätesuche 
+
+#### **Busmaster-Einstellungen**
+
+Jeder 1-Wire-Busmaster erfordert bestimmte Einstellungen, die in diesem Dialog eingetragen werden.
+
+![Busmaster-Einstellungen](pics/busmaster.png)
+
+#### Kanäle und Busmaster
 
 <!-- DOC -->
-#### **Device-Suche**
+#### **Anzahl 1Wire-Geräte**
+
+Die Zahl gibt an, wie viele 1-Wire-Geräte insgesamt von der Applikation verwaltet werden können. Es gilt immer die Regel, dass es maximal 30 pro Busmaster sind.
+
+#### Gerätesuche 
+
+<!-- DOC -->
+##### **Sucheinstellung**
 
 Um die ID von neuen 1-Wire-Geräten herauszufinden, kann man diese mit dem 1-Wire-Anschluss verbinden. Daraufhin wird über das KO "IDs unbekannter Geräte" die ID dieses Gerätes ausgegeben. Dazu muss die Einstellung "neue Geräte-Id auf den Bus senden" ausgewählt sein.
 
@@ -151,13 +139,17 @@ Die Suche von neuen Geräten auf dem 1-Wire-Bus kostet (relativ zu einer Geräte
 Daher gilt ganz klar die Empfehlung, dass die Suche nur für den Anschluss neuer Geräte aktiviert werden sollte.
 
 <!-- DOC -->
-#### **Fehlerobjekt(e) anzeigen**
+##### **Fehlerobjekt(e) anzeigen**
 
 Ist diese Option mit 'Ja' ausgewählt, wird pro installiertem Busmaster ein 32-Bit-KO eingeblendet, bei dem für jedes 1-Wire-Gerät, das einen Fehler meldet oder nicht abgefragt werden kann, das entsprechende Bit auf 1 gesetzt wird.
 
 Da es derzeit noch keine befriedigende (sprich: für den User erklärbare) Zuordnung zwischen einem bestimmten Bit und dem zugehörigen 1-Wire-Gerät gibt, kann das Fehlerobjekt derzeit nur so genutzt werden, dass eine 0 für "alles OK" steht, und ein "ungleich 0" für einen allgemeinen Fehler (irgendein Sensor geht nicht).
 
 In zukünftigen Versionen soll es eine stabile Zuordnung zwischen Bit und Sensor geben.
+
+### **Experteneinstellungen**
+
+TODO
 
 ### **iButton Gruppierung**
 

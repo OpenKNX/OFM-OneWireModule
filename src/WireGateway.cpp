@@ -46,8 +46,8 @@ void WireGateway::setup(bool configured)
 
         mBusMaster[0] = new OneWireDS2482(WireGateway::processNewIdCallback, nullptr);
         mBusMaster[0]->setup(0, 1, lSearchNewDevices, Wire);
-        uint8_t lNumBusmaster = (knx.paramByte(WIRE_BusMasterCount) & WIRE_BusMasterCountMask) >> WIRE_BusMasterCountShift;
     #if COUNT_1WIRE_BUSMASTER > 1
+        uint8_t lNumBusmaster = (knx.paramByte(WIRE_BusMasterCount) & WIRE_BusMasterCountMask) >> WIRE_BusMasterCountShift;
         if (lNumBusmaster > 1)
         {
             gBusMaster[1] = new OneWireDS2482(WireDevice::processNewIdCallback, WireDevice::knxLoopCallback);

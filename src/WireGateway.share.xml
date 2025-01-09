@@ -1,12 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<?xml-model href="../../../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
+  <op:config name="%WIRE_BusMasterCount%" value="1" />
+  <op:config name="%WIRE_NumChannelsDefault%" value="3" />
+
   <ManufacturerData>
     <Manufacturer RefId="M-00FA">
       <ApplicationPrograms>
         <ApplicationProgram Id="%AID%" ApplicationNumber="104" ApplicationVersion="10" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="WP-1WireGateway-Logic" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0">
           <Static>
             <ParameterTypes>
+              <!-- Number of channels (module specific) -->
+              <ParameterType Id="%AID%_PT-WIRENumChannels" Name="WIRENumChannels">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="%N%" />
+              </ParameterType>
               <!-- Parameter types for WireGateway -->
               <ParameterType Id="%AID%_PT-DeviceId" Name="DeviceId">
                 <TypeText SizeInBit="56" />
@@ -14,13 +21,13 @@
               <!-- The following values represent directly the 1-Wire family type -->
               <ParameterType Id="%AID%_PT-FamilyCode" Name="FamilyCode">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="00-kein Gerät" Value="0" Id="%AID%_PT-FamilyCode_EN-0" />
-                  <Enumeration Text="01-iButton (DS1990)" Value="1" Id="%AID%_PT-FamilyCode_EN-3" />
-                  <Enumeration Text="10-Temperatur (DS18S20)" Value="16" Id="%AID%_PT-FamilyCode_EN-6" />
-                  <Enumeration Text="26-Analog (DS2438)" Value="38" Id="%AID%_PT-FamilyCode_EN-2" />
-                  <Enumeration Text="28-Temperatur (DS18B20)" Value="40" Id="%AID%_PT-FamilyCode_EN-1" />
-                  <Enumeration Text="29-I/O 8-Kanal (DS2408)" Value="41" Id="%AID%_PT-FamilyCode_EN-5" />
-                  <Enumeration Text="3A-I/O 2-Kanal (DS2413)" Value="58" Id="%AID%_PT-FamilyCode_EN-4" />
+                  <Enumeration Text="00-kein Gerät" Value="0" Id="%ENID%" />
+                  <Enumeration Text="01-iButton (DS1990)" Value="1" Id="%ENID%" />
+                  <Enumeration Text="10-Temperatur (DS18S20)" Value="16" Id="%ENID%" />
+                  <Enumeration Text="26-Analog (DS2438)" Value="38" Id="%ENID%" />
+                  <Enumeration Text="28-Temperatur (DS18B20)" Value="40" Id="%ENID%" />
+                  <Enumeration Text="29-I/O 8-Kanal (DS2408)" Value="41" Id="%ENID%" />
+                  <Enumeration Text="3A-I/O 2-Kanal (DS2413)" Value="58" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-String2" Name="String2">
@@ -28,255 +35,258 @@
               </ParameterType>
               <ParameterType Id="%AID%_PT-Nibble" Name="Nibble">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="0" Value="0" Id="%AID%_PT-Nibble_EN-0" />
-                  <Enumeration Text="1" Value="1" Id="%AID%_PT-Nibble_EN-1" />
-                  <Enumeration Text="2" Value="2" Id="%AID%_PT-Nibble_EN-2" />
-                  <Enumeration Text="3" Value="3" Id="%AID%_PT-Nibble_EN-3" />
-                  <Enumeration Text="4" Value="4" Id="%AID%_PT-Nibble_EN-4" />
-                  <Enumeration Text="5" Value="5" Id="%AID%_PT-Nibble_EN-5" />
-                  <Enumeration Text="6" Value="6" Id="%AID%_PT-Nibble_EN-6" />
-                  <Enumeration Text="7" Value="7" Id="%AID%_PT-Nibble_EN-7" />
-                  <Enumeration Text="8" Value="8" Id="%AID%_PT-Nibble_EN-8" />
-                  <Enumeration Text="9" Value="9" Id="%AID%_PT-Nibble_EN-9" />
-                  <Enumeration Text="A" Value="10" Id="%AID%_PT-Nibble_EN-10" />
-                  <Enumeration Text="B" Value="11" Id="%AID%_PT-Nibble_EN-11" />
-                  <Enumeration Text="C" Value="12" Id="%AID%_PT-Nibble_EN-12" />
-                  <Enumeration Text="D" Value="13" Id="%AID%_PT-Nibble_EN-13" />
-                  <Enumeration Text="E" Value="14" Id="%AID%_PT-Nibble_EN-14" />
-                  <Enumeration Text="F" Value="15" Id="%AID%_PT-Nibble_EN-15" />
+                  <Enumeration Text="0" Value="0" Id="%ENID%" />
+                  <Enumeration Text="1" Value="1" Id="%ENID%" />
+                  <Enumeration Text="2" Value="2" Id="%ENID%" />
+                  <Enumeration Text="3" Value="3" Id="%ENID%" />
+                  <Enumeration Text="4" Value="4" Id="%ENID%" />
+                  <Enumeration Text="5" Value="5" Id="%ENID%" />
+                  <Enumeration Text="6" Value="6" Id="%ENID%" />
+                  <Enumeration Text="7" Value="7" Id="%ENID%" />
+                  <Enumeration Text="8" Value="8" Id="%ENID%" />
+                  <Enumeration Text="9" Value="9" Id="%ENID%" />
+                  <Enumeration Text="A" Value="10" Id="%ENID%" />
+                  <Enumeration Text="B" Value="11" Id="%ENID%" />
+                  <Enumeration Text="C" Value="12" Id="%ENID%" />
+                  <Enumeration Text="D" Value="13" Id="%ENID%" />
+                  <Enumeration Text="E" Value="14" Id="%ENID%" />
+                  <Enumeration Text="F" Value="15" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-ModelFunction" Name="ModelFunction">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Default" Value="0" Id="%AID%_PT-ModelFunction_EN-0" />
-                  <Enumeration Text="Bit 1"   Value="1" Id="%AID%_PT-ModelFunction_EN-1" />
-                  <Enumeration Text="Bit 2"   Value="2" Id="%AID%_PT-ModelFunction_EN-2" />
-                  <Enumeration Text="Bit 3"   Value="3" Id="%AID%_PT-ModelFunction_EN-3" />
-                  <Enumeration Text="Bit 4"   Value="4" Id="%AID%_PT-ModelFunction_EN-4" />
-                  <Enumeration Text="Bit 5"   Value="5" Id="%AID%_PT-ModelFunction_EN-5" />
-                  <Enumeration Text="Bit 6"   Value="6" Id="%AID%_PT-ModelFunction_EN-6" />
-                  <Enumeration Text="Bit 7"   Value="7" Id="%AID%_PT-ModelFunction_EN-7" />
-                  <Enumeration Text="Bit 8"   Value="8" Id="%AID%_PT-ModelFunction_EN-8" />
-                  <Enumeration Text="Byte"    Value="9" Id="%AID%_PT-ModelFunction_EN-9" />
-                  <Enumeration Text="Temperatur (On Chip)" Value="10" Id="%AID%_PT-ModelFunction_EN-10" />
-                  <Enumeration Text="Spannung vom Chip (VDD)" Value="11" Id="%AID%_PT-ModelFunction_EN-11" />
-                  <Enumeration Text="Spannung vom AD-Wandler (VAD)" Value="12" Id="%AID%_PT-ModelFunction_EN-12" />
-                  <Enumeration Text="Spannung vom 2. AD-Wandler (VSens)" Value="13" Id="%AID%_PT-ModelFunction_EN-13" />
-                  <Enumeration Text="Temperatur (NTC)" Value="15" Id="%AID%_PT-ModelFunction_EN-15" />
-                  <Enumeration Text="Luftfeuchte" Value="16" Id="%AID%_PT-ModelFunction_EN-16" />
-                  <Enumeration Text="Helligkeit" Value="17" Id="%AID%_PT-ModelFunction_EN-17" />
+                  <Enumeration Text="Default" Value="0" Id="%ENID%" />
+                  <Enumeration Text="Bit 1"   Value="1" Id="%ENID%" />
+                  <Enumeration Text="Bit 2"   Value="2" Id="%ENID%" />
+                  <Enumeration Text="Bit 3"   Value="3" Id="%ENID%" />
+                  <Enumeration Text="Bit 4"   Value="4" Id="%ENID%" />
+                  <Enumeration Text="Bit 5"   Value="5" Id="%ENID%" />
+                  <Enumeration Text="Bit 6"   Value="6" Id="%ENID%" />
+                  <Enumeration Text="Bit 7"   Value="7" Id="%ENID%" />
+                  <Enumeration Text="Bit 8"   Value="8" Id="%ENID%" />
+                  <Enumeration Text="Byte"    Value="9" Id="%ENID%" />
+                  <Enumeration Text="Temperatur (On Chip)" Value="10" Id="%ENID%" />
+                  <Enumeration Text="Spannung vom Chip (VDD)" Value="11" Id="%ENID%" />
+                  <Enumeration Text="Spannung vom AD-Wandler (VAD)" Value="12" Id="%ENID%" />
+                  <Enumeration Text="Spannung vom 2. AD-Wandler (VSens)" Value="13" Id="%ENID%" />
+                  <Enumeration Text="Temperatur (NTC)" Value="15" Id="%ENID%" />
+                  <Enumeration Text="Luftfeuchte" Value="16" Id="%ENID%" />
+                  <Enumeration Text="Helligkeit" Value="17" Id="%ENID%" />
                   <!-- 18-49 future extensions -->
-                  <Enumeration Text="Benutzerdefiniert 1"  Value="50" Id="%AID%_PT-ModelFunction_EN-50" />
-                  <Enumeration Text="Benutzerdefiniert 2"  Value="51" Id="%AID%_PT-ModelFunction_EN-51" />
-                  <Enumeration Text="Benutzerdefiniert 3"  Value="52" Id="%AID%_PT-ModelFunction_EN-52" />
-                  <Enumeration Text="Benutzerdefiniert 4"  Value="53" Id="%AID%_PT-ModelFunction_EN-53" />
-                  <Enumeration Text="Benutzerdefiniert 5"  Value="54" Id="%AID%_PT-ModelFunction_EN-54" />
-                  <Enumeration Text="Benutzerdefiniert 6"  Value="55" Id="%AID%_PT-ModelFunction_EN-55" />
-                  <Enumeration Text="Benutzerdefiniert 7"  Value="56" Id="%AID%_PT-ModelFunction_EN-56" />
-                  <Enumeration Text="Benutzerdefiniert 8"  Value="57" Id="%AID%_PT-ModelFunction_EN-57" />
-                  <Enumeration Text="Benutzerdefiniert 9"  Value="58" Id="%AID%_PT-ModelFunction_EN-58" />
-                  <Enumeration Text="Benutzerdefiniert 10" Value="59" Id="%AID%_PT-ModelFunction_EN-59" />
-                  <Enumeration Text="Benutzerdefiniert 11" Value="60" Id="%AID%_PT-ModelFunction_EN-60" />
-                  <Enumeration Text="Benutzerdefiniert 12" Value="61" Id="%AID%_PT-ModelFunction_EN-61" />
-                  <Enumeration Text="Benutzerdefiniert 13" Value="62" Id="%AID%_PT-ModelFunction_EN-62" />
-                  <Enumeration Text="Benutzerdefiniert 14" Value="63" Id="%AID%_PT-ModelFunction_EN-63" />
-                  <Enumeration Text="Benutzerdefiniert 15" Value="64" Id="%AID%_PT-ModelFunction_EN-64" />
-                  <Enumeration Text="Benutzerdefiniert 16" Value="65" Id="%AID%_PT-ModelFunction_EN-65" />
-                  <Enumeration Text="Benutzerdefiniert 17" Value="66" Id="%AID%_PT-ModelFunction_EN-66" />
-                  <Enumeration Text="Benutzerdefiniert 18" Value="67" Id="%AID%_PT-ModelFunction_EN-67" />
-                  <Enumeration Text="Benutzerdefiniert 19" Value="68" Id="%AID%_PT-ModelFunction_EN-68" />
-                  <Enumeration Text="Benutzerdefiniert 20" Value="69" Id="%AID%_PT-ModelFunction_EN-69" />
-                  <Enumeration Text="Benutzerdefiniert 21" Value="70" Id="%AID%_PT-ModelFunction_EN-70" />
-                  <Enumeration Text="Benutzerdefiniert 22" Value="71" Id="%AID%_PT-ModelFunction_EN-71" />
-                  <Enumeration Text="Benutzerdefiniert 23" Value="72" Id="%AID%_PT-ModelFunction_EN-72" />
-                  <Enumeration Text="Benutzerdefiniert 24" Value="73" Id="%AID%_PT-ModelFunction_EN-73" />
-                  <Enumeration Text="Benutzerdefiniert 25" Value="74" Id="%AID%_PT-ModelFunction_EN-74" />
-                  <Enumeration Text="Benutzerdefiniert 26" Value="75" Id="%AID%_PT-ModelFunction_EN-75" />
-                  <Enumeration Text="Benutzerdefiniert 27" Value="76" Id="%AID%_PT-ModelFunction_EN-76" />
-                  <Enumeration Text="Benutzerdefiniert 28" Value="77" Id="%AID%_PT-ModelFunction_EN-77" />
-                  <Enumeration Text="Benutzerdefiniert 29" Value="78" Id="%AID%_PT-ModelFunction_EN-78" />
-                  <Enumeration Text="Benutzerdefiniert 30" Value="79" Id="%AID%_PT-ModelFunction_EN-79" />
+                  <Enumeration Text="Benutzerdefiniert 1"  Value="50" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 2"  Value="51" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 3"  Value="52" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 4"  Value="53" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 5"  Value="54" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 6"  Value="55" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 7"  Value="56" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 8"  Value="57" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 9"  Value="58" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 10" Value="59" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 11" Value="60" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 12" Value="61" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 13" Value="62" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 14" Value="63" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 15" Value="64" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 16" Value="65" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 17" Value="66" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 18" Value="67" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 19" Value="68" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 20" Value="69" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 21" Value="70" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 22" Value="71" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 23" Value="72" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 24" Value="73" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 25" Value="74" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 26" Value="75" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 27" Value="76" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 28" Value="77" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 29" Value="78" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 30" Value="79" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-ModelFunctionDS18B20" Name="ModelFunctionDS18B20">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="   9 Bit - 0.5°C"    Value="0" Id="%AID%_PT-ModelFunctionDS18B20_EN-0" />
-                  <Enumeration Text="10 Bit - 0.25°C"    Value="1" Id="%AID%_PT-ModelFunctionDS18B20_EN-1" />
-                  <Enumeration Text="11 Bit - 0.125°C"   Value="2" Id="%AID%_PT-ModelFunctionDS18B20_EN-2" />
-                  <Enumeration Text="12 Bit - 0.0625°C"  Value="3" Id="%AID%_PT-ModelFunctionDS18B20_EN-3" />
+                  <Enumeration Text="   9 Bit - 0.5°C"    Value="0" Id="%ENID%" />
+                  <Enumeration Text="10 Bit - 0.25°C"    Value="1" Id="%ENID%" />
+                  <Enumeration Text="11 Bit - 0.125°C"   Value="2" Id="%ENID%" />
+                  <Enumeration Text="12 Bit - 0.0625°C"  Value="3" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-ModelFunctionDS2408" Name="ModelFunctionDS2408">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Bit 0" Value="1" Id="%AID%_PT-ModelFunctionDS2408_EN-1" />
-                  <Enumeration Text="Bit 1" Value="2" Id="%AID%_PT-ModelFunctionDS2408_EN-2" />
-                  <Enumeration Text="Bit 2" Value="3" Id="%AID%_PT-ModelFunctionDS2408_EN-3" />
-                  <Enumeration Text="Bit 3" Value="4" Id="%AID%_PT-ModelFunctionDS2408_EN-4" />
-                  <Enumeration Text="Bit 4" Value="5" Id="%AID%_PT-ModelFunctionDS2408_EN-5" />
-                  <Enumeration Text="Bit 5" Value="6" Id="%AID%_PT-ModelFunctionDS2408_EN-6" />
-                  <Enumeration Text="Bit 6" Value="7" Id="%AID%_PT-ModelFunctionDS2408_EN-7" />
-                  <Enumeration Text="Bit 7" Value="8" Id="%AID%_PT-ModelFunctionDS2408_EN-8" />
-                  <Enumeration Text="Byte"  Value="9" Id="%AID%_PT-ModelFunctionDS2408_EN-9" />
+                  <Enumeration Text="Bit 0" Value="1" Id="%ENID%" />
+                  <Enumeration Text="Bit 1" Value="2" Id="%ENID%" />
+                  <Enumeration Text="Bit 2" Value="3" Id="%ENID%" />
+                  <Enumeration Text="Bit 3" Value="4" Id="%ENID%" />
+                  <Enumeration Text="Bit 4" Value="5" Id="%ENID%" />
+                  <Enumeration Text="Bit 5" Value="6" Id="%ENID%" />
+                  <Enumeration Text="Bit 6" Value="7" Id="%ENID%" />
+                  <Enumeration Text="Bit 7" Value="8" Id="%ENID%" />
+                  <Enumeration Text="Byte"  Value="9" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-ModelFunctionDS2413" Name="ModelFunctionDS2413">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Bit 0" Value="1" Id="%AID%_PT-ModelFunctionDS2413_EN-1" />
-                  <Enumeration Text="Bit 1" Value="2" Id="%AID%_PT-ModelFunctionDS2413_EN-2" />
-                  <Enumeration Text="Byte"  Value="9" Id="%AID%_PT-ModelFunctionDS2413_EN-9" />
+                  <Enumeration Text="Bit 0" Value="1" Id="%ENID%" />
+                  <Enumeration Text="Bit 1" Value="2" Id="%ENID%" />
+                  <Enumeration Text="Byte"  Value="9" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-ModelFunctionDS2438" Name="ModelFunctionDS2438">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Temperatur (On Chip)" Value="10" Id="%AID%_PT-ModelFunctionDS2438_EN-10" />
-                  <Enumeration Text="Spannung vom Chip (VDD)" Value="11" Id="%AID%_PT-ModelFunctionDS2438_EN-11" />
-                  <Enumeration Text="Spannung vom AD-Wandler (VAD)" Value="12" Id="%AID%_PT-ModelFunctionDS2438_EN-12" />
-                  <Enumeration Text="Spannung vom 2. AD-Wandler (VSens)" Value="13" Id="%AID%_PT-ModelFunctionDS2438_EN-13" />
-                  <Enumeration Text="Temperatur (NTC)" Value="15" Id="%AID%_PT-ModelFunctionDS2438_EN-15" />
-                  <Enumeration Text="Luftfeuchte" Value="16" Id="%AID%_PT-ModelFunctionDS2438_EN-16" />
-                  <Enumeration Text="Helligkeit" Value="17" Id="%AID%_PT-ModelFunctionDS2438_EN-17" />
+                  <Enumeration Text="Temperatur (On Chip)" Value="10" Id="%ENID%" />
+                  <Enumeration Text="Spannung vom Chip (VDD)" Value="11" Id="%ENID%" />
+                  <Enumeration Text="Spannung vom AD-Wandler (VAD)" Value="12" Id="%ENID%" />
+                  <Enumeration Text="Spannung vom 2. AD-Wandler (VSens)" Value="13" Id="%ENID%" />
+                  <Enumeration Text="Temperatur (NTC)" Value="15" Id="%ENID%" />
+                  <Enumeration Text="Luftfeuchte" Value="16" Id="%ENID%" />
+                  <Enumeration Text="Helligkeit" Value="17" Id="%ENID%" />
                   <!-- 18-49 future extensions -->
-                  <Enumeration Text="Benutzerdefiniert 1"  Value="50" Id="%AID%_PT-ModelFunctionDS2438_EN-50" />
-                  <Enumeration Text="Benutzerdefiniert 2"  Value="51" Id="%AID%_PT-ModelFunctionDS2438_EN-51" />
-                  <Enumeration Text="Benutzerdefiniert 3"  Value="52" Id="%AID%_PT-ModelFunctionDS2438_EN-52" />
-                  <Enumeration Text="Benutzerdefiniert 4"  Value="53" Id="%AID%_PT-ModelFunctionDS2438_EN-53" />
-                  <Enumeration Text="Benutzerdefiniert 5"  Value="54" Id="%AID%_PT-ModelFunctionDS2438_EN-54" />
-                  <Enumeration Text="Benutzerdefiniert 6"  Value="55" Id="%AID%_PT-ModelFunctionDS2438_EN-55" />
-                  <Enumeration Text="Benutzerdefiniert 7"  Value="56" Id="%AID%_PT-ModelFunctionDS2438_EN-56" />
-                  <Enumeration Text="Benutzerdefiniert 8"  Value="57" Id="%AID%_PT-ModelFunctionDS2438_EN-57" />
-                  <Enumeration Text="Benutzerdefiniert 9"  Value="58" Id="%AID%_PT-ModelFunctionDS2438_EN-58" />
-                  <Enumeration Text="Benutzerdefiniert 10" Value="59" Id="%AID%_PT-ModelFunctionDS2438_EN-59" />
-                  <Enumeration Text="Benutzerdefiniert 11" Value="60" Id="%AID%_PT-ModelFunctionDS2438_EN-60" />
-                  <Enumeration Text="Benutzerdefiniert 12" Value="61" Id="%AID%_PT-ModelFunctionDS2438_EN-61" />
-                  <Enumeration Text="Benutzerdefiniert 13" Value="62" Id="%AID%_PT-ModelFunctionDS2438_EN-62" />
-                  <Enumeration Text="Benutzerdefiniert 14" Value="63" Id="%AID%_PT-ModelFunctionDS2438_EN-63" />
-                  <Enumeration Text="Benutzerdefiniert 15" Value="64" Id="%AID%_PT-ModelFunctionDS2438_EN-64" />
-                  <Enumeration Text="Benutzerdefiniert 16" Value="65" Id="%AID%_PT-ModelFunctionDS2438_EN-65" />
-                  <Enumeration Text="Benutzerdefiniert 17" Value="66" Id="%AID%_PT-ModelFunctionDS2438_EN-66" />
-                  <Enumeration Text="Benutzerdefiniert 18" Value="67" Id="%AID%_PT-ModelFunctionDS2438_EN-67" />
-                  <Enumeration Text="Benutzerdefiniert 19" Value="68" Id="%AID%_PT-ModelFunctionDS2438_EN-68" />
-                  <Enumeration Text="Benutzerdefiniert 20" Value="69" Id="%AID%_PT-ModelFunctionDS2438_EN-69" />
-                  <Enumeration Text="Benutzerdefiniert 21" Value="70" Id="%AID%_PT-ModelFunctionDS2438_EN-70" />
-                  <Enumeration Text="Benutzerdefiniert 22" Value="71" Id="%AID%_PT-ModelFunctionDS2438_EN-71" />
-                  <Enumeration Text="Benutzerdefiniert 23" Value="72" Id="%AID%_PT-ModelFunctionDS2438_EN-72" />
-                  <Enumeration Text="Benutzerdefiniert 24" Value="73" Id="%AID%_PT-ModelFunctionDS2438_EN-73" />
-                  <Enumeration Text="Benutzerdefiniert 25" Value="74" Id="%AID%_PT-ModelFunctionDS2438_EN-74" />
-                  <Enumeration Text="Benutzerdefiniert 26" Value="75" Id="%AID%_PT-ModelFunctionDS2438_EN-75" />
-                  <Enumeration Text="Benutzerdefiniert 27" Value="76" Id="%AID%_PT-ModelFunctionDS2438_EN-76" />
-                  <Enumeration Text="Benutzerdefiniert 28" Value="77" Id="%AID%_PT-ModelFunctionDS2438_EN-77" />
-                  <Enumeration Text="Benutzerdefiniert 29" Value="78" Id="%AID%_PT-ModelFunctionDS2438_EN-78" />
-                  <Enumeration Text="Benutzerdefiniert 30" Value="79" Id="%AID%_PT-ModelFunctionDS2438_EN-79" />
+                  <Enumeration Text="Benutzerdefiniert 1"  Value="50" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 2"  Value="51" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 3"  Value="52" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 4"  Value="53" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 5"  Value="54" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 6"  Value="55" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 7"  Value="56" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 8"  Value="57" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 9"  Value="58" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 10" Value="59" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 11" Value="60" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 12" Value="61" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 13" Value="62" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 14" Value="63" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 15" Value="64" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 16" Value="65" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 17" Value="66" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 18" Value="67" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 19" Value="68" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 20" Value="69" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 21" Value="70" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 22" Value="71" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 23" Value="72" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 24" Value="73" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 25" Value="74" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 26" Value="75" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 27" Value="76" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 28" Value="77" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 29" Value="78" Id="%ENID%" />
+                  <Enumeration Text="Benutzerdefiniert 30" Value="79" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BusMasterCount" Name="BusMasterCount">
-                <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="1 Busmaster (links)"              Value="1" Id="%AID%_PT-BusMasterCount_EN-0" />
-                  <Enumeration Text="2 Busmaster (links+rechts)"       Value="2" Id="%AID%_PT-BusMasterCount_EN-1" />
-                  <Enumeration Text="3 Busmaster (links+rechts+unten)" Value="3" Id="%AID%_PT-BusMasterCount_EN-2" />
-                </TypeRestriction>
+                <TypeNumber SizeInBit="2" Type="unsignedInt" minInclusive="1" maxInclusive="%WIRE_BusMasterCount%" />
               </ParameterType>
+              <!-- <ParameterType Id="%AID%_PT-BusMasterCount" Name="BusMasterCount">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="1 Busmaster (links)"              Value="1" Id="%ENID%" />
+                  <Enumeration Text="2 Busmaster (links+rechts)"       Value="2" Id="%ENID%" />
+                  <Enumeration Text="3 Busmaster (links+rechts+unten)" Value="3" Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType> -->
               <ParameterType Id="%AID%_PT-BusMasterSelect1" Name="BusMasterSelect1">
                 <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="Busmaster 1" Value="1" Id="%AID%_PT-BusMasterSelect1_EN-0" />
+                  <Enumeration Text="Busmaster 1" Value="1" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BusMasterSelect2" Name="BusMasterSelect2">
                 <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="Busmaster 1 (links)"  Value="1" Id="%AID%_PT-BusMasterSelect2_EN-0" />
-                  <Enumeration Text="Busmaster 2 (rechts)" Value="2" Id="%AID%_PT-BusMasterSelect2_EN-1" />
+                  <Enumeration Text="Busmaster 1 (links)"  Value="1" Id="%ENID%" />
+                  <Enumeration Text="Busmaster 2 (rechts)" Value="2" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BusMasterSelect3" Name="BusMasterSelect3">
                 <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="Busmaster 1 (links)"  Value="1" Id="%AID%_PT-BusMasterSelect3_EN-0" />
-                  <Enumeration Text="Busmaster 2 (rechts)" Value="2" Id="%AID%_PT-BusMasterSelect3_EN-1" />
-                  <Enumeration Text="Busmaster 3 (unten)"  Value="3" Id="%AID%_PT-BusMasterSelect3_EN-2" />
+                  <Enumeration Text="Busmaster 1 (links)"  Value="1" Id="%ENID%" />
+                  <Enumeration Text="Busmaster 2 (rechts)" Value="2" Id="%ENID%" />
+                  <Enumeration Text="Busmaster 3 (unten)"  Value="3" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-BusMasterParameterRSTL" Name="BusMasterParameterRSTL">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="440" Value="0" Id="%AID%_PT-BusMasterParameterRSTL_EN-0" />
-                  <Enumeration Text="460" Value="1" Id="%AID%_PT-BusMasterParameterRSTL_EN-1" />
-                  <Enumeration Text="480" Value="2" Id="%AID%_PT-BusMasterParameterRSTL_EN-2" />
-                  <Enumeration Text="500" Value="3" Id="%AID%_PT-BusMasterParameterRSTL_EN-3" />
-                  <Enumeration Text="520" Value="4" Id="%AID%_PT-BusMasterParameterRSTL_EN-4" />
-                  <Enumeration Text="540" Value="5" Id="%AID%_PT-BusMasterParameterRSTL_EN-5" />
-                  <Enumeration Text="560" Value="6" Id="%AID%_PT-BusMasterParameterRSTL_EN-6" />
-                  <Enumeration Text="580" Value="7" Id="%AID%_PT-BusMasterParameterRSTL_EN-7" />
-                  <Enumeration Text="600" Value="8" Id="%AID%_PT-BusMasterParameterRSTL_EN-8" />
-                  <Enumeration Text="620" Value="9" Id="%AID%_PT-BusMasterParameterRSTL_EN-9" />
-                  <Enumeration Text="640" Value="10" Id="%AID%_PT-BusMasterParameterRSTL_EN-10" />
-                  <Enumeration Text="660" Value="11" Id="%AID%_PT-BusMasterParameterRSTL_EN-11" />
-                  <Enumeration Text="680" Value="12" Id="%AID%_PT-BusMasterParameterRSTL_EN-12" />
-                  <Enumeration Text="700" Value="13" Id="%AID%_PT-BusMasterParameterRSTL_EN-13" />
-                  <Enumeration Text="720" Value="14" Id="%AID%_PT-BusMasterParameterRSTL_EN-14" />
-                  <Enumeration Text="740" Value="15" Id="%AID%_PT-BusMasterParameterRSTL_EN-15" />
+                  <Enumeration Text="440" Value="0" Id="%ENID%" />
+                  <Enumeration Text="460" Value="1" Id="%ENID%" />
+                  <Enumeration Text="480" Value="2" Id="%ENID%" />
+                  <Enumeration Text="500" Value="3" Id="%ENID%" />
+                  <Enumeration Text="520" Value="4" Id="%ENID%" />
+                  <Enumeration Text="540" Value="5" Id="%ENID%" />
+                  <Enumeration Text="560" Value="6" Id="%ENID%" />
+                  <Enumeration Text="580" Value="7" Id="%ENID%" />
+                  <Enumeration Text="600" Value="8" Id="%ENID%" />
+                  <Enumeration Text="620" Value="9" Id="%ENID%" />
+                  <Enumeration Text="640" Value="10" Id="%ENID%" />
+                  <Enumeration Text="660" Value="11" Id="%ENID%" />
+                  <Enumeration Text="680" Value="12" Id="%ENID%" />
+                  <Enumeration Text="700" Value="13" Id="%ENID%" />
+                  <Enumeration Text="720" Value="14" Id="%ENID%" />
+                  <Enumeration Text="740" Value="15" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-BusMasterParameterMSP" Name="BusMasterParameterMSP">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="58" Value="1" Id="%AID%_PT-BusMasterParameterMSP_EN-1" />
-                  <Enumeration Text="60" Value="2" Id="%AID%_PT-BusMasterParameterMSP_EN-2" />
-                  <Enumeration Text="62" Value="3" Id="%AID%_PT-BusMasterParameterMSP_EN-3" />
-                  <Enumeration Text="64" Value="4" Id="%AID%_PT-BusMasterParameterMSP_EN-4" />
-                  <Enumeration Text="66" Value="5" Id="%AID%_PT-BusMasterParameterMSP_EN-5" />
-                  <Enumeration Text="68" Value="6" Id="%AID%_PT-BusMasterParameterMSP_EN-6" />
-                  <Enumeration Text="70" Value="7" Id="%AID%_PT-BusMasterParameterMSP_EN-7" />
-                  <Enumeration Text="72" Value="8" Id="%AID%_PT-BusMasterParameterMSP_EN-8" />
-                  <Enumeration Text="74" Value="9" Id="%AID%_PT-BusMasterParameterMSP_EN-9" />
-                  <Enumeration Text="76" Value="10" Id="%AID%_PT-BusMasterParameterMSP_EN-10" />
+                  <Enumeration Text="58" Value="1" Id="%ENID%" />
+                  <Enumeration Text="60" Value="2" Id="%ENID%" />
+                  <Enumeration Text="62" Value="3" Id="%ENID%" />
+                  <Enumeration Text="64" Value="4" Id="%ENID%" />
+                  <Enumeration Text="66" Value="5" Id="%ENID%" />
+                  <Enumeration Text="68" Value="6" Id="%ENID%" />
+                  <Enumeration Text="70" Value="7" Id="%ENID%" />
+                  <Enumeration Text="72" Value="8" Id="%ENID%" />
+                  <Enumeration Text="74" Value="9" Id="%ENID%" />
+                  <Enumeration Text="76" Value="10" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-BusMasterParameterW0L" Name="BusMasterParameterW0L">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="52" Value="0" Id="%AID%_PT-BusMasterParameterW0L_EN-0" />
-                  <Enumeration Text="54" Value="1" Id="%AID%_PT-BusMasterParameterW0L_EN-1" />
-                  <Enumeration Text="56" Value="2" Id="%AID%_PT-BusMasterParameterW0L_EN-2" />
-                  <Enumeration Text="58" Value="3" Id="%AID%_PT-BusMasterParameterW0L_EN-3" />
-                  <Enumeration Text="60" Value="4" Id="%AID%_PT-BusMasterParameterW0L_EN-4" />
-                  <Enumeration Text="62" Value="5" Id="%AID%_PT-BusMasterParameterW0L_EN-5" />
-                  <Enumeration Text="64" Value="6" Id="%AID%_PT-BusMasterParameterW0L_EN-6" />
-                  <Enumeration Text="66" Value="7" Id="%AID%_PT-BusMasterParameterW0L_EN-7" />
-                  <Enumeration Text="68" Value="8" Id="%AID%_PT-BusMasterParameterW0L_EN-8" />
-                  <Enumeration Text="70" Value="9" Id="%AID%_PT-BusMasterParameterW0L_EN-9" />
+                  <Enumeration Text="52" Value="0" Id="%ENID%" />
+                  <Enumeration Text="54" Value="1" Id="%ENID%" />
+                  <Enumeration Text="56" Value="2" Id="%ENID%" />
+                  <Enumeration Text="58" Value="3" Id="%ENID%" />
+                  <Enumeration Text="60" Value="4" Id="%ENID%" />
+                  <Enumeration Text="62" Value="5" Id="%ENID%" />
+                  <Enumeration Text="64" Value="6" Id="%ENID%" />
+                  <Enumeration Text="66" Value="7" Id="%ENID%" />
+                  <Enumeration Text="68" Value="8" Id="%ENID%" />
+                  <Enumeration Text="70" Value="9" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-BusMasterParameterREC0" Name="BusMasterParameterREC0">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="2.75" Value="5" Id="%AID%_PT-BusMasterParameterREC0_EN-5" />
-                  <Enumeration Text="5.25" Value="6" Id="%AID%_PT-BusMasterParameterREC0_EN-6" />
-                  <Enumeration Text="7.75" Value="7" Id="%AID%_PT-BusMasterParameterREC0_EN-7" />
-                  <Enumeration Text="10.25" Value="8" Id="%AID%_PT-BusMasterParameterREC0_EN-8" />
-                  <Enumeration Text="12.75" Value="9" Id="%AID%_PT-BusMasterParameterREC0_EN-9" />
-                  <Enumeration Text="15.25" Value="10" Id="%AID%_PT-BusMasterParameterREC0_EN-10" />
-                  <Enumeration Text="17.75" Value="11" Id="%AID%_PT-BusMasterParameterREC0_EN-11" />
-                  <Enumeration Text="20.25" Value="12" Id="%AID%_PT-BusMasterParameterREC0_EN-12" />
-                  <Enumeration Text="22.75" Value="13" Id="%AID%_PT-BusMasterParameterREC0_EN-13" />
-                  <Enumeration Text="25.25" Value="14" Id="%AID%_PT-BusMasterParameterREC0_EN-14" />
+                  <Enumeration Text="2.75" Value="5" Id="%ENID%" />
+                  <Enumeration Text="5.25" Value="6" Id="%ENID%" />
+                  <Enumeration Text="7.75" Value="7" Id="%ENID%" />
+                  <Enumeration Text="10.25" Value="8" Id="%ENID%" />
+                  <Enumeration Text="12.75" Value="9" Id="%ENID%" />
+                  <Enumeration Text="15.25" Value="10" Id="%ENID%" />
+                  <Enumeration Text="17.75" Value="11" Id="%ENID%" />
+                  <Enumeration Text="20.25" Value="12" Id="%ENID%" />
+                  <Enumeration Text="22.75" Value="13" Id="%ENID%" />
+                  <Enumeration Text="25.25" Value="14" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-BusMasterParameterWPU" Name="BusMasterParameterWPU">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="500" Value="5" Id="%AID%_PT-BusMasterParameterWPU_EN-5" />
-                  <Enumeration Text="1000" Value="6" Id="%AID%_PT-BusMasterParameterWPU_EN-6" />
+                  <Enumeration Text="500" Value="5" Id="%ENID%" />
+                  <Enumeration Text="1000" Value="6" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-IdSearch" Name="IdSearch">
                 <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="neue Geräte ignorieren" Value="0" Id="%AID%_PT-IdSearch_EN-0" />
-                  <Enumeration Text="neue Geräte-Id auf den Bus senden" Value="1" Id="%AID%_PT-IdSearch_EN-1" />
+                  <Enumeration Text="neue Geräte ignorieren" Value="0" Id="%ENID%" />
+                  <Enumeration Text="neue Geräte-Id auf den Bus senden" Value="1" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-GroupType" Name="GroupType">
                 <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="ODER-Gruppe" Value="0" Id="%AID%_PT-GroupType_EN-0" />
-                  <Enumeration Text="UND-Gruppe" Value="1" Id="%AID%_PT-GroupType_EN-1" />
+                  <Enumeration Text="ODER-Gruppe" Value="0" Id="%ENID%" />
+                  <Enumeration Text="UND-Gruppe" Value="1" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
             </ParameterTypes>
@@ -284,11 +294,13 @@
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%00000" Name="WireError" Offset="0" BitOffset="0" ParameterType="%AID%_PT-OnOffYesNo" Text="Fehlerobjekt(e) anzeigen" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%00001" Name="BusMasterCount" Offset="0" BitOffset="1" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="1" />
-                <Parameter Id="%AID%_UP-%TT%00002" Name="IdSearch" Offset="0" BitOffset="3" ParameterType="%AID%_PT-IdSearch" Text="Device-Suche" Value="1" />
+                <!-- <Parameter Id="%AID%_UP-%TT%00001" Name="BusMasterCount" Offset="0" BitOffset="1" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="%WIRE_BusMasterCount%" /> -->
+                <!-- 2-Bit frei -->
+                <Parameter Id="%AID%_UP-%TT%00002" Name="IdSearch" Offset="0" BitOffset="3" ParameterType="%AID%_PT-IdSearch" Text="Sucheinstellung" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%00003" Name="IButton1" Offset="0" BitOffset="4" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 1 auswerten?" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%00004" Name="IButton2" Offset="0" BitOffset="5" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 2 auswerten?" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%00005" Name="IButton3" Offset="0" BitOffset="6" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 3 auswerten?" Value="1" />
+                <!-- 1-Bit frei -->
               </Union>
               <Parameter Id="%AID%_P-%TT%00010" Name="GroupText1" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 1: Name" Value="" />
               <Parameter Id="%AID%_P-%TT%00011" Name="GroupText2" ParameterType="%AID%_PT-Text40Byte" Text="Gruppe 2: Name" Value="" />
@@ -309,8 +321,8 @@
                 <Parameter Id="%AID%_UP-%TT%00026" Name="Group7" Offset="0" BitOffset="6" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%00027" Name="Group8" Offset="0" BitOffset="7" ParameterType="%AID%_PT-GroupType" Text="                  Typ" Value="0" />
               </Union>
-              <Parameter Id="%AID%_P-%TT%00028" Name="DeviceCount" ParameterType="%AID%_PT-ValueDpt5" Text="Anzahl 1Wire-Geräte" Value="0" Access="Read" />
-              <Parameter Id="%AID%_P-%TT%00029" Name="BusmasterMax" ParameterType="%AID%_PT-ValueDpt5" Text="Maximale Anzahl Busmaster" Value="3" Access="None" />
+              <!-- <Parameter Id="%AID%_P-%TT%00028" Name="DeviceCount" ParameterType="%AID%_PT-ValueDpt5" Text="Anzahl 1Wire-Geräte" Value="0" Access="Read" /> -->
+              <!-- <Parameter Id="%AID%_P-%TT%00029" Name="BusmasterMax" ParameterType="%AID%_PT-ValueDpt5" Text="Maximale Anzahl Busmaster" Value="3" Access="None" /> -->
               <Union SizeInBit="24">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="2" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%00030" Name="Busmaster1RSTL" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterRSTL" Text="tRSTL (in Mikrosekunden)" Value="6" />
@@ -319,12 +331,19 @@
                 <Parameter Id="%AID%_UP-%TT%00033" Name="Busmaster1REC0" Offset="1" BitOffset="4" ParameterType="%AID%_PT-BusMasterParameterREC0" Text="tREC0 (in Mikrosekunden)" Value="6" />
                 <Parameter Id="%AID%_UP-%TT%00034" Name="Busmaster1WPU"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterWPU"  Text="RWPU (in Ohm)"  Value="6" />
               </Union>
+              <Union SizeInBit="8">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="5" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%TT%00035" Name="VisibleChannels" ParameterType="%AID%_PT-WIRENumChannels" Offset="0" BitOffset="0" Text="Verfügbare Kanäle" Value="%WIRE_NumChannelsDefault%" SuffixText=" von %N%" />
+                <!-- <Parameter Id="%AID%_UP-%TT%00036" Name="BusmasterMax"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5"  Text="Verfügbare Busmaster"  Value="3" Access="Read" /> -->
+                <Parameter Id="%AID%_UP-%TT%00036" Name="BusMasterCount" Offset="1" BitOffset="0" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="%WIRE_BusMasterCount%" Access="Read" />
+                <!-- 6-Bit frei -->
+              </Union>
             </Parameters>
             <ParameterRefs>
               <!-- General -->
               <ParameterRef Id="%AID%_UP-%TT%00000_R-%TT%0000001" RefId="%AID%_UP-%TT%00000" />
-              <ParameterRef Id="%AID%_UP-%TT%00001_R-%TT%0000101" RefId="%AID%_UP-%TT%00001" />
-              <ParameterRef Id="%AID%_UP-%TT%00001_R-%TT%0000102" RefId="%AID%_UP-%TT%00001" Access="None" />
+              <!-- <ParameterRef Id="%AID%_UP-%TT%00001_R-%TT%0000101" RefId="%AID%_UP-%TT%00001" />
+              <ParameterRef Id="%AID%_UP-%TT%00001_R-%TT%0000102" RefId="%AID%_UP-%TT%00001" Access="None" /> -->
               <ParameterRef Id="%AID%_UP-%TT%00002_R-%TT%0000201" RefId="%AID%_UP-%TT%00002" />
               <ParameterRef Id="%AID%_UP-%TT%00003_R-%TT%0000301" RefId="%AID%_UP-%TT%00003" />
               <ParameterRef Id="%AID%_UP-%TT%00004_R-%TT%0000401" RefId="%AID%_UP-%TT%00004" />
@@ -345,13 +364,15 @@
               <ParameterRef Id="%AID%_UP-%TT%00025_R-%TT%0002501" RefId="%AID%_UP-%TT%00025" />
               <ParameterRef Id="%AID%_UP-%TT%00026_R-%TT%0002601" RefId="%AID%_UP-%TT%00026" />
               <ParameterRef Id="%AID%_UP-%TT%00027_R-%TT%0002701" RefId="%AID%_UP-%TT%00027" />
-              <ParameterRef Id="%AID%_P-%TT%00028_R-%TT%0002801" RefId="%AID%_P-%TT%00028" />
-              <ParameterRef Id="%AID%_P-%TT%00029_R-%TT%0002901" RefId="%AID%_P-%TT%00029" />
+              <!-- <ParameterRef Id="%AID%_P-%TT%00028_R-%TT%0002801" RefId="%AID%_P-%TT%00028" /> -->
+              <!-- <ParameterRef Id="%AID%_P-%TT%00029_R-%TT%0002901" RefId="%AID%_P-%TT%00029" /> -->
               <ParameterRef Id="%AID%_UP-%TT%00030_R-%TT%0003001" RefId="%AID%_UP-%TT%00030" />
               <ParameterRef Id="%AID%_UP-%TT%00031_R-%TT%0003101" RefId="%AID%_UP-%TT%00031" />
               <ParameterRef Id="%AID%_UP-%TT%00032_R-%TT%0003201" RefId="%AID%_UP-%TT%00032" />
               <ParameterRef Id="%AID%_UP-%TT%00033_R-%TT%0003301" RefId="%AID%_UP-%TT%00033" />
               <ParameterRef Id="%AID%_UP-%TT%00034_R-%TT%0003401" RefId="%AID%_UP-%TT%00034" />
+              <ParameterRef Id="%AID%_UP-%TT%00035_R-%TT%0003501" RefId="%AID%_UP-%TT%00035" />
+              <ParameterRef Id="%AID%_UP-%TT%00036_R-%TT%0003601" RefId="%AID%_UP-%TT%00036" />
             </ParameterRefs>
             <ComObjectTable>
               <ComObject Id="%AID%_O-%TT%00020" Name="NewId" Text="IDs unbekannter Geräte" Number="20" FunctionText="Geräte-Id" ObjectSize="14 Bytes" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-16-1" />
@@ -383,44 +404,22 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
-            <Channel Name="MainChannel" Text="1-Wire" Number="%TT%" Id="%AID%_CH-%TT%" Icon="blur" HelpContext="Empty">
-              <ParameterBlock Name="Init" Id="%AID%_PB-nnn" Inline="true">
+            <Channel Id="%AID%_CH-%PREFIX%" Number="%PREFIX%" Name="Main" Text="1-Wire" Icon="vector-polyline" HelpContext="WIRE-Dokumentation">
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Settings" Text="Allgemein" Icon="cog-outline" ShowInComObjectTree="true" HelpContext="WIRE-Dokumentation">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="1-Wire" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00035_R-%TT%0003501" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
                 <!-- Maximum number of Busmaster (used as Parameter for WireGateway and Sensormodul) -->
-                <ParameterRefRef RefId="%AID%_P-%TT%00029_R-%TT%0002901" HelpContext="WIRE-Installierte-Busmaster" IndentLevel="1" />
-              </ParameterBlock>
-              <ParameterBlock Id="%AID%_PB-1" Name="BM" Text="Basiseinstellungen" Icon="cog-outline" HelpContext="Empty">
-                <!-- Calculated number of 1-Wire-Devices supported -->
-                <ParameterSeparator Id="%AID%_PS-11" Text="Kanäle und Busmaster" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00028_R-%TT%0002801" HelpContext="%DOC%" IndentLevel="1" />
-                <choose ParamRefId="%AID%_P-%TT%00029_R-%TT%0002901">
-                  <when test="1">
-                    <Assign TargetParamRefRef="%AID%_UP-%TT%00001_R-%TT%0000101" Value="1" />
-                  </when>
-                  <when test="3">
-                    <ParameterRefRef RefId="%AID%_UP-%TT%00001_R-%TT%0000101" HelpContext="%DOC%" IndentLevel="1" />
-                    <ParameterSeparator Id="%AID%_PS-13" Text="" UIHint="HorizontalRuler" />
-                  </when>
-                </choose>
-                <choose ParamRefId="%AID%_UP-%TT%00001_R-%TT%0000101">
-                  <when test="1">
-                    <!-- one Busmaster supports 30 Devices -->
-                    <Assign TargetParamRefRef="%AID%_P-%TT%00028_R-%TT%0002801" Value="30" />
-                  </when>
-                  <when test="2">
-                    <!-- two Busmaster support 60 Devices -->
-                    <Assign TargetParamRefRef="%AID%_P-%TT%00028_R-%TT%0002801" Value="60" />
-                  </when>
-                  <when test="3">
-                    <!-- three Busmaster support 90 Devices -->
-                    <Assign TargetParamRefRef="%AID%_P-%TT%00028_R-%TT%0002801" Value="90" />
-                  </when>
-                </choose>
+                <ParameterRefRef RefId="%AID%_UP-%TT%00036_R-%TT%0003601" HelpContext="%DOC%" IndentLevel="1" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                 <ParameterSeparator Id="%AID%_PS-11" Text="Gerätesuche" UIHint="Headline" />
                 <ParameterRefRef RefId="%AID%_UP-%TT%00002_R-%TT%0000201" HelpContext="%DOC%" IndentLevel="1" />
                 <ComObjectRefRef RefId="%AID%_O-%TT%00020_R-%TT%0002001" />
                 <choose ParamRefId="%AID%_UP-%TT%00002_R-%TT%0000201">
                   <when test="1">
-                    <ParameterSeparator Id="%AID%_PS-16" Text="Im Produktivbetrieb sollte die Gerätesuche immer aus sein, da sie bei hoher KNX-Buslast dazu führen kann, dass Telegramme verloren gehen. Dieser Paremter sollte nur an sein, wenn man neue 1-Wire-Geräte anschließen will." UIHint="Information" />
+                    <ParameterSeparator Id="%AID%_PS-16" Text="Im Produktivbetrieb sollte die Gerätesuche immer auf 'ignorieren' stehen, da sie bei hoher KNX-Buslast dazu führen kann, dass Telegramme verloren gehen. Dieser Paremter sollte nur an sein, wenn man neue 1-Wire-Geräte anschließen will." UIHint="Information" />
                   </when>
                 </choose>
                 <ParameterSeparator Id="%AID%_PS-14" Text="" UIHint="HorizontalRuler" />
@@ -433,7 +432,7 @@
                     <ParameterSeparator Id="%AID%_PS-1" Text="Das Fehlerobjekt KO-21 ist eine Bitleiste, bei der ein Bit auf 1 gesetzt wird, wenn das entsprechende Gerät einen Fehler aufweist:" />
                     <ParameterSeparator Id="%AID%_PS-2" Text="  Bit 0: Fehler vom Busmaster selbst" />
                     <ParameterSeparator Id="%AID%_PS-3" Text="  Bit 1-30: Fehler von Gerät 1 bis 30" />
-                    <choose ParamRefId="%AID%_UP-%TT%00001_R-%TT%0000101">
+                    <choose ParamRefId="%AID%_UP-%TT%00036_R-%TT%0003601">
                       <when test="2 3">
                         <ComObjectRefRef RefId="%AID%_O-%TT%00022_R-%TT%0002201" />
                         <ParameterSeparator Id="%AID%_PS-4" Text="Das gilt für das Fehlerobjekt KO-22 anlaog. " />
@@ -451,30 +450,65 @@
                   </when>
                 </choose>
               </ParameterBlock>
-              <ParameterBlock Id="%AID%_PB-2" Name="IButtonGroups" Text="iButton Gruppierung" Icon="radiobox-marked">
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Expert" Text="Erweitert" Icon="format-list-text" HelpContext="Empty">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Die Einstellungen dieser Seite sind nur für Experten, die sich genau mit 1-Wire-Bus-Timing auskennen. Das Datenblatt vom DS2484, Seite 13 ist heranzuziehen." UIHint="Information" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Falls sich durch Anpassungen hier das Modul nicht mehr über die ETS programmieren lässt, bitte erneut die Firmware per USB aufspielen und dann mit Standardparametern neu programmieren." />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00030_R-%TT%0003001" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00031_R-%TT%0003101" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00032_R-%TT%0003201" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00033_R-%TT%0003301" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00034_R-%TT%0003401" />
+              </ParameterBlock>              
+              <ParameterBlock Id="%AID%_PB-nnn" Name="IButtonGroups" Text="iButton Gruppierung" Icon="radiobox-marked">
                 <ParameterSeparator Id="%AID%_PS-25" Text="iButton-Gruppen" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-26" Text="iButtons können in Gruppen organisiert werden, die es erlauben, für mehrere iButtons ein Telegramm zu bekommen." />
                 <ParameterSeparator Id="%AID%_PS-30" Text="Es gibt folgende Gruppentypen:" />
                 <ParameterSeparator Id="%AID%_PS-31" Text="ODER-Gruppe: Sobald ein iButton dieser Gruppe erkannt wird, sendet diese Gruppe ein EIN-Signal. Nur wenn alle iButton dieser Gruppe entfernt sind, sendet diese Gruppe ein AUS-Signal." />
                 <ParameterSeparator Id="%AID%_PS-32" Text="UND-Gruppe: Nur wenn alle iButton dieser Gruppe erkannt werden, sendet diese Gruppe ein EIN-Signal. Sobald nur ein iButton dieser Gruppe entfernt ist, sendet diese Gruppe ein AUS-Signal." />
-                <ParameterRefRef RefId="%AID%_P-%TT%00010_R-%TT%0001001" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00020_R-%TT%0002001" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00011_R-%TT%0001101" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00021_R-%TT%0002101" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00012_R-%TT%0001201" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00022_R-%TT%0002201" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00013_R-%TT%0001301" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00023_R-%TT%0002301" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00014_R-%TT%0001401" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00024_R-%TT%0002401" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00015_R-%TT%0001501" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00025_R-%TT%0002501" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00016_R-%TT%0001601" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00026_R-%TT%0002601" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00017_R-%TT%0001701" HelpContext="WIRE-Gruppenname" IndentLevel="1" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00027_R-%TT%0002701" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
+                <ParameterBlock Id="%AID%_PB-nnn" Inline="true" Layout="Table">
+                  <Rows>
+                    <Row Id="%AID%_PB-nnn_R-1" Text="Gruppe 1" />
+                    <Row Id="%AID%_PB-nnn_R-2" Text="Gruppe 2" />
+                    <Row Id="%AID%_PB-nnn_R-3" Text="Gruppe 3" />
+                    <Row Id="%AID%_PB-nnn_R-4" Text="Gruppe 4" />
+                    <Row Id="%AID%_PB-nnn_R-5" Text="Gruppe 5" />
+                    <Row Id="%AID%_PB-nnn_R-6" Text="Gruppe 6" />
+                    <Row Id="%AID%_PB-nnn_R-7" Text="Gruppe 7" />
+                    <Row Id="%AID%_PB-nnn_R-8" Text="Gruppe 8" />
+                  </Rows>
+                  <Columns>
+                    <Column Id="%AID%_PB-nnn_C-1" Text="Name" Width="50%"/>
+                    <Column Id="%AID%_PB-nnn_C-2" Text="Typ" Width="50%" />
+                  </Columns>
+
+                  <ParameterRefRef RefId="%AID%_P-%TT%00010_R-%TT%0001001" HelpContext="WIRE-Gruppenname" Cell="1,1" />
+                  <ParameterRefRef RefId="%AID%_UP-%TT%00020_R-%TT%0002001" HelpContext="WIRE-Gruppentyp" Cell="1,2" />
+                  <ParameterRefRef RefId="%AID%_P-%TT%00011_R-%TT%0001101" HelpContext="WIRE-Gruppenname" Cell="2,1" />
+                  <ParameterRefRef RefId="%AID%_UP-%TT%00021_R-%TT%0002101" HelpContext="WIRE-Gruppentyp" Cell="2,2" />
+                  <ParameterRefRef RefId="%AID%_P-%TT%00012_R-%TT%0001201" HelpContext="WIRE-Gruppenname" Cell="3,1" />
+                  <ParameterRefRef RefId="%AID%_UP-%TT%00022_R-%TT%0002201" HelpContext="WIRE-Gruppentyp" Cell="3,2" />
+                  <ParameterRefRef RefId="%AID%_P-%TT%00013_R-%TT%0001301" HelpContext="WIRE-Gruppenname" Cell="4,1" />
+                  <ParameterRefRef RefId="%AID%_UP-%TT%00023_R-%TT%0002301" HelpContext="WIRE-Gruppentyp" Cell="4,2" />
+                  <ParameterRefRef RefId="%AID%_P-%TT%00014_R-%TT%0001401" HelpContext="WIRE-Gruppenname" Cell="5,1" />
+                  <ParameterRefRef RefId="%AID%_UP-%TT%00024_R-%TT%0002401" HelpContext="WIRE-Gruppentyp" Cell="5,2" />
+                  <ParameterRefRef RefId="%AID%_P-%TT%00015_R-%TT%0001501" HelpContext="WIRE-Gruppenname" Cell="6,1" />
+                  <ParameterRefRef RefId="%AID%_UP-%TT%00025_R-%TT%0002501" HelpContext="WIRE-Gruppentyp" Cell="6,2" />
+                  <ParameterRefRef RefId="%AID%_P-%TT%00016_R-%TT%0001601" HelpContext="WIRE-Gruppenname" Cell="7,1" />
+                  <ParameterRefRef RefId="%AID%_UP-%TT%00026_R-%TT%0002601" HelpContext="WIRE-Gruppentyp" Cell="7,2" />
+                  <ParameterRefRef RefId="%AID%_P-%TT%00017_R-%TT%0001701" HelpContext="WIRE-Gruppenname" Cell="8,1" />
+                  <ParameterRefRef RefId="%AID%_UP-%TT%00027_R-%TT%0002701" HelpContext="WIRE-Gruppentyp" Cell="8,2" />
+                </ParameterBlock>
               </ParameterBlock>
               <op:include href="WireGateway.templ.xml" xpath="//ApplicationProgram/Dynamic/ChannelIndependentBlock/*" type="template" prefix="WIRE" IsInner="true" />
+              <choose ParamRefId="%AID%_UP-%TT%00035_R-%TT%0003501">
+                <when test="&lt;%N%">
+                  <ParameterBlock Id="%AID%_PB-nnn" Name="AdditionalChannels" Text="(mehr)" Icon="dots-horizontal" HelpContext="Empty">
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00035_R-%TT%0003501" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
+                  </ParameterBlock>
+                </when>
+              </choose>
             </Channel>
           </Dynamic>
         </ApplicationProgram>
