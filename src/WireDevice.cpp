@@ -158,41 +158,6 @@ const std::string WireDevice::name()
 // }
 
 // static
-// void WireDevice::processUnknownDevices()
-// {
-//     bool lForce = sUnknownDeviceDelay == 0;
-
-//     if (lForce || delayCheck(sUnknownDeviceDelay, sUnknownDeviceDelaySeconds * 1000))
-//     {
-//         if (sUnknownDeviceIndex < sDeviceCount)
-//             sUnknownDeviceIndex = sDeviceCount;
-//         if (sUnknownDeviceIndex < sUnknownDeviceLast)
-//         {
-//             OneWire *lSensor = sDevice[sUnknownDeviceIndex++]->mOneWire;
-//             if (lSensor->Mode() == OneWire::New)
-//             {
-//                 // output is 1 new ID in 2 Seconds at max
-//                 printDebug("KO%d sendet Wert: ", WIRE_KoNewId);
-//                 char lBuffer[15];
-//                 lBuffer[14] = 0;
-//                 sprintf(lBuffer, "%02X%02X%02X%02X%02X%02X%02X", lSensor->Id()[0], lSensor->Id()[1], lSensor->Id()[2], lSensor->Id()[3], lSensor->Id()[4], lSensor->Id()[5], lSensor->Id()[6]);
-//                 printDebug("%s\n", lBuffer);
-//                 knx.getGroupObject(WIRE_KoNewId).value(lBuffer, getDPT(VAL_DPT_16));
-//                 sUnknownDeviceDelaySeconds = 2; // check in 2 Seconds for next new ID
-//             }
-//         }
-//         if (sUnknownDeviceIndex >= sUnknownDeviceLast)
-//         {
-//             sUnknownDeviceIndex = 0;
-//             sUnknownDeviceDelaySeconds = 60; // next output of all IDs in a minute
-//         }
-//         sUnknownDeviceDelay = millis();
-//         if (sUnknownDeviceDelay == 0)
-//             sUnknownDeviceDelay = 1;
-//     }
-// }
-
-// static
 // void WireDevice::processOneWire(bool iForce)
 // {
 //     // are there any OW sensors
@@ -219,8 +184,7 @@ void WireDevice::loop()
     // if (!gIsSetup)
     //     return;
 
-    // processOneWire(false); // sForceSensorRead);
-    // processUnknownDevices();
+    processOneWire(false); // sForceSensorRead);
     // processIButtonGroups();
     // falls Du auch ein KO zum anfordern der Werte anbieten willst, muss in der Routine, die das KO auswertet
     // nur die folgende Variable auf true gesetzt werden, dann werden die Sensorwerte gesendet.
@@ -333,7 +297,7 @@ void WireDevice::setDeviceParameter()
     }
 }
 
-void WireDevice::processOneWire()
+void WireDevice::processOneWire(bool iForce)
 {
 
     if (mOneWire != NULL)

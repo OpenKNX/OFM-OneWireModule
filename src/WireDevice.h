@@ -27,7 +27,6 @@ class WireDevice : public OpenKNX::Channel
     // general processing
     void processKOCallback(GroupObject &iKo);
     void processIButtonGroups();
-    void processUnknownDevices();
     void processOneWire(bool iForce);
     void processReadRequests();
     bool processNewIdCallback(OneWire *iOneWireSensor);
@@ -40,7 +39,7 @@ class WireDevice : public OpenKNX::Channel
     void setValue(uint8_t iValue);
     uint8_t getValue();
     void clearSendDelay();
-    void processOneWire();
+    // void processOneWire();
     bool processReadRequest();
     bool isIO();
     bool isIButton();
