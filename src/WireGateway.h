@@ -26,7 +26,8 @@ class WireGateway : public OpenKNX::Module
     bool mForceSensorRead = true;
 
     static bool processNewIdCallback(OneWire *iOneWire);
-    static bool measureOneWire(MeasureType iMeasureType, float &eValue);
+    bool measureOneWire(MeasureType iMeasureType, float &eValue);
+    void processUnknownDevices();
 
     // void setupCustomFlash();
     void setupChannels();

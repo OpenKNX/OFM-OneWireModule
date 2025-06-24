@@ -330,6 +330,7 @@
                 <Parameter Id="%AID%_UP-%TT%00032" Name="Busmaster1W0L"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterW0L"  Text="tW0L (in Mikrosekunden)"  Value="6" />
                 <Parameter Id="%AID%_UP-%TT%00033" Name="Busmaster1REC0" Offset="1" BitOffset="4" ParameterType="%AID%_PT-BusMasterParameterREC0" Text="tREC0 (in Mikrosekunden)" Value="6" />
                 <Parameter Id="%AID%_UP-%TT%00034" Name="Busmaster1WPU"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterWPU"  Text="RWPU (in Ohm)"  Value="6" />
+                <Parameter Id="%AID%_UP-%TT%00035" Name="VisibleChannels"  Offset="3" BitOffset="0" ParameterType="%AID%_PT-PMNumChannels" Text="Verfügbare Kanäle" Value="%WIRE_NumChannelsDefault%" SuffixText=" von %N%" />
               </Union>
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="5" BitOffset="0" />

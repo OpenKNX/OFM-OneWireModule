@@ -41,11 +41,31 @@ void WireGateway::setup(bool configured)
         bool lSearchNewDevices = knx.paramByte(WIRE_IdSearch) & WIRE_IdSearchMask;
         // are there iButtons?
         // uint8_t lIsIButton = 0;
-
-        Wire.setClock(400000);
+        #ifdef ARDUINO_ARCH_RP2040
+            #ifdef ONEWIRE_5V_ENABLE
+                pinMode(ONEWIRE_5V_ENABLE, OUTPUT);
+                digitalWrite(ONEWIRE_5V_ENABLE, HIGH);
+            #endif    
+            #ifdef OPENKNX_HTA_1WIRE_SLPZ_PIN
+                pinMode(OPENKNX_HTA_1WIRE_SLPZ_PIN, OUTPUT);
+                digitalWrite(OPENKNX_HTA_1WIRE_SLPZ_PIN, HIGH);
+            #endif
+            #ifndef I2C_BUS_1WIRE
+                #define I2C_BUS_1WIRE Wire
+            #endif
+            #ifdef I2C_SDA_1WIRE_PIN
+                #ifdef I2C_SCL_1WIRE_PIN
+                I2C_BUS_1WIRE.setSDA(I2C_SDA_1WIRE_PIN);
+                I2C_BUS_1WIRE.setSCL(I2C_SCL_1WIRE_PIN);
+                #endif
+            #endif
+        #endif
+        
+        I2C_BUS_1WIRE.setClock(400000);
+        I2C_BUS_1WIRE.begin();
 
         mBusMaster[0] = new OneWireDS2482(WireGateway::processNewIdCallback, nullptr);
-        mBusMaster[0]->setup(0, 1, lSearchNewDevices, Wire);
+        mBusMaster[0]->setup(0, 0, lSearchNewDevices, I2C_BUS_1WIRE);
     #if COUNT_1WIRE_BUSMASTER > 1
         uint8_t lNumBusmaster = (knx.paramByte(WIRE_BusMasterCount) & WIRE_BusMasterCountMask) >> WIRE_BusMasterCountShift;
         if (lNumBusmaster > 1)
@@ -97,8 +117,8 @@ void WireGateway::loop(bool configured)
     while (channelProcessed < COUNT_1WIRE_CHANNEL && openknx.freeLoopTime())
     {
         if (_channelIterator >= WIRE_ChannelCount) _channelIterator = 0;
-
-        mDevice[_channelIterator]->loop();
+            if (mDevice[_channelIterator] != nullptr)
+                mDevice[_channelIterator]->loop();
         _channelIterator++;
         channelProcessed++;
     }
@@ -108,7 +128,7 @@ void WireGateway::loop(bool configured)
     {
         mBusMaster[lBusmasterIndex]->loop();
     }
-
+    processUnknownDevices();	
     // at Startup, we want to send all values immediately
     // ProcessSensors(gRuntimeData.forceSensorRead);
     mForceSensorRead = false;
@@ -176,6 +196,39 @@ bool WireGateway::processNewIdCallback(OneWire *iOneWire)
     }
     return lResult;
 }
+
+void WireGateway::processUnknownDevices()
+{
+    bool lForce = sUnknownDeviceDelay == 0;
+
+    if (lForce || delayCheck(sUnknownDeviceDelay, sUnknownDeviceDelaySeconds * 1000))
+    {
+        // if (sUnknownDeviceIndex < mDeviceCount)
+        //     sUnknownDeviceIndex = sDeviceCount;
+        if (sUnknownDeviceIndex < sUnknownDeviceLast)
+        {
+            OneWire *lSensor = sUnknownDevice[sUnknownDeviceIndex++]->mOneWire;
+            if (lSensor->Mode() == OneWire::New)
+            {
+                // output is 1 new ID in 2 Seconds at max
+                logDebugP("KO%d sendet Wert: ", WIRE_KoNewId);
+                char lBuffer[15];
+                lBuffer[14] = 0;
+                sprintf(lBuffer, "%02X%02X%02X%02X%02X%02X%02X", lSensor->Id()[0], lSensor->Id()[1], lSensor->Id()[2], lSensor->Id()[3], lSensor->Id()[4], lSensor->Id()[5], lSensor->Id()[6]);
+                logDebugP("%s\n", lBuffer);
+                knx.getGroupObject(WIRE_KoNewId).value(lBuffer, getDPT(VAL_DPT_16));
+                sUnknownDeviceDelaySeconds = 2; // check in 2 Seconds for next new ID
+            }
+        }
+        if (sUnknownDeviceIndex >= sUnknownDeviceLast)
+        {
+            sUnknownDeviceIndex = 0;
+            sUnknownDeviceDelaySeconds = 60; // next output of all IDs in a minute
+        }
+        sUnknownDeviceDelay = delayTimerInit();
+    }
+}
+
 
 // static - this is not perfect, but it works
 bool WireGateway::measureOneWire(MeasureType iMeasureType, float &eValue)
