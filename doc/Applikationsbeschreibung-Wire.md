@@ -114,7 +114,7 @@ Jeder 1-Wire-Busmaster erfordert bestimmte Einstellungen, die in diesem Dialog e
 ### Kanäle und Busmaster
 
 <!-- DOC -->
-#### **Anzahl 1Wire-Geräte**
+#### **Verfügbare Kanäle**
 
 Die Zahl gibt an, wie viele 1-Wire-Geräte insgesamt von der Applikation verwaltet werden können. Es gilt immer die Regel, dass es maximal 30 pro Busmaster sind.
 

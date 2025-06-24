@@ -175,9 +175,9 @@
           </Static>
           <Dynamic>
             <ChannelIndependentBlock>
-              <choose ParamRefId="%AID%_P-%TT%00028_R-%TT%0002801">
-                <when test=">=%C%">
-                  <ParameterBlock Id="%AID%_PB-%C%1" Name="Device%C%Page" Text="Gerät %C%: {{0: ...}}" Icon="memory" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201">
+              <choose ParamRefId="%AID%_UP-%TT%00035_R-%TT%0003501">
+                <when test="&gt;=%C%">
+                  <ParameterBlock Id="%AID%_PB-%C%1" Name="Device%C%Page" Text="Gerät %C%: {{0: ...}}" Icon="memory" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ShowInComObjectTree="true">
                     <ParameterSeparator Id="%AID%_PS-11" Text="Kanaldefinition" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" HelpContext="%DOC%" IndentLevel="1" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />

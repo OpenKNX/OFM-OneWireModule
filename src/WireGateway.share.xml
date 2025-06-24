@@ -284,7 +284,7 @@
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%00000" Name="WireError" Offset="0" BitOffset="0" ParameterType="%AID%_PT-OnOffYesNo" Text="Fehlerobjekt(e) anzeigen" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%00001" Name="BusMasterCount" Offset="0" BitOffset="1" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00001" Name="BusMasterCount" Offset="0" BitOffset="1" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="%WIRE_BusMasterCount%" />
                 <Parameter Id="%AID%_UP-%TT%00002" Name="IdSearch" Offset="0" BitOffset="3" ParameterType="%AID%_PT-IdSearch" Text="Device-Suche" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%00003" Name="IButton1" Offset="0" BitOffset="4" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 1 auswerten?" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%00004" Name="IButton2" Offset="0" BitOffset="5" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 2 auswerten?" Value="1" />
@@ -318,6 +318,7 @@
                 <Parameter Id="%AID%_UP-%TT%00032" Name="Busmaster1W0L"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterW0L"  Text="tW0L (in Mikrosekunden)"  Value="6" />
                 <Parameter Id="%AID%_UP-%TT%00033" Name="Busmaster1REC0" Offset="1" BitOffset="4" ParameterType="%AID%_PT-BusMasterParameterREC0" Text="tREC0 (in Mikrosekunden)" Value="6" />
                 <Parameter Id="%AID%_UP-%TT%00034" Name="Busmaster1WPU"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterWPU"  Text="RWPU (in Ohm)"  Value="6" />
+                <Parameter Id="%AID%_UP-%TT%00035" Name="VisibleChannels"  Offset="3" BitOffset="0" ParameterType="%AID%_PT-PMNumChannels" Text="Verfügbare Kanäle" Value="%WIRE_NumChannelsDefault%" SuffixText=" von %N%" />
               </Union>
             </Parameters>
             <ParameterRefs>
@@ -352,6 +353,7 @@
               <ParameterRef Id="%AID%_UP-%TT%00032_R-%TT%0003201" RefId="%AID%_UP-%TT%00032" />
               <ParameterRef Id="%AID%_UP-%TT%00033_R-%TT%0003301" RefId="%AID%_UP-%TT%00033" />
               <ParameterRef Id="%AID%_UP-%TT%00034_R-%TT%0003401" RefId="%AID%_UP-%TT%00034" />
+              <ParameterRef Id="%AID%_UP-%TT%00035_R-%TT%0003501" RefId="%AID%_UP-%TT%00035" />
             </ParameterRefs>
             <ComObjectTable>
               <ComObject Id="%AID%_O-%TT%00020" Name="NewId" Text="IDs unbekannter Geräte" Number="20" FunctionText="Geräte-Id" ObjectSize="14 Bytes" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-16-1" />
@@ -383,15 +385,18 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
-            <Channel Name="MainChannel" Text="1-Wire" Number="%TT%" Id="%AID%_CH-%TT%" Icon="blur" HelpContext="Empty">
+            <Channel Id="%AID%_CH-%PREFIX%" Number="%PREFIX%" Name="Main" Text="1-Wire" Icon="blur" HelpContext="Empty">
               <ParameterBlock Name="Init" Id="%AID%_PB-nnn" Inline="true">
                 <!-- Maximum number of Busmaster (used as Parameter for WireGateway and Sensormodul) -->
                 <ParameterRefRef RefId="%AID%_P-%TT%00029_R-%TT%0002901" HelpContext="WIRE-Installierte-Busmaster" IndentLevel="1" />
               </ParameterBlock>
-              <ParameterBlock Id="%AID%_PB-1" Name="BM" Text="Basiseinstellungen" Icon="cog-outline" HelpContext="Empty">
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Settings" Text="Allgemein" Icon="cog-outline" ShowInComObjectTree="true" HelpContext="Empty">
                 <!-- Calculated number of 1-Wire-Devices supported -->
-                <ParameterSeparator Id="%AID%_PS-11" Text="Kanäle und Busmaster" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_P-%TT%00028_R-%TT%0002801" HelpContext="%DOC%" IndentLevel="1" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="1-Wire" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00035_R-%TT%0003501" HelpContext="%DOC%" IndentLevel="1" />
                 <choose ParamRefId="%AID%_P-%TT%00029_R-%TT%0002901">
                   <when test="1">
                     <Assign TargetParamRefRef="%AID%_UP-%TT%00001_R-%TT%0000101" Value="1" />
@@ -475,6 +480,15 @@
                 <ParameterRefRef RefId="%AID%_UP-%TT%00027_R-%TT%0002701" HelpContext="WIRE-Gruppentyp" IndentLevel="1" />
               </ParameterBlock>
               <op:include href="WireGateway.templ.xml" xpath="//ApplicationProgram/Dynamic/ChannelIndependentBlock/*" type="template" prefix="WIRE" IsInner="true" />
+
+              <choose ParamRefId="%AID%_UP-%TT%00035_R-%TT%0003501">
+                <when test="&lt;%N%">
+                  <ParameterBlock Id="%AID%_PB-nnn" Name="AdditionalChannels" Text="(mehr)" Icon="dots-horizontal" HelpContext="Empty">
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00035_R-%TT%0003501" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
+                  </ParameterBlock>
+                </when>
+              </choose>
             </Channel>
           </Dynamic>
         </ApplicationProgram>
