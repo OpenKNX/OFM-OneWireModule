@@ -124,6 +124,7 @@ void WireGateway::loop(bool configured)
     }
 
     uint8_t lNumBusmaster = (knx.paramByte(WIRE_BusMasterCount) & WIRE_BusMasterCountMask) >> WIRE_BusMasterCountShift;
+    if (lNumBusmaster == 0) lNumBusmaster = 1; // at least one busmaster is always there
     for (uint8_t lBusmasterIndex = 0; lBusmasterIndex < lNumBusmaster; lBusmasterIndex++)
     {
         mBusMaster[lBusmasterIndex]->loop();

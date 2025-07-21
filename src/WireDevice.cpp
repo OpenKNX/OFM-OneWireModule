@@ -33,6 +33,7 @@ WireDevice::WireDevice(uint8_t iDeviceIndex, OneWireDS2482* iBusMaster[])
     if (lIsNew)
     {
         uint8_t lSelectedBusmaster = (knx.paramByte(calcParamIndex(WIRE_sBusMasterSelect1)) & WIRE_sBusMasterSelect1Mask) >> WIRE_sBusMasterSelect1Shift;
+        if (lSelectedBusmaster == 0) lSelectedBusmaster = 1;
         OneWireDS2482* lBusMaster = iBusMaster[lSelectedBusmaster - 1];
         lBusMaster->addSensor(mOneWire);
     }

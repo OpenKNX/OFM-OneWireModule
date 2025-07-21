@@ -42,7 +42,7 @@
               <!-- BusMaster information -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="8" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%039" Name="s%C%BusMasterSelect1" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect1" Text="Angeschlossen an" Value="1" Access="Read" />
+                <Parameter Id="%AID%_UP-%TT%%CC%039" Name="s%C%BusMasterSelect1" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect1" Text="Angeschlossen an" Value="1" Access="None" />
                 <Parameter Id="%AID%_UP-%TT%%CC%040" Name="s%C%BusMasterSelect2" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect2" Text="Angeschlossen an" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%%CC%041" Name="s%C%BusMasterSelect3" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect3" Text="Angeschlossen an" Value="1" />
               </Union>

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
+  
   <op:config name="%WIRE_BusMasterCount%" value="1" />
   <op:config name="%WIRE_NumChannelsDefault%" value="3" />
 
@@ -296,7 +297,7 @@
                 <Parameter Id="%AID%_UP-%TT%00000" Name="WireError" Offset="0" BitOffset="0" ParameterType="%AID%_PT-OnOffYesNo" Text="Fehlerobjekt(e) anzeigen" Value="0" />
                 <!-- <Parameter Id="%AID%_UP-%TT%00001" Name="BusMasterCount" Offset="0" BitOffset="1" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="%WIRE_BusMasterCount%" /> -->
                 <!-- 2-Bit frei -->
-                <Parameter Id="%AID%_UP-%TT%00002" Name="IdSearch" Offset="0" BitOffset="3" ParameterType="%AID%_PT-IdSearch" Text="Sucheinstellung" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00002" Name="IdSearch" Offset="0" BitOffset="3" ParameterType="%AID%_PT-IdSearch" Text="Sucheinstellung" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%00003" Name="IButton1" Offset="0" BitOffset="4" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 1 auswerten?" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%00004" Name="IButton2" Offset="0" BitOffset="5" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 2 auswerten?" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%00005" Name="IButton3" Offset="0" BitOffset="6" ParameterType="%AID%_PT-CheckBox" Text="iButton auf Busmaster 3 auswerten?" Value="1" />
@@ -412,7 +413,11 @@
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
                 <ParameterRefRef RefId="%AID%_UP-%TT%00035_R-%TT%0003501" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
                 <!-- Maximum number of Busmaster (used as Parameter for WireGateway and Sensormodul) -->
-                <ParameterRefRef RefId="%AID%_UP-%TT%00036_R-%TT%0003601" HelpContext="%DOC%" IndentLevel="1" />
+                <!-- <choose ParamRefId="%AID%_UP-%TT%00036_R-%TT%0003601"> -->
+                  <!-- <when test="2 3"> -->
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00036_R-%TT%0003601" HelpContext="%DOC%" IndentLevel="1" />
+                  <!-- </when> -->
+                <!-- </choose> -->
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                 <ParameterSeparator Id="%AID%_PS-11" Text="Gerätesuche" UIHint="Headline" />
                 <ParameterRefRef RefId="%AID%_UP-%TT%00002_R-%TT%0000201" HelpContext="%DOC%" IndentLevel="1" />
@@ -422,33 +427,33 @@
                     <ParameterSeparator Id="%AID%_PS-16" Text="Im Produktivbetrieb sollte die Gerätesuche immer auf 'ignorieren' stehen, da sie bei hoher KNX-Buslast dazu führen kann, dass Telegramme verloren gehen. Dieser Paremter sollte nur an sein, wenn man neue 1-Wire-Geräte anschließen will." UIHint="Information" />
                   </when>
                 </choose>
-                <ParameterSeparator Id="%AID%_PS-14" Text="" UIHint="HorizontalRuler" />
-                <ParameterSeparator Id="%AID%_PS-11" Text="Fehlermeldungen" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00000_R-%TT%0000001" HelpContext="%DOC%" IndentLevel="1" />
-                <choose ParamRefId="%AID%_UP-%TT%00000_R-%TT%0000001">
-                  <when test="1">
+                <!-- <ParameterSeparator Id="%AID%_PS-14" Text="" UIHint="HorizontalRuler" /> -->
+                <!-- <ParameterSeparator Id="%AID%_PS-11" Text="Fehlermeldungen" UIHint="Headline" /> -->
+                <!-- <ParameterRefRef RefId="%AID%_UP-%TT%00000_R-%TT%0000001" HelpContext="%DOC%" IndentLevel="1" /> -->
+                <!-- <choose ParamRefId="%AID%_UP-%TT%00000_R-%TT%0000001"> -->
+                  <!-- <when test="1"> -->
                     <!-- show error object only if it is parametrized -->
-                    <ComObjectRefRef RefId="%AID%_O-%TT%00021_R-%TT%0002101" />
-                    <ParameterSeparator Id="%AID%_PS-1" Text="Das Fehlerobjekt KO-21 ist eine Bitleiste, bei der ein Bit auf 1 gesetzt wird, wenn das entsprechende Gerät einen Fehler aufweist:" />
-                    <ParameterSeparator Id="%AID%_PS-2" Text="  Bit 0: Fehler vom Busmaster selbst" />
-                    <ParameterSeparator Id="%AID%_PS-3" Text="  Bit 1-30: Fehler von Gerät 1 bis 30" />
-                    <choose ParamRefId="%AID%_UP-%TT%00036_R-%TT%0003601">
-                      <when test="2 3">
-                        <ComObjectRefRef RefId="%AID%_O-%TT%00022_R-%TT%0002201" />
-                        <ParameterSeparator Id="%AID%_PS-4" Text="Das gilt für das Fehlerobjekt KO-22 anlaog. " />
-                        <ParameterSeparator Id="%AID%_PS-5" Text="  Bit 0: Fehler vom Busmaster 2 selbst" />
-                        <ParameterSeparator Id="%AID%_PS-6" Text="  Bit 1-30: Fehler von Gerät 31 bis 60" />
-                      </when>
-                      <when test="3">
-                        <ComObjectRefRef RefId="%AID%_O-%TT%00022_R-%TT%0002201" />
-                        <ComObjectRefRef RefId="%AID%_O-%TT%00023_R-%TT%0002301" />
-                        <ParameterSeparator Id="%AID%_PS-15" Text="Und auch für das Fehlerobjekt KO-23." />
-                        <ParameterSeparator Id="%AID%_PS-7" Text="  Bit 0: Fehler vom Busmaster 3 selbst" />
-                        <ParameterSeparator Id="%AID%_PS-8" Text="  Bit 1-30: Fehler von Gerät 61 bis 90" />
-                      </when>
-                    </choose>
-                  </when>
-                </choose>
+                    <!-- <ComObjectRefRef RefId="%AID%_O-%TT%00021_R-%TT%0002101" /> -->
+                    <!-- <ParameterSeparator Id="%AID%_PS-1" Text="Das Fehlerobjekt KO-21 ist eine Bitleiste, bei der ein Bit auf 1 gesetzt wird, wenn das entsprechende Gerät einen Fehler aufweist:" /> -->
+                    <!-- <ParameterSeparator Id="%AID%_PS-2" Text="  Bit 0: Fehler vom Busmaster selbst" /> -->
+                    <!-- <ParameterSeparator Id="%AID%_PS-3" Text="  Bit 1-30: Fehler von Gerät 1 bis 30" /> -->
+                    <!-- <choose ParamRefId="%AID%_UP-%TT%00036_R-%TT%0003601"> -->
+                      <!-- <when test="2 3"> -->
+                        <!-- <ComObjectRefRef RefId="%AID%_O-%TT%00022_R-%TT%0002201" /> -->
+                        <!-- <ParameterSeparator Id="%AID%_PS-4" Text="Das gilt für das Fehlerobjekt KO-22 anlaog. " /> -->
+                        <!-- <ParameterSeparator Id="%AID%_PS-5" Text="  Bit 0: Fehler vom Busmaster 2 selbst" /> -->
+                        <!-- <ParameterSeparator Id="%AID%_PS-6" Text="  Bit 1-30: Fehler von Gerät 31 bis 60" /> -->
+                      <!-- </when> -->
+                      <!-- <when test="3"> -->
+                        <!-- <ComObjectRefRef RefId="%AID%_O-%TT%00022_R-%TT%0002201" /> -->
+                        <!-- <ComObjectRefRef RefId="%AID%_O-%TT%00023_R-%TT%0002301" /> -->
+                        <!-- <ParameterSeparator Id="%AID%_PS-15" Text="Und auch für das Fehlerobjekt KO-23." /> -->
+                        <!-- <ParameterSeparator Id="%AID%_PS-7" Text="  Bit 0: Fehler vom Busmaster 3 selbst" /> -->
+                        <!-- <ParameterSeparator Id="%AID%_PS-8" Text="  Bit 1-30: Fehler von Gerät 61 bis 90" /> -->
+                      <!-- </when> -->
+                    <!-- </choose> -->
+                  <!-- </when> -->
+                <!-- </choose> -->
               </ParameterBlock>
               <ParameterBlock Id="%AID%_PB-nnn" Name="Expert" Text="Erweitert" Icon="format-list-text" HelpContext="Empty">
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Die Einstellungen dieser Seite sind nur für Experten, die sich genau mit 1-Wire-Bus-Timing auskennen. Das Datenblatt vom DS2484, Seite 13 ist heranzuziehen." UIHint="Information" />
