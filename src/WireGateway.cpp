@@ -35,7 +35,7 @@ const std::string WireGateway::version()
 
 void WireGateway::setup(bool configured)
 {
-    if (configured)
+    if (configured && ParamBASE_ModuleEnabled_WIRE)
     {
         // should we search for new devices?
         bool lSearchNewDevices = knx.paramByte(WIRE_IdSearch) & WIRE_IdSearchMask;
@@ -105,6 +105,9 @@ void WireGateway::loop(bool configured)
     if (!configured)
         return;
 
+    if (!ParamBASE_ModuleEnabled_WIRE)
+        return;
+
     mIsRunning = true;
 
     // at this point startup-delay is done
@@ -137,6 +140,9 @@ void WireGateway::loop(bool configured)
 
 void WireGateway::processInputKo(GroupObject &iKo)
 {
+    if (!ParamBASE_ModuleEnabled_WIRE)
+        return;
+        
     // check for 1-Wire-KO
     if (iKo.asap() >= WIRE_KoOffset && iKo.asap() < ((knx.paramByte(WIRE_BusMasterCount) & WIRE_BusMasterCountMask) >> WIRE_BusMasterCountShift) * 30 + WIRE_KoOffset)
     {

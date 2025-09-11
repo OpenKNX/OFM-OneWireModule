@@ -409,7 +409,7 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
     if (lSend || delayCheck(mData.sensor.readDelay, 1000))
     {
         // we waited enough, let's read the sensor
-        int32_t lOffset = knx.paramByte(iParamIndex + WIRE_sSensorOffset);
+        int8_t lOffset = knx.paramByte(iParamIndex + WIRE_sSensorOffset);
         bool lValid = mOneWire->getValue(lValue, lModelFunction);
         if (lValid)
         {
