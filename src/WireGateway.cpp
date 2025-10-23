@@ -218,11 +218,9 @@ void WireGateway::processUnknownDevices()
             if (lSensor->Mode() == OneWire::New)
             {
                 // output is 1 new ID in 2 Seconds at max
-                logDebugP("KO%d sendet Wert: ", WIRE_KoNewId);
-                char lBuffer[15];
-                lBuffer[14] = 0;
+                char lBuffer[15] = {0};
                 sprintf(lBuffer, "%02X%02X%02X%02X%02X%02X%02X", lSensor->Id()[0], lSensor->Id()[1], lSensor->Id()[2], lSensor->Id()[3], lSensor->Id()[4], lSensor->Id()[5], lSensor->Id()[6]);
-                logDebugP("%s\n", lBuffer);
+                logDebugP("KO%d sendet Wert: %s", WIRE_KoNewId, lBuffer);
                 knx.getGroupObject(WIRE_KoNewId).value(lBuffer, getDPT(VAL_DPT_16));
                 sUnknownDeviceDelaySeconds = 2; // check in 2 Seconds for next new ID
             }

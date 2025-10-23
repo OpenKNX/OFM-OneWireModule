@@ -178,6 +178,7 @@ const std::string WireDevice::name()
 
 void WireDevice::setup()
 {
+    mData.sensor.lastSentValue = NO_NUM;
 }
 
 void WireDevice::loop()
@@ -284,6 +285,7 @@ void WireDevice::setDeviceParameter()
             mOneWire->setParameter(OneWire::MeasureResolution, 0x00, lModelFunction);
             break;
         case MODEL_DS1990:
+        case MODEL_DS2438:
             mData.sensor.lastSentValue = NO_NUM; // NAN was not working here
             break;
         case MODEL_DS2408:
@@ -330,7 +332,7 @@ void WireDevice::processOneWire(bool iForce)
                         if (!lIsInitial || lSendInitial)
                         {
                             knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).value(lNewState, getDPT(VAL_DPT_1));
-                            logDebugP("KO%d sendet Wert: %d\n", mDeviceIndex + WIRE_KoOffset, lNewState);
+                            logDebugP("KO%d sendet Wert: %d", mDeviceIndex + WIRE_KoOffset, lNewState);
                         }
                         mData.sensor.lastSentValue = lNewState;
                     }
@@ -349,7 +351,7 @@ void WireDevice::processOneWire(bool iForce)
                         if (!lIsInitial || lSendInitial)
                         {
                             knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).value(lValue, (getModelFunction() == ModelFunction_IoByte) ? getDPT(VAL_DPT_5) : getDPT(VAL_DPT_1));
-                            logDebugP("KO%d sendet Wert: %0X\n", mDeviceIndex + WIRE_KoOffset, lValue);
+                            logDebugP("KO%d sendet Wert: %0X", mDeviceIndex + WIRE_KoOffset, lValue);
                         }
                         mData.actor.lastInputValue = lValue;
                     }
@@ -403,7 +405,8 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
     if (lCycle && delayCheck(mData.sensor.sendDelay, lCycle))
         lSend = true;
 
-    float lValue = 0;
+    float lValue = NO_NUM;
+    GroupObject& lKo = knx.getGroupObject(iKoNumber);
 
     // process read cycle
     if (lSend || delayCheck(mData.sensor.readDelay, 1000))
@@ -411,7 +414,7 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
         // we waited enough, let's read the sensor
         int8_t lOffset = knx.paramByte(iParamIndex + WIRE_sSensorOffset);
         bool lValid = mOneWire->getValue(lValue, lModelFunction);
-        if (lValid)
+        if (lValid && lValue > NO_NUM + 1)
         {
             // we have now the internal sensor value, we correct it now
             lValue = lValue * lValueFactor;
@@ -423,9 +426,8 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
                 lValue = mData.sensor.lastValue + (lValue - mData.sensor.lastValue) / knx.paramByte(iParamIndex + WIRE_sSensorSmooth);
             }
             // evaluate sending conditions (relative delta / absolute delta)
-            if (mData.sensor.lastSentValue > 0.0)
+            if (mData.sensor.lastSentValue > NO_NUM + 1)
             {
-                // currently we assume indoor measurement with values > 0.0
                 float lDelta = 100.0 - lValue / mData.sensor.lastSentValue * 100.0;
                 uint32_t lPercent = knx.paramByte(iParamIndex + WIRE_sSensorDeltaPercent);
                 if (lPercent && (uint32_t)abs(lDelta) >= lPercent)
@@ -436,10 +438,10 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
                     lSend = true;
             }
             // we always store the new value in KO, even it it is not sent (to satisfy potential read request)
-            if (isNum(lValue))
+            if (isNum(lValue) && lValue > NO_NUM + 1)
             {
                 mData.sensor.lastValue = lValue;
-                knx.getGroupObject(iKoNumber).valueNoSend(lValue, getDPT(VAL_DPT_9));
+                lKo.valueNoSend(lValue, getDPT(VAL_DPT_9));
             }
             else
             {
@@ -452,11 +454,11 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
         }
         mData.sensor.readDelay = millis();
     }
-    if (lSend)
+    if (lSend && lKo.initialized())
     {
-        logDebugP("KO%d sendet Wert: %f\n", iKoNumber, lValue);
-        knx.getGroupObject(iKoNumber).objectWritten();
-        mData.sensor.lastSentValue = (float)knx.getGroupObject(iKoNumber).value(getDPT(VAL_DPT_9));
+        logDebugP("KO%d sendet Wert: %f", iKoNumber, lValue);
+        lKo.objectWritten();
+        mData.sensor.lastSentValue = (float)lKo.value(getDPT(VAL_DPT_9));
         mData.sensor.sendDelay = millis();
         if (mData.sensor.sendDelay == 0)
             mData.sensor.sendDelay = 1;
