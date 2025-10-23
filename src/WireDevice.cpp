@@ -452,16 +452,14 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
         {
             lSend = false;
         }
-        mData.sensor.readDelay = millis();
+        mData.sensor.readDelay = delayTimerInit();
     }
     if (lSend && lKo.initialized())
     {
         logDebugP("KO%d sendet Wert: %f", iKoNumber, lValue);
         lKo.objectWritten();
         mData.sensor.lastSentValue = (float)lKo.value(getDPT(VAL_DPT_9));
-        mData.sensor.sendDelay = millis();
-        if (mData.sensor.sendDelay == 0)
-            mData.sensor.sendDelay = 1;
+        mData.sensor.sendDelay = delayTimerInit();
     }
 }
 #endif
