@@ -1,30 +1,25 @@
-knx-wire
+OpenKNX - OneWireModule
 ===
 
-Impelemtation of an knx onewire gateway module for up to 90 onewire devices combined with an 80 channel knx logic module based on the [knx stack](https://github.com/thelsing/knx) from thelsing. The used knx stack allows a parametrization via ETS in general, this project requires ETS 5.6 or higher.
+Implementation of a knx 1-wire module with up to 90 channels based on the [knx stack](https://github.com/OpenKNX/knx), a fork from [thelsing](https://github.com/thelsing/knx).
 
-Itis implemented for the SAMD21 version of the knx stack. Currently it uses my fork of the [knx stack](https://github.com/mumpf/knx), this will change in future.
+Application description (including a feature overview) can be found [here](https://github.com/OpenKNX/OFM-OneWireModule/blob/v1/doc/Applikationsbeschreibung-Wire.md).
 
-It is a PlatformIO project and needs a working ETS 5.6 (or higher) installed on the same PC.
+It supports the RP2040 version of the stack.
 
-Initial installation and build instructions can be found in the [project itself](https://github.com/mumpf/knx-sensor/blob/beta/doc/knx-dev-beta-setup.md).
+It is a PlatformIO project and needs a working ETS >=5.7 installed on the same PC.
 
-Update instruction (for an updated firmware or application build) can be also found in the [project documentation](https://github.com/mumpf/knx-sensor/blob/beta/doc/knx-update-setup.md)
 
-This project depends on following projects:
+### How to use this module
 
-* [knx-logic](https://github.com/mumpf/knx-logic)
-* [knx-common](https://github.com/mumpf/knx-common)
-* [knx](https://github.com/mumpf/knx)
+Uses 12 shared (static) KOs 0-11.
+Uses 1 KO per channel
 
-Hardware to use the software with is described in [knx-user-forum/KONNEKTING](https://knx-user-forum.de/forum/projektforen/konnekting/1356026-konnekting-1-wire-gateway).
+Designed for up to 90 channels. 
 
-With small changes it should be possible to use it on any SAMD21 board.
+Depends on OGM-SensorDevices module.
+Needs 
+    -D WIREMODULE
+in platformio.ini
 
-There are application descriptions available:
-
-* [Application WireGateway](https://github.com/mumpf/knx-wire/blob/beta/doc/Applikationsbeschreibung-Wire.pdf) describes features of the one wire part of application and firmware (in German).
-* [Application Logic](https://github.com/mumpf/knx-logic/blob/beta/doc/Applikationsbeschreibung-Logik.pdf) describes features of the logic part of application and firmware (in German).
-
-Thanks to all, who made this project successful.
 
