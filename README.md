@@ -15,9 +15,10 @@ It is a PlatformIO project and needs a working ETS >=5.7 installed on the same P
 Uses 12 shared (static) KOs 0-11.
 Uses 1 KO per channel
 
-Designed for up to 90 channels. 
+Designed for up to 90 channels, with hardware support DS2480 (30 Channels/Busmaster)
 
 Depends on OGM-SensorDevices module.
+
 Needs 
     -D WIREMODULE
 in platformio.ini
