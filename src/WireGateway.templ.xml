@@ -163,17 +163,17 @@
               <ParameterRef Id="%AID%_UP-%TT%%CC%066_R-%TT%%CC%06601" RefId="%AID%_UP-%TT%%CC%066" />
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%TT%%CC%001" Name="KOs%C%" Number="%K0%" Text="Dynamic" ObjectSize="1 Bit" FunctionText="Gerät %C%, Ausgang" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%TT%%CC%001" Name="KOs%C%" Number="%K0%" Text="Dynamic" ObjectSize="1 Bit" FunctionText="Wire %C%: Ausgang" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
             </ComObjectTable>
             <ComObjectRefs>
-              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Ausgang}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" DatapointType="DPST-1-1" />
-              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00102" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Ausgang}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPST-9-1" />
-              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00103" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Ausgang}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPST-9-4" />
-              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00104" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Ausgang}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPST-9-7" />
-              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00105" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Ausgang}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPT-9" />
-              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Eingang/Status}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" FunctionText="Gerät %C%, Eingang/Status" WriteFlag="Enabled" DatapointType="DPST-1-1" />
-              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Ein-/Ausgang/Status}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="1 Byte" FunctionText="Gerät %C%, Eingang/Ausgang/Status" WriteFlag="Enabled" DatapointType="DPST-5-5" />
-              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Ausgang}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPST-9-20" />
+              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Wire %C%}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" DatapointType="DPST-1-1" />
+              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00102" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Wire %C%}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPST-9-1" />
+              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00103" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Wire %C%}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPST-9-4" />
+              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00104" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Wire %C%}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPST-9-7" />
+              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00105" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Wire %C%}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPT-9" />
+              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Wire %C%}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" FunctionText="Wire %C%: Eingang/Status" WriteFlag="Enabled" DatapointType="DPST-1-1" />
+              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Wire %C%}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="1 Byte" FunctionText="Wire %C%: Eingang/Ausgang/Status" WriteFlag="Enabled" DatapointType="DPST-5-5" />
+              <ComObjectRef Id="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" RefId="%AID%_O-%TT%%CC%001" Text="{{0:Wire %C%}}" TextParameterRefId="%AID%_P-%TT%%CC%042_R-%TT%%CC%04201" ObjectSize="2 Bytes" DatapointType="DPST-9-20" />
             </ComObjectRefs>
           </Static>
           <Dynamic>
