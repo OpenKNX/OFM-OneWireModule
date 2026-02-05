@@ -46,19 +46,8 @@
                 <Parameter Id="%AID%_UP-%TT%%CC%040" Name="s%C%BusMasterSelect2" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect2" Text="Angeschlossen an" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%%CC%041" Name="s%C%BusMasterSelect3" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect3" Text="Angeschlossen an" Value="1" />
               </Union>
-              <!-- Sensor-Parameter -->
-              <Union SizeInBit="72">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="9" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%025" Name="s%C%SensorOffset" Offset="0" BitOffset="0" ParameterType="%AID%_PT-OffsetTemp" Text="Sensorwert anpassen" Value="0" SuffixText="x 0.1 °C" />
-                <Parameter Id="%AID%_UP-%TT%%CC%066" Name="s%C%SensorDelayBase" Offset="1" BitOffset="0" ParameterType="%AID%_PT-DelayBase" Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%026" Name="s%C%SensorDelayTime" Offset="1" BitOffset="2" ParameterType="%AID%_PT-DelayTime" Text="Zeit" Value="0" />
-
-                <Parameter Id="%AID%_UP-%TT%%CC%027" Name="s%C%SensorDeltaAbs" Offset="5" BitOffset="0" ParameterType="%AID%_PT-DeltaAbsTemp" Text="Bei absoluter Abweichung senden&#10;(0=nicht senden)" Value="0" SuffixText="x 0.1 °C" />
-                <Parameter Id="%AID%_UP-%TT%%CC%028" Name="s%C%SensorDeltaPercent" Offset="7" BitOffset="0" ParameterType="%AID%_PT-Percent" Text="Bei Abweichung vom vorherigen Wert senden&#10;(0=nicht senden)" Value="0" SuffixText="%" />
-                <Parameter Id="%AID%_UP-%TT%%CC%029" Name="s%C%SensorSmooth" Offset="8" BitOffset="0" ParameterType="%AID%_PT-Smooth" Text="Sensorwert glätten: P =" Value="1" SuffixText="" />
-              </Union>
               <!-- iButton-Parameter -->
-              <Union SizeInBit="16">
+              <Union SizeInBit="16" op:nowarn="true" >
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="9" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%%CC%062" Name="s%C%iButtonSendStatus" Offset="0" BitOffset="0" ParameterType="%AID%_PT-OnOffYesNo" Value="0" Text="Nach Neustart Zustand auf den Bus senden (auch für alle beteiligten Gruppen)?" />
                 <Parameter Id="%AID%_UP-%TT%%CC%031" Name="s%C%Group1"            Offset="1" BitOffset="0" ParameterType="%AID%_PT-CheckBox"   Value="0" Text="Gruppe 1" />
@@ -71,7 +60,7 @@
                 <Parameter Id="%AID%_UP-%TT%%CC%038" Name="s%C%Group8"            Offset="1" BitOffset="7" ParameterType="%AID%_PT-CheckBox"   Value="0" Text="Gruppe 8" />
               </Union>
               <!-- IO-Parameter -->
-              <Union SizeInBit="24">
+              <Union SizeInBit="24" op:nowarn="true" >
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="9" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%%CC%063" Name="s%C%IOSendStatus"     Offset="0" BitOffset="0" ParameterType="%AID%_PT-OnOffYesNo" Value="0" Text="Eingänge: Nach Neustart Zustand auf den Bus senden?" />
                 <Parameter Id="%AID%_UP-%TT%%CC%064" Name="s%C%IOReadRequest"    Offset="0" BitOffset="1" ParameterType="%AID%_PT-OnOffYesNo" Value="0" Text="Ausgänge: Nach Neustart Wert vom Bus lesen und Ausgang passend setzen?" />
@@ -91,6 +80,17 @@
                 <Parameter Id="%AID%_UP-%TT%%CC%059" Name="s%C%IoInvertBitmask5" Offset="2" BitOffset="2" ParameterType="%AID%_PT-CheckBox" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%%CC%060" Name="s%C%IoInvertBitmask6" Offset="2" BitOffset="1" ParameterType="%AID%_PT-CheckBox" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%%CC%061" Name="s%C%IoInvertBitmask7" Offset="2" BitOffset="0" ParameterType="%AID%_PT-CheckBox" Text="" Value="0" />
+              </Union>
+              <!-- Sensor-Parameter -->
+              <Union SizeInBit="72" op:nowarn="true" >
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="9" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%TT%%CC%025" Name="s%C%SensorOffset" Offset="0" BitOffset="0" ParameterType="%AID%_PT-OffsetTemp" Text="Sensorwert anpassen" Value="0" SuffixText="x 0.1 °C" />
+                <Parameter Id="%AID%_UP-%TT%%CC%066" Name="s%C%SensorDelayBase" Offset="1" BitOffset="0" ParameterType="%AID%_PT-DelayBase" Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%%CC%026" Name="s%C%SensorDelayTime" Offset="1" BitOffset="2" ParameterType="%AID%_PT-DelayTime" Text="Zeit" Value="0" />
+
+                <Parameter Id="%AID%_UP-%TT%%CC%027" Name="s%C%SensorDeltaAbs" Offset="5" BitOffset="0" ParameterType="%AID%_PT-DeltaAbsTemp" Text="Bei absoluter Abweichung senden&#10;(0=nicht senden)" Value="0" SuffixText="x 0.1 °C" />
+                <Parameter Id="%AID%_UP-%TT%%CC%028" Name="s%C%SensorDeltaPercent" Offset="7" BitOffset="0" ParameterType="%AID%_PT-Percent" Text="Bei Abweichung vom vorherigen Wert senden&#10;(0=nicht senden)" Value="0" SuffixText="%" />
+                <Parameter Id="%AID%_UP-%TT%%CC%029" Name="s%C%SensorSmooth" Offset="8" BitOffset="0" ParameterType="%AID%_PT-Smooth" Text="Sensorwert glätten: P =" Value="1" SuffixText="" />
               </Union>
               <!-- DeviceName -->
               <Parameter Id="%AID%_P-%TT%%CC%042" Name="s%C%Name" ParameterType="%AID%_PT-Text40Byte" Text="Beschreibung des Gerätes" Value="" />

@@ -324,7 +324,7 @@
               </Union>
               <!-- <Parameter Id="%AID%_P-%TT%00028" Name="DeviceCount" ParameterType="%AID%_PT-ValueDpt5" Text="Anzahl 1Wire-Geräte" Value="0" Access="Read" /> -->
               <!-- <Parameter Id="%AID%_P-%TT%00029" Name="BusmasterMax" ParameterType="%AID%_PT-ValueDpt5" Text="Maximale Anzahl Busmaster" Value="3" Access="None" /> -->
-              <Union SizeInBit="16">
+              <Union SizeInBit="24">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="2" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%00030" Name="Busmaster1RSTL" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterRSTL" Text="tRSTL (in Mikrosekunden)" Value="6" />
                 <Parameter Id="%AID%_UP-%TT%00031" Name="Busmaster1MSP"  Offset="0" BitOffset="4" ParameterType="%AID%_PT-BusMasterParameterMSP"  Text="tMSP (in Mikrosekunden)"  Value="6" />
@@ -333,7 +333,7 @@
                 <Parameter Id="%AID%_UP-%TT%00034" Name="Busmaster1WPU"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterWPU"  Text="RWPU (in Ohm)"  Value="6" />
               </Union>
               <Union SizeInBit="16">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="4" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="5" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%00035" Name="VisibleChannels" ParameterType="%AID%_PT-WIRENumChannels" Offset="0" BitOffset="0" Text="Verfügbare Kanäle" Value="%WIRE_NumChannelsDefault%" SuffixText=" von %N%" />
                 <!-- <Parameter Id="%AID%_UP-%TT%00036" Name="BusmasterMax"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5"  Text="Verfügbare Busmaster"  Value="3" Access="Read" /> -->
                 <Parameter Id="%AID%_UP-%TT%00036" Name="BusMasterCount" Offset="1" BitOffset="0" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="%WIRE_BusMasterCount%" Access="Read" />
