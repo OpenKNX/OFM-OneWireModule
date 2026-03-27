@@ -1,6 +1,5 @@
 #ifdef WIREMODULE
     #include "WireDevice.h"
-    #include "KnxHelper.h"
     #include "OneWireDS2482.h"
     #include "OpenKNX.h"
 
@@ -331,7 +330,7 @@ void WireDevice::processOneWire(bool iForce)
                     {
                         if (!lIsInitial || lSendInitial)
                         {
-                            knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).value(lNewState, getDPT(VAL_DPT_1));
+                            knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).value(lNewState, DPT_Bool);
                             logDebugP("KO%d sendet Wert: %d", mDeviceIndex + WIRE_KoOffset, lNewState);
                         }
                         mData.sensor.lastSentValue = lNewState;
@@ -350,7 +349,7 @@ void WireDevice::processOneWire(bool iForce)
                     {
                         if (!lIsInitial || lSendInitial)
                         {
-                            knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).value(lValue, (getModelFunction() == ModelFunction_IoByte) ? getDPT(VAL_DPT_5) : getDPT(VAL_DPT_1));
+                            knx.getGroupObject(mDeviceIndex + WIRE_KoOffset).value(lValue, (getModelFunction() == ModelFunction_IoByte) ? DPT_Value_1_Ucount : DPT_Bool);
                             logDebugP("KO%d sendet Wert: %0X", mDeviceIndex + WIRE_KoOffset, lValue);
                         }
                         mData.actor.lastInputValue = lValue;
@@ -399,7 +398,7 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
         lValueFactor = 1000.0;
     }
     // process send cycle
-    uint32_t lCycle = getDelayPattern(iParamIndex + WIRE_sSensorDelayBase);
+    uint32_t lCycle = paramDelay(knx.paramWord(iParamIndex + WIRE_sSensorDelayBase));
 
     // we waited enough, let's send the value
     if (lCycle && delayCheck(mData.sensor.sendDelay, lCycle))
@@ -441,7 +440,7 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
             if (isNum(lValue) && lValue > NO_NUM + 1)
             {
                 mData.sensor.lastValue = lValue;
-                lKo.valueNoSend(lValue, getDPT(VAL_DPT_9));
+                lKo.valueNoSend(lValue, DPT_Value_Lux);
             }
             else
             {
@@ -458,7 +457,7 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
     {
         logDebugP("KO%d sendet Wert: %f", iKoNumber, lValue);
         lKo.objectWritten();
-        mData.sensor.lastSentValue = (float)lKo.value(getDPT(VAL_DPT_9));
+        mData.sensor.lastSentValue = (float)lKo.value(DPT_Value_Lux);
         mData.sensor.sendDelay = delayTimerInit();
     }
 }

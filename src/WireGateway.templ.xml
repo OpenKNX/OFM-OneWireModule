@@ -13,38 +13,38 @@
               <!-- Device-Id -->
               <Union SizeInBit="56">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%010" Name="s%C%DeviceId" Offset="0" BitOffset="0" ParameterType="%AID%_PT-DeviceId" Text="Geräte-Id" Value="0" Access="None" />
-                <Parameter Id="%AID%_UP-%TT%%CC%011" Name="s%C%FamilyCode" Offset="0" BitOffset="0" ParameterType="%AID%_PT-FamilyCode" Text="Familienkode" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%012" Name="s%C%Id0" Offset="1" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%013" Name="s%C%Id1" Offset="1" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%014" Name="s%C%Id2" Offset="2" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%015" Name="s%C%Id3" Offset="2" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%016" Name="s%C%Id4" Offset="3" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%017" Name="s%C%Id5" Offset="3" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%018" Name="s%C%Id6" Offset="4" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%019" Name="s%C%Id7" Offset="4" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%020" Name="s%C%Id8" Offset="5" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%021" Name="s%C%Id9" Offset="5" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%022" Name="s%C%IdA" Offset="6" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%023" Name="s%C%IdB" Offset="6" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%%CC%010" Name="s%C%DeviceId" Offset="0" BitOffset="0" ParameterType="%AID%_PT-DeviceId" Text="Geräte-Id" Value="0" Access="None" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%011" Name="s%C%FamilyCode" Offset="0" BitOffset="0" ParameterType="%AID%_PT-FamilyCode" Text="Familienkode" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%012" Name="s%C%Id0" Offset="1" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%013" Name="s%C%Id1" Offset="1" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%014" Name="s%C%Id2" Offset="2" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%015" Name="s%C%Id3" Offset="2" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%016" Name="s%C%Id4" Offset="3" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%017" Name="s%C%Id5" Offset="3" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%018" Name="s%C%Id6" Offset="4" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%019" Name="s%C%Id7" Offset="4" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%020" Name="s%C%Id8" Offset="5" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%021" Name="s%C%Id9" Offset="5" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%022" Name="s%C%IdA" Offset="6" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%023" Name="s%C%IdB" Offset="6" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" op:nowarn="true" />
               </Union>
               <!-- FamilyCode display -->
               <Parameter Id="%AID%_P-%TT%%CC%024" Name="s%C%FamilyCodeHex" ParameterType="%AID%_PT-String2" Text="" Value="0" Access="Read" />
               <!-- ModelFunction -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="7" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%030" Name="s%C%ModelFunction" Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunction" Text="Modellfunktion" Value="0" Access="None" />
-                <Parameter Id="%AID%_UP-%TT%%CC%065" Name="s%C%ModelFunctionDS18B20" Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunctionDS18B20" Text="Sensorgenauigkeit" Value="3" />
-                <Parameter Id="%AID%_UP-%TT%%CC%043" Name="s%C%ModelFunctionDS2408"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunctionDS2408"  Text="Modellfunktion"    Value="9" />
-                <Parameter Id="%AID%_UP-%TT%%CC%044" Name="s%C%ModelFunctionDS2413"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunctionDS2413"  Text="Modellfunktion"    Value="9" />
-                <Parameter Id="%AID%_UP-%TT%%CC%045" Name="s%C%ModelFunctionDS2438"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunctionDS2438"  Text="Modellfunktion"    Value="10" />
+                <Parameter Id="%AID%_UP-%TT%%CC%030" Name="s%C%ModelFunction" Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunction" Text="Modellfunktion" Value="0" Access="None" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%065" Name="s%C%ModelFunctionDS18B20" Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunctionDS18B20" Text="Sensorgenauigkeit" Value="3" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%043" Name="s%C%ModelFunctionDS2408"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunctionDS2408"  Text="Modellfunktion"    Value="9" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%044" Name="s%C%ModelFunctionDS2413"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunctionDS2413"  Text="Modellfunktion"    Value="9" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%045" Name="s%C%ModelFunctionDS2438"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-ModelFunctionDS2438"  Text="Modellfunktion"    Value="10" op:nowarn="true" />
               </Union>
               <!-- BusMaster information -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="8" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%039" Name="s%C%BusMasterSelect1" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect1" Text="Angeschlossen an" Value="1" Access="None" />
-                <Parameter Id="%AID%_UP-%TT%%CC%040" Name="s%C%BusMasterSelect2" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect2" Text="Angeschlossen an" Value="1" />
-                <Parameter Id="%AID%_UP-%TT%%CC%041" Name="s%C%BusMasterSelect3" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect3" Text="Angeschlossen an" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%%CC%039" Name="s%C%BusMasterSelect1" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect1" Text="Angeschlossen an" Value="1" Access="None" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%040" Name="s%C%BusMasterSelect2" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect2" Text="Angeschlossen an" Value="1" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%041" Name="s%C%BusMasterSelect3" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterSelect3" Text="Angeschlossen an" Value="1" op:nowarn="true" />
               </Union>
               <!-- iButton-Parameter -->
               <Union SizeInBit="16" op:nowarn="true" >
