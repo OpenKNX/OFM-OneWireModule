@@ -4,6 +4,18 @@ Diese Applikation erlaubt die Parametrisierung des One-Wire-Moduls mittels ETS.
 
 ## **Änderungshistorie**
 
+31.03.2026: Firmware 2.2.0, Applikation 2.2
+
+- FIX: Wenn bei Sensorkalibrierung negative Offsets vergeben wurden, führte das zu falschen Sensorwerten
+- NEU: Wenn 1-Wire nicht aktiviert ist, wird auch nichts mehr prozessiert (Performance Verbesserung)
+- FIX: Negative Werte (z.B. bei Temperaturen) wurden nicht ausgewertet
+- Die Texte der Kommunikationsobjekte wurden an den OpenKNX standard angepasst
+
+05.09.2025: Firmware 2.0.1, Applikation 2.0:
+
+- wiederaufnahme der Änderungshistorie
+- 1-Wire läuft wieder auf aktueller OpenKNX infrastruktur
+
 18.02.2023: Firmware 1.0, Applikation 1.0
 
 * Anpassungen, damit das OneWireModule auch mit dem RP2040 benutzt werden kann
