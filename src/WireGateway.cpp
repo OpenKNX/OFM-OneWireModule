@@ -1,7 +1,5 @@
 #ifdef WIREMODULE
     #include "WireGateway.h"
-    #include "KnxHelper.h"
-    // #include "Logic.h"
     #include "ModuleVersionCheck.h"
     #include "OneWire.h"
     #include "Sensor.h"
@@ -154,9 +152,9 @@ void WireGateway::processInputKo(GroupObject &iKo)
         {
             // find correct DPT for KO
             if (lDevice->getModelFunction() == ModelFunction_IoByte)
-                lDevice->setValue(iKo.value(getDPT(VAL_DPT_5)));
+                lDevice->setValue(iKo.value(DPT_Value_1_Ucount));
             else
-                lDevice->setValue(iKo.value(getDPT(VAL_DPT_1)));
+                lDevice->setValue(iKo.value(DPT_Bool));
         }
     }
 }
@@ -221,7 +219,7 @@ void WireGateway::processUnknownDevices()
                 char lBuffer[15] = {0};
                 sprintf(lBuffer, "%02X%02X%02X%02X%02X%02X%02X", lSensor->Id()[0], lSensor->Id()[1], lSensor->Id()[2], lSensor->Id()[3], lSensor->Id()[4], lSensor->Id()[5], lSensor->Id()[6]);
                 logDebugP("KO%d sendet Wert: %s", WIRE_KoNewId, lBuffer);
-                knx.getGroupObject(WIRE_KoNewId).value(lBuffer, getDPT(VAL_DPT_16));
+                knx.getGroupObject(WIRE_KoNewId).value(lBuffer, DPT_String_8859_1);
                 sUnknownDeviceDelaySeconds = 2; // check in 2 Seconds for next new ID
             }
         }
