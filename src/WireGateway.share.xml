@@ -3,7 +3,6 @@
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
   
   <op:config name="%WIRE_BusMasterCount%" value="1" />
-  <op:config name="%WIRE_NumChannelsDefault%" value="3" />
 
   <ManufacturerData>
     <Manufacturer RefId="M-00FA">
@@ -11,10 +10,6 @@
         <ApplicationProgram Id="%AID%" ApplicationNumber="104" ApplicationVersion="10" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="WP-1WireGateway-Logic" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0">
           <Static>
             <ParameterTypes>
-              <!-- Number of channels (module specific) -->
-              <ParameterType Id="%AID%_PT-WIRENumChannels" Name="WIRENumChannels">
-                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="%N%" />
-              </ParameterType>
               <!-- Parameter types for WireGateway -->
               <ParameterType Id="%AID%_PT-DeviceId" Name="DeviceId">
                 <TypeText SizeInBit="56" />
@@ -23,6 +18,17 @@
               <ParameterType Id="%AID%_PT-FamilyCode" Name="FamilyCode">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="00-kein Gerät" Value="0" Id="%ENID%" />
+                  <Enumeration Text="01-iButton (DS1990)" Value="1" Id="%ENID%" />
+                  <Enumeration Text="10-Temperatur (DS18S20)" Value="16" Id="%ENID%" />
+                  <Enumeration Text="26-Analog (DS2438)" Value="38" Id="%ENID%" />
+                  <Enumeration Text="28-Temperatur (DS18B20)" Value="40" Id="%ENID%" />
+                  <Enumeration Text="29-I/O 8-Kanal (DS2408)" Value="41" Id="%ENID%" />
+                  <Enumeration Text="3A-I/O 2-Kanal (DS2413)" Value="58" Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
+              <!-- TypeSelect: identical to FamilyCode but without Value=0 "kein Gerät" — used on channel tab, ETS-only -->
+              <ParameterType Id="%AID%_PT-WIREFamilyCodeSelect" Name="WIREFamilyCodeSelect">
+                <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="01-iButton (DS1990)" Value="1" Id="%ENID%" />
                   <Enumeration Text="10-Temperatur (DS18S20)" Value="16" Id="%ENID%" />
                   <Enumeration Text="26-Analog (DS2438)" Value="38" Id="%ENID%" />
@@ -332,11 +338,9 @@
                 <Parameter Id="%AID%_UP-%TT%00033" Name="Busmaster1REC0" Offset="1" BitOffset="4" ParameterType="%AID%_PT-BusMasterParameterREC0" Text="tREC0 (in Mikrosekunden)" Value="6" />
                 <Parameter Id="%AID%_UP-%TT%00034" Name="Busmaster1WPU"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BusMasterParameterWPU"  Text="RWPU (in Ohm)"  Value="6" />
               </Union>
-              <Union SizeInBit="16">
+              <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="5" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%00035" Name="VisibleChannels" ParameterType="%AID%_PT-WIRENumChannels" Offset="0" BitOffset="0" Text="Verfügbare Kanäle" Value="%WIRE_NumChannelsDefault%" SuffixText=" von %N%" />
-                <!-- <Parameter Id="%AID%_UP-%TT%00036" Name="BusmasterMax"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5"  Text="Verfügbare Busmaster"  Value="3" Access="Read" /> -->
-                <Parameter Id="%AID%_UP-%TT%00036" Name="BusMasterCount" Offset="1" BitOffset="0" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="%WIRE_BusMasterCount%" Access="Read" />
+                <Parameter Id="%AID%_UP-%TT%00036" Name="BusMasterCount" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BusMasterCount" Text="Installierte Busmaster" Value="%WIRE_BusMasterCount%" Access="Read" />
                 <!-- 6-Bit frei -->
               </Union>
             </Parameters>
@@ -372,7 +376,7 @@
               <ParameterRef Id="%AID%_UP-%TT%00032_R-%TT%0003201" RefId="%AID%_UP-%TT%00032" />
               <ParameterRef Id="%AID%_UP-%TT%00033_R-%TT%0003301" RefId="%AID%_UP-%TT%00033" />
               <ParameterRef Id="%AID%_UP-%TT%00034_R-%TT%0003401" RefId="%AID%_UP-%TT%00034" />
-              <ParameterRef Id="%AID%_UP-%TT%00035_R-%TT%0003501" RefId="%AID%_UP-%TT%00035" />
+              <!-- <ParameterRef Id="%AID%_UP-%TT%00035_R-%TT%0003501" RefId="%AID%_UP-%TT%00035" /> -->
               <ParameterRef Id="%AID%_UP-%TT%00036_R-%TT%0003601" RefId="%AID%_UP-%TT%00036" />
             </ParameterRefs>
             <ComObjectTable>
@@ -410,8 +414,6 @@
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="1-Wire" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00035_R-%TT%0003501" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
                 <!-- Maximum number of Busmaster (used as Parameter for WireGateway and Sensormodul) -->
                 <!-- <choose ParamRefId="%AID%_UP-%TT%00036_R-%TT%0003601"> -->
                   <!-- <when test="2 3"> -->
@@ -454,6 +456,24 @@
                     <!-- </choose> -->
                   <!-- </when> -->
                 <!-- </choose> -->
+              </ParameterBlock>
+              <ParameterBlock Id="%AID%_PB-nnn" Name="WIREKanalauswahl" Text="Kanalauswahl" Icon="format-list-bulleted-type" HelpContext="BASE-ChannelSelect">
+                <!-- Grid-Kopfzeile — Spaltenbreiten müssen mit Settings-Zeilen in templ.xml übereinstimmen -->
+                <ParameterBlock Id="%AID%_PB-nnn" Inline="true" Layout="Grid">
+                  <Rows><Row Id="%AID%_PB-nnn_R-1" /></Rows>
+                  <Columns>
+                    <Column Id="%AID%_PB-nnn_C-1" Width="15%" />
+                    <Column Id="%AID%_PB-nnn_C-2" Width="45%" />
+                    <Column Id="%AID%_PB-nnn_C-3" Width="40%" />
+                  </Columns>
+                  <ParameterSeparator Id="%AID%_PS-nnn" Cell="1,1" UIHint="Headline" Text="Kanal" />
+                  <ParameterSeparator Id="%AID%_PS-nnn" Cell="1,2" UIHint="Headline" Text="Familienkode" />
+                  <ParameterSeparator Id="%AID%_PS-nnn" Cell="1,3" UIHint="Headline" Text="Beschreibung" />
+                </ParameterBlock>
+                <!-- Datenzeilen aus templ.xml (je Gerät eine eigene Tabelle) -->
+                <op:include href="WireGateway.templ.xml"
+                    xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Settings']/*"
+                    type="template" prefix="WIRE" IsInner="true" />
               </ParameterBlock>
               <ParameterBlock Id="%AID%_PB-nnn" Name="Expert" Text="Erweitert" Icon="format-list-text" HelpContext="Empty">
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Die Einstellungen dieser Seite sind nur für Experten, die sich genau mit 1-Wire-Bus-Timing auskennen. Das Datenblatt vom DS2484, Seite 13 ist heranzuziehen." UIHint="Information" />
@@ -505,15 +525,9 @@
                   <ParameterRefRef RefId="%AID%_UP-%TT%00027_R-%TT%0002701" HelpContext="WIRE-Gruppentyp" Cell="8,2" />
                 </ParameterBlock>
               </ParameterBlock>
-              <op:include href="WireGateway.templ.xml" xpath="//ApplicationProgram/Dynamic/ChannelIndependentBlock/*" type="template" prefix="WIRE" IsInner="true" />
-              <choose ParamRefId="%AID%_UP-%TT%00035_R-%TT%0003501">
-                <when test="&lt;%N%">
-                  <ParameterBlock Id="%AID%_PB-nnn" Name="AdditionalChannels" Text="(mehr)" Icon="dots-horizontal" HelpContext="Empty">
-                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%TT%00035_R-%TT%0003501" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
-                  </ParameterBlock>
-                </when>
-              </choose>
+              <op:include href="WireGateway.templ.xml"
+                  xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Channel']/*"
+                  type="template" prefix="WIRE" IsInner="true" />
             </Channel>
           </Dynamic>
         </ApplicationProgram>
