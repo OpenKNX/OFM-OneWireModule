@@ -4,7 +4,11 @@ Diese Applikation erlaubt die Parametrisierung des One-Wire-Moduls mittels ETS.
 
 ## **Änderungshistorie**
 
-31.03.2026: Firmware 2.2.0, Applikation 2.2
+25.10.2026: Firmware 2.3.0, Applikation 2.3:
+
+- NEU: Die Kanalselektion wurde an das neue Design angepasst
+
+31.03.2026: Firmware 2.2.0, Applikation 2.2:
 
 - FIX: Wenn bei Sensorkalibrierung negative Offsets vergeben wurden, führte das zu falschen Sensorwerten
 - NEU: Wenn 1-Wire nicht aktiviert ist, wird auch nichts mehr prozessiert (Performance Verbesserung)
