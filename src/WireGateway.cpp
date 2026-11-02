@@ -64,6 +64,15 @@ void WireGateway::setup(bool configured)
 
         mBusMaster[0] = new OneWireDS2482(WireGateway::processNewIdCallback, nullptr);
         mBusMaster[0]->setup(0, 0, lSearchNewDevices, I2C_BUS_1WIRE);
+        if (mBusMaster[0]->checkI2cPresence())
+        {
+            mBusMaster[0]->setupTiming(
+                (knx.paramByte(WIRE_Busmaster1RSTL) & WIRE_Busmaster1RSTLMask) >> WIRE_Busmaster1RSTLShift,
+                (knx.paramByte(WIRE_Busmaster1MSP) & WIRE_Busmaster1MSPMask) >> WIRE_Busmaster1MSPShift,
+                (knx.paramByte(WIRE_Busmaster1W0L) & WIRE_Busmaster1W0LMask) >> WIRE_Busmaster1W0LShift,
+                (knx.paramByte(WIRE_Busmaster1REC0) & WIRE_Busmaster1REC0Mask) >> WIRE_Busmaster1REC0Shift,
+                (knx.paramByte(WIRE_Busmaster1WPU) & WIRE_Busmaster1WPUMask) >> WIRE_Busmaster1WPUShift);
+        }
     #if COUNT_1WIRE_BUSMASTER > 1
         uint8_t lNumBusmaster = (knx.paramByte(WIRE_BusMasterCount) & WIRE_BusMasterCountMask) >> WIRE_BusMasterCountShift;
         if (lNumBusmaster > 1)
