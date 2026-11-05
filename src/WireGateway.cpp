@@ -77,13 +77,13 @@ void WireGateway::setup(bool configured)
         uint8_t lNumBusmaster = (knx.paramByte(WIRE_BusMasterCount) & WIRE_BusMasterCountMask) >> WIRE_BusMasterCountShift;
         if (lNumBusmaster > 1)
         {
-            gBusMaster[1] = new OneWireDS2482(WireDevice::processNewIdCallback, WireDevice::knxLoopCallback);
-            gBusMaster[1]->setup(1, 3, lSearchNewDevices);
+            mBusMaster[1] = new OneWireDS2482(WireGateway::processNewIdCallback, nullptr);
+            mBusMaster[1]->setup(1, 3, lSearchNewDevices, I2C_BUS_1WIRE);
         #if COUNT_1WIRE_BUSMASTER > 2
             if (lNumBusmaster > 2)
             {
-                gBusMaster[2] = new OneWireDS2482(WireDevice::processNewIdCallback, WireDevice::knxLoopCallback);
-                gBusMaster[2]->setup(2, 2, lSearchNewDevices);
+                mBusMaster[2] = new OneWireDS2482(WireGateway::processNewIdCallback, nullptr);
+                mBusMaster[2]->setup(2, 2, lSearchNewDevices, I2C_BUS_1WIRE);
             }
         }
         #endif
@@ -135,6 +135,7 @@ void WireGateway::loop(bool configured)
 
     uint8_t lNumBusmaster = (knx.paramByte(WIRE_BusMasterCount) & WIRE_BusMasterCountMask) >> WIRE_BusMasterCountShift;
     if (lNumBusmaster == 0) lNumBusmaster = 1; // at least one busmaster is always there
+    if (lNumBusmaster > COUNT_1WIRE_BUSMASTER) lNumBusmaster = COUNT_1WIRE_BUSMASTER;
     for (uint8_t lBusmasterIndex = 0; lBusmasterIndex < lNumBusmaster; lBusmasterIndex++)
     {
         mBusMaster[lBusmasterIndex]->loop();
@@ -157,7 +158,7 @@ void WireGateway::processInputKo(GroupObject &iKo)
         // has to be an input KO (for an 1W output device)
         WireDevice *lDevice = mDevice[lDeviceIndex];
         // we have to check this (in case someone writes on a KO of a sensor device)
-        if (lDevice->isIO())
+        if (lDevice != nullptr && lDevice->isIO())
         {
             // find correct DPT for KO
             if (lDevice->getModelFunction() == ModelFunction_IoByte)

@@ -422,7 +422,9 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
             // Formel: Value = ValueAlt + (ValueNeu - ValueAlt) / p
             if (!lForce && isNum(mData.sensor.lastValue))
             {
-                lValue = mData.sensor.lastValue + (lValue - mData.sensor.lastValue) / knx.paramByte(iParamIndex + WIRE_sSensorSmooth);
+                uint8_t lSmooth = knx.paramByte(iParamIndex + WIRE_sSensorSmooth);
+                if (lSmooth > 0)
+                    lValue = mData.sensor.lastValue + (lValue - mData.sensor.lastValue) / lSmooth;
             }
             // evaluate sending conditions (relative delta / absolute delta)
             if (mData.sensor.lastSentValue > NO_NUM + 1)
