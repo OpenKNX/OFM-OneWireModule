@@ -7,6 +7,10 @@ Diese Applikation erlaubt die Parametrisierung des One-Wire-Moduls mittels ETS.
 25.10.2026: Firmware 2.3.0, Applikation 2.3:
 
 - NEU: Die Kanalselektion wurde an das neue Design angepasst
+- FIX: Active Pullup war in der Vergangenheit durch einen Programmfehler nicht aktiv, die Korrektur verbessert den Empfang der Sensorwerte bei langen 1-Wire-Leitungen
+- FIX: Die Timing-Einstellungen (Expertenmodus) wurden bisher nicht an den Chip gesendet - das ist jetzt korrigiert
+- FIX: In seltenen fällen (vor allem bei Benutzung von iButtons oder beim Sensorausfall/Sensorfehler) konnte es zu einem Hänger kommen (NULL-Pointer-Exception), das ist jetzt gelöst
+- FIX: Die Auswertung vom Analogsensor DS2438 (Wert VAD) hatte eine Fehler, ist jetzt korrigiert.
 
 31.03.2026: Firmware 2.2.0, Applikation 2.2:
 
