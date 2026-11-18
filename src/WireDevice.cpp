@@ -442,7 +442,7 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
             if (isNum(lValue) && lValue > NO_NUM + 1)
             {
                 mData.sensor.lastValue = lValue;
-                lKo.valueNoSend(lValue, DPT_Value_Lux);
+                lKo.valueNoSend(lValue, DPT_Value_Temp);
             }
             else
             {
@@ -459,7 +459,7 @@ void WireDevice::processSensor(float iOffsetFactor, uint16_t iParamIndex, uint16
     {
         logDebugP("KO%d sendet Wert: %f", iKoNumber, lValue);
         lKo.objectWritten();
-        mData.sensor.lastSentValue = (float)lKo.value(DPT_Value_Lux);
+        mData.sensor.lastSentValue = (float)lKo.value(DPT_Value_Temp);
         mData.sensor.sendDelay = delayTimerInit();
     }
 }
