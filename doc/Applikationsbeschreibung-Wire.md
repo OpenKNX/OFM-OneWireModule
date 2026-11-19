@@ -4,6 +4,10 @@ Diese Applikation erlaubt die Parametrisierung des One-Wire-Moduls mittels ETS.
 
 ## **Änderungshistorie**
 
+19.11.2026: Frimware 2.3.1, Applikation 2.3:
+
+- FIX: Bei 1-Wire-Temperaturen wurden negative Werte als 0 gesendet. Ist jetzt korrigiert.
+
 25.10.2026: Firmware 2.3.0, Applikation 2.3:
 
 - NEU: Die Kanalselektion wurde an das neue Design angepasst
